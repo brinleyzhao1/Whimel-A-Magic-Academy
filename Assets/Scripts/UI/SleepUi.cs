@@ -34,7 +34,7 @@ namespace UI
 
     public void SleepAndFastForwardTime() //for buttons
     {
-      TimeManager.hour  += sleepHour;
+      TimeManager.Hour  += sleepHour;
       FindObjectOfType<PlayerEnergy>().AddOrMinusEnergy(sleepHour * energyRefillPerHourSleep);
       HideSleepPanel();
     }

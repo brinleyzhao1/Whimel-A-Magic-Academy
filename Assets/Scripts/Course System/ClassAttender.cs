@@ -30,14 +30,14 @@ namespace Course_System
     private void OpenCorrespondingClassPanelIfClassTime()
     {
 
-      if (TimeManager.hour >= 8 && TimeManager.hour < 10)
+      if (TimeManager.Hour >= 8 && TimeManager.Hour < 10)
       {
         _classAttendingUi.thisClass = class1;
         FindObjectOfType<CursorChanger>().CursorChangeToLockedMode();
         classMenuUi.SetActive(true);
         print("for class 1");
       }
-      else if (TimeManager.hour >= 10 && TimeManager.hour <= 12)
+      else if (TimeManager.Hour >= 10 && TimeManager.Hour <= 12)
       {
         _classAttendingUi.thisClass = class1; //todo will be class 2
         FindObjectOfType<CursorChanger>().CursorChangeToLockedMode();

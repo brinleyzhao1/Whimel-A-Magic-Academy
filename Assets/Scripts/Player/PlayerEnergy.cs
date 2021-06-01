@@ -69,7 +69,7 @@ namespace Player
       charController.enabled = true;
 
       //forced to sleep
-      TimeManager.hour  += sleepHour;
+      TimeManager.Hour  += sleepHour;
       FindObjectOfType<PlayerEnergy>().AddOrMinusEnergy(maxEnergy);
     }
 
