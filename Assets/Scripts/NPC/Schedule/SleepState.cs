@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class SleepState : StateMachineBehaviour
+namespace NPC.Schedule
 {
+  public class SleepState : StateMachineBehaviour
+  {
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +15,5 @@ public class SleepState : StateMachineBehaviour
     {
 
     }
+  }
 }

@@ -1,11 +1,11 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 namespace UI
 {
-  public class StatsTabUI : MonoBehaviour
+  public class StatsTabUi : MonoBehaviour
   {
 
     [SerializeField] private GameObject statsItemPrefab;
@@ -15,7 +15,7 @@ namespace UI
     public void UpdateStatsUi(Dictionary<string, int> stats)
     {
       foreach (Transform child in transform) {
-        GameObject.Destroy(child.gameObject);
+        Destroy(child.gameObject);
       }
 
       int statsNum = 0;
@@ -26,7 +26,7 @@ namespace UI
         newEntry.transform.GetChild(1).GetComponent<TMP_Text>().text = statEntry.Value.ToString();
 
 
-        newEntry.transform.GetComponent<StatsItemTooltipSpawner>().description = statsDescriptions[statsNum++];
+        // newEntry.transform.GetComponent<StatsItemTooltipSpawner>().description = statsDescriptions[statsNum++];
 
       }
     }

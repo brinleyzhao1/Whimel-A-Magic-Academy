@@ -11,11 +11,11 @@ using Random = UnityEngine.Random;
 
 namespace UI
 {
-  public class ClassAttendingUI : UiPanelGeneric
+  public class ClassAttendingUi : UiPanelGeneric
   {
     public CourseItem thisClass;
 
-    private Dictionary<string, int> statsChangeDictionary = new Dictionary<string, int>();
+    private readonly Dictionary<string, int> statsChangeDictionary = new Dictionary<string, int>();
 
     private void OnEnable()
     {
@@ -43,7 +43,7 @@ namespace UI
       DecideRandomStat();
 
       GameAssets.ResultPanel.GetComponent<ResultPanelUi>().Setup(statsChangeDictionary);
-FindObjectOfType<PlayerStats>().UpdateStatDictionary(statsChangeDictionary);
+      FindObjectOfType<PlayerStats>().UpdateStatDictionary(statsChangeDictionary);
 
 
       gameObject.SetActive(false);

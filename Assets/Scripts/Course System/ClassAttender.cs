@@ -13,13 +13,13 @@ namespace Course_System
 
 
     [SerializeField] private GameObject classMenuUi;
-    private ClassAttendingUI _classAttendingUi;
+    private ClassAttendingUi _classAttendingUi;
 
 
 
     private void Start()
     {
-      _classAttendingUi = classMenuUi.GetComponent<ClassAttendingUI>();
+      _classAttendingUi = classMenuUi.GetComponent<ClassAttendingUi>();
     }
 
     private void OnTriggerEnter(Collider other)
