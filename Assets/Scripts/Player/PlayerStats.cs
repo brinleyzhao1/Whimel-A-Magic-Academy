@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using GameDev.tv_Assets.Scripts.Saving;
 using UI;
+using UI.StatsScripts;
 using UnityEngine;
 
 namespace Player
@@ -11,15 +12,25 @@ namespace Player
   {
 
     private Dictionary<string, int> statsToValueDictionary = new Dictionary<string, int>();// note stats is referenced across using string, be cautious;
-    [SerializeField] private StatsTabUi statsTabUi;
+    private StatsTabUi statsTabUi;
+     private StatsChangeVisualUiSpawner statsChangeVisualUiSpawner;
 
     private void Start()
   {
-    // statsTabUi = FindObjectOfType<StatsTabUi>(); //todo
+    statsTabUi = FindObjectOfType<StatsTabUi>(); //todo
+    statsChangeVisualUiSpawner = FindObjectOfType<StatsChangeVisualUiSpawner>();
     SetupStatDictionaryAllToZero();
     statsTabUi.UpdateStatsUi(statsToValueDictionary);
   }
 
+
+    private void Update() //testing purpose
+    {
+      if (Input.GetKeyDown(KeyCode.O))
+      {
+        UpdateOneStatByValue("Courage", -20);
+      }
+    }
 
     private void SetupStatDictionaryAllToZero()
   {
@@ -39,13 +50,18 @@ namespace Player
       statsToValueDictionary[stat.Key] += stat.Value;
     }
     statsTabUi.UpdateStatsUi(statsToValueDictionary);
+    //todo spawn visual feedback for each stat
   }
 
-  public void UpdateStatByNumber(string stat, int valueToAdd) //sister method to UpdateStatDictionary; update only one entry of statDictionary
+
+  public void UpdateOneStatByValue(string stat, int valueToAdd) //sister method to UpdateStatDictionary; update only one entry of statDictionary
   {
     statsToValueDictionary[stat] += valueToAdd;
     statsTabUi.UpdateStatsUi(statsToValueDictionary);
+
+    statsChangeVisualUiSpawner.SpawnStatsChangeVisualItem(stat, valueToAdd);
   }
+
 
   //saving
   public object CaptureState()
