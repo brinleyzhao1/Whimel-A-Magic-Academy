@@ -30,7 +30,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
         {
             Debug.Log("Using action: " + this);
             PlayerEnergy player = FindObjectOfType<PlayerEnergy>();
-            player.AddOrMinusEnergy(energyChange);
+            player.UpdateEnergyByValue(energyChange);
         }
 
         public bool IsConsumable()

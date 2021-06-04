@@ -255,7 +255,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4407300667539907764}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: Add1Hour
         m_Mode: 1
@@ -569,7 +569,6 @@ GameObject:
   - component: {fileID: 4407300667539907657}
   - component: {fileID: 4407300667539907767}
   - component: {fileID: 4407300667539907766}
-  - component: {fileID: 4407300667539907764}
   m_Layer: 5
   m_Name: Sleep Panel
   m_TagString: Untagged
@@ -635,20 +634,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4407300667539907764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4407300667539907656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f0b45140b6724b2493dfdac023bad27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sleepHourText: {fileID: 4407300667312395650}
-  energyRefillPerHourSleep: 5
 --- !u!1 &4407300667601642527
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,7 +874,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4407300667539907764}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: HideSleepPanel
         m_Mode: 1
@@ -1155,7 +1140,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4407300667539907764}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: Subtract1Hour
         m_Mode: 1

@@ -13,12 +13,12 @@ namespace Player
 
     private Dictionary<string, int> statsToValueDictionary = new Dictionary<string, int>();// note stats is referenced across using string, be cautious;
     private StatsTabUi statsTabUi;
-     private StatsChangeVisualUiSpawner statsChangeVisualUiSpawner;
+     private VisualTextFeedbackSpawner visualTextFeedbackSpawner;
 
     private void Start()
   {
     statsTabUi = FindObjectOfType<StatsTabUi>(); //todo
-    statsChangeVisualUiSpawner = FindObjectOfType<StatsChangeVisualUiSpawner>();
+    visualTextFeedbackSpawner = FindObjectOfType<VisualTextFeedbackSpawner>();
     SetupStatDictionaryAllToZero();
     statsTabUi.UpdateStatsUi(statsToValueDictionary);
   }
@@ -59,7 +59,7 @@ namespace Player
     statsToValueDictionary[stat] += valueToAdd;
     statsTabUi.UpdateStatsUi(statsToValueDictionary);
 
-    statsChangeVisualUiSpawner.SpawnStatsChangeVisualItem(stat, valueToAdd);
+    visualTextFeedbackSpawner.SpawnStatsChangeVisualItem(stat, valueToAdd);
   }
 
 

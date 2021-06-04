@@ -16,7 +16,7 @@
 //     public override void Use(GameObject user)
 //     {
 //       PlayerEnergy player = FindObjectOfType<PlayerEnergy>();
-//       player.AddOrMinusEnergy(energyChange);
+//       player.UpdateEnergyByValue(energyChange);
 //     }
 //   }
 // }

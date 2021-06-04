@@ -11,7 +11,7 @@ namespace UI
       // FindObjectOfType<CursorChanger>().OneMoreUiOut();
     }
 
-    public void HideThisPanel() //for button "Cancel"
+    public void CloseThisPanel() //for button "Cancel"
     {
       gameObject.SetActive(false);
       FindObjectOfType<CursorChanger>().OneLessUiOut();
