@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f2bbb7ffaff74dbd899cd0b6156084c, type: 3}
-  m_Name: Mage
+  m_Name: Master Alchemist
   m_EditorClassIdentifier: 
-  endingName: Mage
-  condition1: 3
+  condition1: 5
   minVal1: 100
-  condition2: 4
+  condition2: 6
   minVal2: 200
-  condition3: 0
+  condition3: 8
   minVal3: 200
-  condition4: 5
+  condition4: 10
   minVal4: 100
+  description: You became the best alchemist in the world.

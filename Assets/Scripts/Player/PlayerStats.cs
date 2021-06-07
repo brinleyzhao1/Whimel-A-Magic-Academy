@@ -26,9 +26,9 @@ namespace Player
 
     private void Update() //testing purpose
     {
-      if (Input.GetKeyDown(KeyCode.O))
+      if (Input.GetKeyDown(KeyCode.C))
       {
-        UpdateOneStatByValue("Courage", -20);
+        UpdateOneStatByValue("Courage", 20);
       }
     }
 

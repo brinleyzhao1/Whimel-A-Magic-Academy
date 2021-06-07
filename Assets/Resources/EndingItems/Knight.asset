@@ -9,9 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cefca77e7692848189338cddcfdc7501, type: 3}
-  m_Name: idle_2
+  m_Script: {fileID: 11500000, guid: 7f2bbb7ffaff74dbd899cd0b6156084c, type: 3}
+  m_Name: Knight
   m_EditorClassIdentifier: 
-  startTime: 2
-  animator: {fileID: 0}
-  agent: {fileID: 0}
+  condition1: 1
+  minVal1: 100
+  condition2: 0
+  minVal2: 200
+  condition3: 2
+  minVal3: 200
+  condition4: 0
+  minVal4: 0
+  description: You're brave and kind, so you eventually became a knight.

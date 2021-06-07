@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f2bbb7ffaff74dbd899cd0b6156084c, type: 3}
-  m_Name: Forger
+  m_Name: Healer
   m_EditorClassIdentifier: 
   condition1: 2
-  minVal1: 100
-  condition2: 8
-  minVal2: 200
+  minVal1: 0
+  condition2: 0
+  minVal2: 10
   condition3: 10
-  minVal3: 200
+  minVal3: 0
   condition4: 1
-  minVal4: 100
+  minVal4: 0
+  description: You have a kind heart and so you become a healer and went around to
+    help those in pain.

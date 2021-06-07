@@ -9,11 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f4efee532b6d41bc80a87f71e33e0f9, type: 3}
-  m_Name: Magic 1
+  m_Script: {fileID: 11500000, guid: 7f2bbb7ffaff74dbd899cd0b6156084c, type: 3}
+  m_Name: Default_Can't be in the ending folder
   m_EditorClassIdentifier: 
-  itemID: f660f1a5-648e-4f27-a1b9-819b6c862d4e
-  courseText: 
-  courseName: Magic 1
-  description: 
-  listOfStats: 010000000300000006000000
+  condition1: 5
+  minVal1: 0
+  condition2: 6
+  minVal2: 0
+  condition3: 8
+  minVal3: 0
+  condition4: 10
+  minVal4: 0
+  description: You graduated. that's about it.
