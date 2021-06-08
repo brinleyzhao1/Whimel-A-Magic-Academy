@@ -25,12 +25,18 @@ namespace Endings
     {
       if (Input.GetKeyDown(KeyCode.O))//testing purpose
       {
-        EndingItem finalEnding = DecideEnding();
-        CallDisplayEnding(finalEnding);
+        GetEnding();
       }
     }
 
-    public EndingItem DecideEnding()
+    public void GetEnding()
+    {
+      EndingItem finalEnding = DecideEnding();
+      CallDisplayEnding(finalEnding);
+    }
+
+
+    private EndingItem DecideEnding()
     {
       foreach (var ending in allEndings)
       {

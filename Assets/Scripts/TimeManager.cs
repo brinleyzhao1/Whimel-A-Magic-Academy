@@ -1,4 +1,5 @@
 ﻿
+using Endings;
 using GameDev.tv_Assets.Scripts.Saving;
 using NPC.Schedule;
 using Player;
@@ -7,6 +8,8 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour, ISaveable
 {
+
+  [SerializeField] private int totalInGameYears = 3;
 
   private const int TimeScale = 800; //the bigger the faster in-game time is
 
@@ -72,6 +75,11 @@ public class TimeManager : MonoBehaviour, ISaveable
         Year++;
         Day = 0;
         UpdateText();
+      }
+      else if (Year > totalInGameYears)
+      {
+        EndingDecider endingDecider = FindObjectOfType<EndingDecider>();
+        endingDecider.GetEnding();
       }
     }
 
