@@ -10,7 +10,7 @@ namespace Endings
     private EndingItem[] allEndings;
     private Dictionary<string, int> _currentPlayerStats;
     [SerializeField] private EndingItem defaultEnding; //note the default ending can't be in the same folder as the other endings
-
+    [SerializeField] private EndingDisplayer endingDisplayer;
 
     private void Start()
     {
@@ -26,7 +26,7 @@ namespace Endings
       if (Input.GetKeyDown(KeyCode.O))//testing purpose
       {
         EndingItem finalEnding = DecideEnding();
-        print("final ending: " + finalEnding.description);
+        CallDisplayEnding(finalEnding);
       }
     }
 
@@ -63,6 +63,15 @@ namespace Endings
       }
 
       return defaultEnding;
+    }
+
+    private void CallDisplayEnding(EndingItem ending)
+    {
+      // EndingDisplayer endingDisplayer = FindObjectOfType<EndingDisplayer>();
+      // print(endingDisplayer.name);
+      endingDisplayer.gameObject.SetActive(true);
+
+      endingDisplayer.DisplayEnding(ending);
     }
   }
 }
