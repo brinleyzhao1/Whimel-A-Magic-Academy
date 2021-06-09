@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f4efee532b6d41bc80a87f71e33e0f9, type: 3}
-  m_Name: Dwarven I
+  m_Name: Spell
   m_EditorClassIdentifier: 
-  itemID: 03f18259-fa41-41eb-b03e-8b948559d6ab
-  courseText: 
-  courseName: 
-  college: 3
   description: 
-  preReq: []
-  fallTimeSlot: 010001
-  springTimeSlot: 010101
+  statsChange:
+  - stat: 0
+    valueChange: 0
+  - stat: 0
+    valueChange: 0
+  - stat: 0
+    valueChange: 0
+  - stat: 0
+    valueChange: 0

@@ -10,10 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f4efee532b6d41bc80a87f71e33e0f9, type: 3}
-  m_Name: Magic 1
+  m_Name: Divinition
   m_EditorClassIdentifier: 
-  itemID: f660f1a5-648e-4f27-a1b9-819b6c862d4e
-  courseText: 
-  courseName: Magic 1
   description: 
-  listOfStats: 010000000300000006000000
+  statsChange:
+  - stat: 0
+    valueChange: 0
+  - stat: 0
+    valueChange: 0
+  - stat: 0
+    valueChange: 0
+  - stat: 0
+    valueChange: 0

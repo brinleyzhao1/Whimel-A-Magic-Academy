@@ -10,10 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f4efee532b6d41bc80a87f71e33e0f9, type: 3}
-  m_Name: Magic 2
+  m_Name: Alchemy
   m_EditorClassIdentifier: 
-  itemID: 7d2b97a5-a9d1-44e9-92e7-24e11654e729
-  courseText: 
-  courseName: Magic 2
   description: 
-  listOfStats: 030000000300000006000000
+  statsChange:
+  - stat: 4
+    valueChange: 2
+  - stat: 0
+    valueChange: 0
+  - stat: 0
+    valueChange: 0
+  - stat: 0
+    valueChange: 0
