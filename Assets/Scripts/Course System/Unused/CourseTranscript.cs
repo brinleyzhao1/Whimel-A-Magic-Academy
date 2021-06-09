@@ -71,7 +71,7 @@ public class CourseTranscript : MonoBehaviour, ISaveable
     // var allTakenCourses = (List<CourseItem>)state;
     // for (int i = 0; i < inventorySize; i++)
     // {
-    //   slots[i] = CourseItem.GetFromID(slotStrings[i]);
+    //   slots[i] = CourseItem.GetFromId(slotStrings[i]);
     // }
     // if (inventoryUpdated != null)
     // {

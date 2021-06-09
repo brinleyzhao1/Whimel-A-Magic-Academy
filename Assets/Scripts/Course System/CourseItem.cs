@@ -7,13 +7,13 @@ namespace Course_System
   /// <summary>
   /// A ScriptableObject that represents any course
   /// </summary>
-  [CreateAssetMenu(fileName = "new course", menuName = "Courses/newCourse")]
+  [CreateAssetMenu(fileName = "new course", menuName = "Scriptables/newCourse")]
   public class CourseItem : ScriptableObject, ISerializationCallbackReceiver
   {
 
     // CONFIG DATA
     [Tooltip("Auto-generated UUID for saving/loading. Clear this field if you want to generate a new one.")]
-    [SerializeField] string itemID = null;
+    [SerializeField] string itemId = null;
 
     // [Tooltip("The UI icon to represent this item in the inventory.")]
     // [SerializeField] Sprite icon = null;
@@ -39,13 +39,13 @@ namespace Course_System
         /// <summary>
         /// Get the inventory item instance from its UUID.
         /// </summary>
-        /// <param name="itemID">
+        /// <param name="itemId">
         /// String UUID that persists between game instances.
         /// </param>
         /// <returns>
         /// Inventory item instance corresponding to the ID.
         /// </returns>
-        public static CourseItem GetFromID(string itemID)
+        public static CourseItem GetFromId(string itemId)
         {
             if (itemLookupCache == null)
             {
@@ -53,19 +53,19 @@ namespace Course_System
                 var itemList = Resources.LoadAll<CourseItem>("");
                 foreach (var item in itemList)
                 {
-                    if (itemLookupCache.ContainsKey(item.itemID))
+                    if (itemLookupCache.ContainsKey(item.itemId))
                     {
                         Debug.LogError(
-                          $"Looks like there's a duplicate GameDevTV.UI.InventorySystem ID for objects: {itemLookupCache[item.itemID]} and {item}");
+                          $"Looks like there's a duplicate GameDevTV.UI.InventorySystem ID for objects: {itemLookupCache[item.itemId]} and {item}");
                         continue;
                     }
 
-                    itemLookupCache[item.itemID] = item;
+                    itemLookupCache[item.itemId] = item;
                 }
             }
 
-            if (itemID == null || !itemLookupCache.ContainsKey(itemID)) return null;
-            return itemLookupCache[itemID];
+            if (itemId == null || !itemLookupCache.ContainsKey(itemId)) return null;
+            return itemLookupCache[itemId];
         }
 
         /*public Sprite GetIcon()
@@ -75,7 +75,7 @@ namespace Course_System
 
         public string GetItemID()
         {
-            return itemID;
+            return itemId;
         }
 
 
@@ -94,9 +94,9 @@ namespace Course_System
         void ISerializationCallbackReceiver.OnBeforeSerialize()
         {
             // Generate and save a new UUID if this is blank.
-            if (string.IsNullOrWhiteSpace(itemID))
+            if (string.IsNullOrWhiteSpace(itemId))
             {
-                itemID = System.Guid.NewGuid().ToString();
+                itemId = System.Guid.NewGuid().ToString();
             }
         }
 
