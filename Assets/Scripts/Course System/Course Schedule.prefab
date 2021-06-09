@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6776746765268488629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6365905314390192190}
+  - component: {fileID: 5982949430113648313}
+  m_Layer: 0
+  m_Name: Course Schedule
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6365905314390192190
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6776746765268488629}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5982949430113648313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6776746765268488629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe6bef04c82b4a008df957be342e89f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  y1day1:
+  - class1: {fileID: 11400000, guid: a9c7d62fcc140484eae3ea616eee1e50, type: 2}
+    class2: {fileID: 11400000, guid: 84e11211929074c36954d535a7926935, type: 2}
+  - class1: {fileID: 11400000, guid: d0d88ae5579dd4dc08ddf7d457d41b45, type: 2}
+    class2: {fileID: 11400000, guid: 84e11211929074c36954d535a7926935, type: 2}
+  y1day2:
+  - class1: {fileID: 11400000, guid: 84e11211929074c36954d535a7926935, type: 2}
+    class2: {fileID: 11400000, guid: 84e11211929074c36954d535a7926935, type: 2}
+  - class1: {fileID: 11400000, guid: a9c7d62fcc140484eae3ea616eee1e50, type: 2}
+    class2: {fileID: 11400000, guid: b208c6aac9bf54a938f707d18c173d0f, type: 2}
+  y1day3:
+  - class1: {fileID: 11400000, guid: d0d88ae5579dd4dc08ddf7d457d41b45, type: 2}
+    class2: {fileID: 11400000, guid: 84e11211929074c36954d535a7926935, type: 2}
+  - class1: {fileID: 11400000, guid: a9c7d62fcc140484eae3ea616eee1e50, type: 2}
+    class2: {fileID: 11400000, guid: d0d88ae5579dd4dc08ddf7d457d41b45, type: 2}
+  y2day1:
+  - class1: {fileID: 11400000, guid: 8f40a7099e4054301b171742547bbbf6, type: 2}
+    class2: {fileID: 11400000, guid: a9c7d62fcc140484eae3ea616eee1e50, type: 2}
+  - class1: {fileID: 11400000, guid: a9c7d62fcc140484eae3ea616eee1e50, type: 2}
+    class2: {fileID: 11400000, guid: 84e11211929074c36954d535a7926935, type: 2}
+  y2day2:
+  - class1: {fileID: 11400000, guid: b208c6aac9bf54a938f707d18c173d0f, type: 2}
+    class2: {fileID: 11400000, guid: 84e11211929074c36954d535a7926935, type: 2}
+  - class1: {fileID: 11400000, guid: 84e11211929074c36954d535a7926935, type: 2}
+    class2: {fileID: 11400000, guid: d0d88ae5579dd4dc08ddf7d457d41b45, type: 2}
+  y2day3:
+  - class1: {fileID: 11400000, guid: a9c7d62fcc140484eae3ea616eee1e50, type: 2}
+    class2: {fileID: 11400000, guid: b208c6aac9bf54a938f707d18c173d0f, type: 2}
+  - class1: {fileID: 11400000, guid: 84e11211929074c36954d535a7926935, type: 2}
+    class2: {fileID: 11400000, guid: b208c6aac9bf54a938f707d18c173d0f, type: 2}

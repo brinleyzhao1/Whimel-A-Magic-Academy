@@ -27,7 +27,6 @@ namespace Course_System
     [Tooltip("Course description to be displayed in UI.")]
     [SerializeField][TextArea] string description = null;
 
-    // public Dictionary<Stats, int> statsChange;
 
     [Serializable]
     public struct StatChange {
