@@ -79,7 +79,7 @@ namespace Player
       //todo add fade in and message to let player know
 
       //bring out force sleep panel
-      FindObjectOfType<CursorChanger>().OneMoreUiOut();
+      // FindObjectOfType<CursorChanger>().OneMoreUiOut();
       forcedSleepNotificationPanel.gameObject.SetActive(true);
 
 

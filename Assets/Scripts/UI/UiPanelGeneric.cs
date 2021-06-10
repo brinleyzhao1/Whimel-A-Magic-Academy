@@ -8,7 +8,7 @@ namespace UI
   {
     private void OnEnable()
     {
-      // FindObjectOfType<CursorChanger>().OneMoreUiOut();
+      FindObjectOfType<CursorChanger>().OneMoreUiOut();
     }
 
     public void CloseThisPanel() //for button "Cancel"

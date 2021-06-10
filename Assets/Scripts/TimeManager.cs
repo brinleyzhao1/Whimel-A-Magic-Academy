@@ -1,4 +1,5 @@
 ﻿
+using Course_System;
 using Endings;
 using GameDev.tv_Assets.Scripts.Saving;
 using NPC.Schedule;
@@ -60,7 +61,9 @@ public class TimeManager : MonoBehaviour, ISaveable
         Hour++;
         Minute = 0;
         UpdateText();
-        UpdateHourOnNPCs();
+        // UpdateHourOnNPCs();
+
+        CheckIfIsClassTime();
 
         _playerEnergy.MinusEnergyPerHour();
       }
@@ -80,6 +83,18 @@ public class TimeManager : MonoBehaviour, ISaveable
       {
         EndingDecider endingDecider = FindObjectOfType<EndingDecider>();
         endingDecider.GetEnding();
+      }
+    }
+
+    private void CheckIfIsClassTime()
+    {
+      if (Hour == 8)
+      {
+        ClassAttender.Instance.GetTheTwoClassesForThisTime(Year, Day, 0);
+      }
+      if (Hour == 12)
+      {
+        ClassAttender.Instance.GetTheTwoClassesForThisTime(Year, Day, 1);
       }
     }
 
