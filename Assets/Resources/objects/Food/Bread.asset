@@ -15,10 +15,10 @@ MonoBehaviour:
   itemID: dbbd4747-3ada-455f-9b32-6bcd5521a728
   buyingPrice: 10
   sellingPrice: 5
-  displayName: Bread
   description: 
   icon: {fileID: 21300000, guid: 40fc7dbcd954a4b3598e0e1cb1fa155e, type: 3}
-  pickup: {fileID: 0}
+  inGame3DPickup: {fileID: 467602121696786876, guid: 11144f05dee6445e8bf0e57ea8c46881,
+    type: 3}
   stackable: 1
   isPotionIngredient: 0
   isForgeIngredient: 0

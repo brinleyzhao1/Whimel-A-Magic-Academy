@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7936743508210502586}
-  - component: {fileID: 7936743508210502585}
-  - component: {fileID: 456029857307444114}
+  - component: {fileID: 3838383940959948579}
+  - component: {fileID: 8292148007858744269}
   m_Layer: 0
   m_Name: PickupSpawner
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7936743508210502585
+--- !u!114 &3838383940959948579
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,12 +41,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7936743508210502584}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4417844ce4278440a80c74bc10e69de, type: 3}
+  m_Script: {fileID: 11500000, guid: b32eeb67fd0e34671887b219ceeda2f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   number: 1
---- !u!114 &456029857307444114
+--- !u!114 &8292148007858744269
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,7 +55,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7936743508210502584}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ea9374b509b70f4bba37e4a2ca8cf00, type: 3}
+  m_Script: {fileID: 11500000, guid: ae2f4d412098546dfa6faebfa0882d88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueIdentifier: 
