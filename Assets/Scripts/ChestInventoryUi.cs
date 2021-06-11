@@ -11,7 +11,7 @@ namespace UI
   //copied from InventoryUI
   {
     // CONFIG DATA
-    [SerializeField] InventorySlotUI InventoryItemPrefab = null;
+    [SerializeField] InventorySlotUi InventoryItemPrefab = null;
 
     // CACHE
     Inventory chestInventory;

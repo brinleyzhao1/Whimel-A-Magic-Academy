@@ -15,14 +15,14 @@ namespace UI.Shop
     // PRIVATE STATE
     Transform sellButton = null;
 
-    public InventorySlotUI inventorySlotUi;
+    public InventorySlotUi inventorySlotUi;
     private TMP_Text priceText;
     private Image sellingTrayItemImage;
 
 
     private void Start()
     {
-      inventorySlotUi = GetComponent<InventorySlotUI>();
+      inventorySlotUi = GetComponent<InventorySlotUi>();
 
       priceText = GameAssets.SellingTray.transform.Find("price text").GetComponent<TMP_Text>();
 

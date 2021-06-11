@@ -6,10 +6,10 @@ using UnityEngine;
 
 namespace GameDev.tv_Assets.Scripts.UI.Inventories
 {
-  public class InventorySlotUI : MonoBehaviour, IItemHolder, IDragContainer<InventoryItem>
+  public class InventorySlotUi : MonoBehaviour, IItemHolder, IDragContainer<InventoryItem>
   {
     // CONFIG DATA
-    [SerializeField] InventoryItemIcon icon = null;
+    [SerializeField] InventoryItemIcon icon = null; // own child
     [SerializeField] GameObject gray;
 
     // STATE
@@ -59,11 +59,7 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
 
     public void GrayOut()
     {
-      transform.Find("grayMask").gameObject.SetActive(true);
-      // gray.SetActive(true);
-
-      // transform.Find("grayMask").gameObject.GetComponent<Image>().enabled = true;
-      // print(index + "grayed out");
+      //transform.Find("grayMask").gameObject.SetActive(true);
     }
 
 

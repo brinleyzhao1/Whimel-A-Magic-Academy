@@ -22,5 +22,5 @@ MonoBehaviour:
   stackable: 1
   isPotionIngredient: 0
   isForgeIngredient: 0
-  directlyEdible: 0
+  directlyEdible: 1
   energyChange: 5

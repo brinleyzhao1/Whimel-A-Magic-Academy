@@ -9,12 +9,12 @@ namespace Alchemy
   public class AlchemyInventorySlotUi : MonoBehaviour, IPointerClickHandler
   {
     private AlchemySystem _alchemySystem;
-    private InventorySlotUI _inventorySlotUi;
+    private InventorySlotUi _inventorySlotUi;
 
     private void OnEnable()
     {
       _alchemySystem = FindObjectOfType<AlchemySystem>();
-      _inventorySlotUi = GetComponent<InventorySlotUI>();
+      _inventorySlotUi = GetComponent<InventorySlotUi>();
     }
 
     public void OnPointerClick(PointerEventData eventData)

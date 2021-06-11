@@ -81,7 +81,6 @@ namespace GameDev.tv_Assets.Scripts.Inventories
       {
         InventoryUpdated();
       }
-
       return true;
     }
 

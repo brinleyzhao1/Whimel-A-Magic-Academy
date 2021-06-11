@@ -8,12 +8,12 @@ namespace Crafting
   public class CraftingInventorySlotUi : MonoBehaviour, IPointerClickHandler
   {
     private CraftingSystem _craftingSystem;
-    private InventorySlotUI _inventorySlotUi;
+    private InventorySlotUi _inventorySlotUi;
 
     private void OnEnable()
     {
       _craftingSystem = FindObjectOfType<CraftingSystem>();
-      _inventorySlotUi = GetComponent<InventorySlotUI>();
+      _inventorySlotUi = GetComponent<InventorySlotUi>();
     }
 
     public void OnPointerClick(PointerEventData eventData)

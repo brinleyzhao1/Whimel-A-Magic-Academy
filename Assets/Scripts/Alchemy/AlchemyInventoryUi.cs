@@ -27,9 +27,9 @@ namespace Alchemy
       base.Redraw();
       foreach (Transform slot in transform)
       {
-        if (slot.GetComponent<InventorySlotUI>().GetItem() != null)
+        if (slot.GetComponent<InventorySlotUi>().GetItem() != null)
         {
-          InventoryItem item = slot.GetComponent<InventorySlotUI>().GetItem();
+          InventoryItem item = slot.GetComponent<InventorySlotUi>().GetItem();
           if (item == null)
           {
             break;
@@ -43,7 +43,7 @@ namespace Alchemy
           }
           else
           {
-            slot.GetComponent<InventorySlotUI>().GrayOut();
+            slot.GetComponent<InventorySlotUi>().GrayOut();
           }
         }
       }

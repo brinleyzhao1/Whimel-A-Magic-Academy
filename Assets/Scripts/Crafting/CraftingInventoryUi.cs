@@ -53,14 +53,14 @@ namespace Crafting
       // base.Redraw();
       foreach (Transform slot in transform)
       {
-        if (slot.GetComponent<InventorySlotUI>().GetItem() == null)
+        if (slot.GetComponent<InventorySlotUi>().GetItem() == null)
         {
           continue;
         }
 
-        if (slot.GetComponent<InventorySlotUI>().GetItem() != null)
+        if (slot.GetComponent<InventorySlotUi>().GetItem() != null)
         {
-          InventoryItem item = slot.GetComponent<InventorySlotUI>().GetItem();
+          InventoryItem item = slot.GetComponent<InventorySlotUi>().GetItem();
 
           if (item == null)
           {
@@ -75,7 +75,7 @@ namespace Crafting
           }
           else
           {
-            slot.GetComponent<InventorySlotUI>().GrayOut();
+            slot.GetComponent<InventorySlotUi>().GrayOut();
           }
         }
       }
