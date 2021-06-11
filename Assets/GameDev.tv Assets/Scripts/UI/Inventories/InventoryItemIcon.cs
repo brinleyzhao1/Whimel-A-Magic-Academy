@@ -13,7 +13,9 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
     public class InventoryItemIcon : MonoBehaviour
     {
         // CONFIG DATA
+        [Tooltip("child: Image")]
         [SerializeField] GameObject textContainer = null;
+        [Tooltip("child: Text")]
         [SerializeField] TextMeshProUGUI itemNumber = null;
 
         // PUBLIC

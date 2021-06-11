@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Crafting
 {
-  public class CraftingInventoryUi : InventoryUI
+  public class CraftingInventoryUi : InventoryUi
   {
     // store a list of indexes of ingredients in inventory
     public CraftingSystem.CraftMode alchemyOrForge;
@@ -15,8 +15,8 @@ namespace Crafting
 
     private void Awake()
     {
-      playerInventory = Inventory.GetPlayerInventory();
-      playerInventory.InventoryUpdated += Redraw;
+      PlayerInventory = Inventory.GetPlayerInventory();
+      PlayerInventory.InventoryUpdated += Redraw;
     }
 
     private void OnEnable()

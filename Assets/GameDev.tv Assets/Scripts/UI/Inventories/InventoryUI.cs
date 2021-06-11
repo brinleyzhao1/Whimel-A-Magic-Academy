@@ -5,23 +5,23 @@ using UnityEngine;
 namespace GameDev.tv_Assets.Scripts.UI.Inventories
 {
   /// <summary>
-  /// To be placed on the root of the inventory UI. Handles spawning all the
+  /// To be placed on the root of the inventory UI (gameObject "Inventory Items"). Handles spawning all the
   /// inventory slot prefabs.
   /// </summary>
-  public class InventoryUI : MonoBehaviour
+  public class InventoryUi : MonoBehaviour
   {
     // CONFIG DATA
-    [SerializeField] protected InventorySlotUI InventoryItemPrefab = null;
+    [SerializeField] protected InventorySlotUI inventoryItemPrefab = null;
 
     // CACHE
-    protected Inventory playerInventory;
+    protected Inventory PlayerInventory;
 
     // LIFECYCLE METHODS
 
     private void Awake()
     {
-      playerInventory = Inventory.GetPlayerInventory();
-      playerInventory.InventoryUpdated += Redraw;
+      PlayerInventory = Inventory.GetPlayerInventory();
+      PlayerInventory.InventoryUpdated += Redraw;
     }
 
     private void Start()
@@ -38,10 +38,10 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
         Destroy(child.gameObject);
       }
 
-      for (int i = 0; i < playerInventory.GetSize(); i++)
+      for (int i = 0; i < PlayerInventory.GetSize(); i++)
       {
-        var itemUI = Instantiate(InventoryItemPrefab, transform);
-        itemUI.Setup(playerInventory, i);
+        var itemUi = Instantiate(inventoryItemPrefab, transform);
+        itemUi.Setup(PlayerInventory, i);
       }
     }
   }

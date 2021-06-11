@@ -16,13 +16,13 @@ namespace GameDev.tv_Assets.Scripts.Inventories
     [Tooltip("Allowed size")] [SerializeField]
     int inventorySize = 16;
 
-    // STATE
+    // STATE, the actual inventory
     InventorySlot[] slots;
 
     public struct InventorySlot
     {
-      public InventoryItem item;
-      public int number;
+      public InventoryItem Item;
+      public int Number;
     }
 
     // PUBLIC
@@ -75,8 +75,8 @@ namespace GameDev.tv_Assets.Scripts.Inventories
         return false;
       }
 
-      slots[i].item = item;
-      slots[i].number += number;
+      slots[i].Item = item;
+      slots[i].Number += number;
       if (InventoryUpdated != null)
       {
         InventoryUpdated();
@@ -92,7 +92,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
     {
       for (int i = 0; i < slots.Length; i++)
       {
-        if (object.ReferenceEquals(slots[i].item, item))
+        if (object.ReferenceEquals(slots[i].Item, item))
         {
           return true;
         }
@@ -106,7 +106,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
     /// </summary>
     public InventoryItem GetItemInSlot(int slot)
     {
-      return slots[slot].item;
+      return slots[slot].Item;
     }
 
     /// <summary>
@@ -114,7 +114,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
     /// </summary>
     public int GetNumberInSlot(int slot)
     {
-      return slots[slot].number;
+      return slots[slot].Number;
     }
 
     /// <summary>
@@ -123,11 +123,11 @@ namespace GameDev.tv_Assets.Scripts.Inventories
     /// </summary>
     public void RemoveFromSlot(int slot, int number)
     {
-      slots[slot].number -= number;
-      if (slots[slot].number <= 0)
+      slots[slot].Number -= number;
+      if (slots[slot].Number <= 0)
       {
-        slots[slot].number = 0;
-        slots[slot].item = null;
+        slots[slot].Number = 0;
+        slots[slot].Item = null;
       }
 
       if (InventoryUpdated != null)
@@ -147,7 +147,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
     /// <returns>True if the item was added anywhere in the inventory.</returns>
     public bool AddItemToSlot(int slot, InventoryItem item, int number)
     {
-      if (slots[slot].item != null)
+      if (slots[slot].Item != null)
       {
         return AddToFirstEmptySlot(item, number);
         ;
@@ -159,8 +159,8 @@ namespace GameDev.tv_Assets.Scripts.Inventories
         slot = i;
       }
 
-      slots[slot].item = item;
-      slots[slot].number += number;
+      slots[slot].Item = item;
+      slots[slot].Number += number;
       if (InventoryUpdated != null)
       {
         InventoryUpdated();
@@ -199,7 +199,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
     {
       for (int i = 0; i < slots.Length; i++)
       {
-        if (slots[i].item == null)
+        if (slots[i].Item == null)
         {
           return i;
         }
@@ -221,7 +221,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
 
       for (int i = 0; i < slots.Length; i++)
       {
-        if (object.ReferenceEquals(slots[i].item, item))
+        if (object.ReferenceEquals(slots[i].Item, item))
         {
           return i;
         }
@@ -246,10 +246,10 @@ namespace GameDev.tv_Assets.Scripts.Inventories
       var slotStrings = new InventorySlotRecord[inventorySize];
       for (int i = 0; i < inventorySize; i++)
       {
-        if (slots[i].item != null)
+        if (slots[i].Item != null)
         {
-          slotStrings[i].itemId = slots[i].item.GetItemID();
-          slotStrings[i].number = slots[i].number;
+          slotStrings[i].itemId = slots[i].Item.GetItemID();
+          slotStrings[i].number = slots[i].Number;
         }
       }
 
@@ -261,8 +261,8 @@ namespace GameDev.tv_Assets.Scripts.Inventories
       var slotStrings = (InventorySlotRecord[]) state;
       for (int i = 0; i < inventorySize; i++)
       {
-        slots[i].item = InventoryItem.GetFromID(slotStrings[i].itemId);
-        slots[i].number = slotStrings[i].number;
+        slots[i].Item = InventoryItem.GetFromID(slotStrings[i].itemId);
+        slots[i].Number = slotStrings[i].number;
       }
 
       if (InventoryUpdated != null)

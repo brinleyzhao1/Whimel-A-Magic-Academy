@@ -5,14 +5,14 @@ using UnityEngine;
 
 namespace Alchemy
 {
-  public class AlchemyInventoryUi : InventoryUI
+  public class AlchemyInventoryUi : InventoryUi
   {
     // store a list of indexes of ingredients in inventory
 
     private void Awake()
     {
-      playerInventory = Inventory.GetPlayerInventory();
-      playerInventory.InventoryUpdated += Redraw;
+      PlayerInventory = Inventory.GetPlayerInventory();
+      PlayerInventory.InventoryUpdated += Redraw;
     }
 
     private void OnEnable()
