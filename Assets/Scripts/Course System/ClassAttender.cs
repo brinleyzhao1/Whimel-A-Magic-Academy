@@ -46,7 +46,7 @@ namespace Course_System
       //testing
 
 
-      GetTheTwoClassesForThisTime(1, 1, 0);
+      // GetTheTwoClassesForThisTime(1, 1, 0);
       // print(GetTheTwoClassesForThisTime(1,1,1));
     }
 

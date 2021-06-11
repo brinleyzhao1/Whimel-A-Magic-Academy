@@ -1,4 +1,5 @@
-﻿using GameDevTV.Inventories;
+﻿using GameDev.tv_Assets.Scripts.Inventories;
+using GameDevTV.Inventories;
 using UnityEngine;
 
 namespace GameDev.tv_Assets.Scripts.UI.Inventories
@@ -20,7 +21,7 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
     private void Awake()
     {
       playerInventory = Inventory.GetPlayerInventory();
-      playerInventory.inventoryUpdated += Redraw;
+      playerInventory.InventoryUpdated += Redraw;
     }
 
     private void Start()

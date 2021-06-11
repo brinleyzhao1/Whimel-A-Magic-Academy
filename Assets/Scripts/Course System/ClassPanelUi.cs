@@ -9,6 +9,7 @@ namespace Course_System
 
     public TextMeshProUGUI class1Text;
     public TextMeshProUGUI class2Text;
+
     public void SetUpClassAttendingPanel(CourseItem class1, CourseItem class2)
     {
       class1Text.text = class1.name;
@@ -35,7 +36,7 @@ namespace Course_System
 
     public void ButtonConfirmToTakeThisClass()
     {
-
+//todo:  shouldn't be able to close the panel without choosing one of the options
       ClassAttender.Instance.ConfirmTakingClass(currentClassToAttendNum);
       CloseThisPanel();
     }

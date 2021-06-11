@@ -12,7 +12,7 @@ namespace Alchemy
     private void Awake()
     {
       playerInventory = Inventory.GetPlayerInventory();
-      playerInventory.inventoryUpdated += Redraw;
+      playerInventory.InventoryUpdated += Redraw;
     }
 
     private void OnEnable()

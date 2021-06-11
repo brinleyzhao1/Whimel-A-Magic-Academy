@@ -27,7 +27,7 @@ namespace UI
     public void SetThisChestInventory(Inventory thisChestInventory)
     {
       chestInventory = thisChestInventory;
-      chestInventory.inventoryUpdated += Redraw;
+      chestInventory.InventoryUpdated += Redraw;
     }
 
     // protected virtual void GetProperInventory()

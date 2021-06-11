@@ -6,17 +6,18 @@ namespace GameDev.tv_Assets.Scripts.Inventories
 {
     /// <summary>
     /// An inventory item that can be placed in the action bar and "Used".
+    /// actionItem is currently define as all items that can be consumed in some way.
+    /// so far it means ingredients, potions and food
     /// </summary>
     /// <remarks>
-    /// This class should be used as a base. Subclasses must implement the `Use`
-    /// method.
+    /// This class should be used as a base. Subclasses must implement the `Use` method.
     /// </remarks>
     [CreateAssetMenu(menuName = ("Items/Action Item"))]
     public class ActionItem : InventoryItem
     {
         // CONFIG DATA
         [Tooltip("Does an instance of this item get consumed every time it's used.")]
-        [SerializeField] bool consumable = false;
+        [SerializeField] bool directlyEdible = false;
 
         [Tooltip("Does an instance of this item get consumed every time it's used.")]
         [SerializeField] int energyChange = 0;
@@ -35,7 +36,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
 
         public bool IsConsumable()
         {
-            return consumable;
+            return directlyEdible;
         }
 
 

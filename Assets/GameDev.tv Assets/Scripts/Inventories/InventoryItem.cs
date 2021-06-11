@@ -17,11 +17,11 @@ namespace GameDev.tv_Assets.Scripts.Inventories
         [Tooltip("Auto-generated UUID for saving/loading. Clear this field if you want to generate a new one.")]
         [SerializeField] string itemID = null;
         [Tooltip("Price of this item when player buys it at a store.")]
-        [SerializeField]public  int buyingPrice = 0;
+        [SerializeField]public  int buyingPrice = 10;
         [Tooltip("Item name to be displayed in UI.")]
         [SerializeField]public  int sellingPrice = 10;
-        [Tooltip("Item name to be displayed in UI.")]
-        [SerializeField] string displayName = null;
+        // [Tooltip("Item name to be displayed in UI.")]
+        // [SerializeField] string displayName = null;
         [Tooltip("Item description to be displayed in UI.")]
         [SerializeField][TextArea] string description = null;
         [Tooltip("The UI icon to represent this item in the inventory.")]
@@ -108,7 +108,8 @@ namespace GameDev.tv_Assets.Scripts.Inventories
 
         public string GetDisplayName()
         {
-            return displayName;
+            return name;
+            // return displayName;
         }
 
         public string GetDescription()
