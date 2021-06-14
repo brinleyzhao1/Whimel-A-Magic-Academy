@@ -25,6 +25,10 @@ namespace GameDev.tv_Assets.Scripts.Inventories
       public int Number;
     }
 
+    private void Awake()
+    {
+      slots = new InventorySlot[inventorySize];
+    }
     // PUBLIC
 
     /// <summary>
@@ -33,7 +37,6 @@ namespace GameDev.tv_Assets.Scripts.Inventories
     public event Action InventoryUpdated;
 
     #region Functions Related to Inventory
-
 
     /// <summary>
     /// Convenience for getting the player's inventory.
@@ -81,6 +84,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
       {
         InventoryUpdated();
       }
+
       return true;
     }
 
@@ -170,10 +174,6 @@ namespace GameDev.tv_Assets.Scripts.Inventories
 
     // PRIVATE
 
-    private void Awake()
-    {
-      slots = new InventorySlot[inventorySize];
-    }
 
     /// <summary>
     /// Find a slot that can accomodate the given item.
@@ -269,6 +269,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
         InventoryUpdated();
       }
     }
+
     #endregion
   }
 }

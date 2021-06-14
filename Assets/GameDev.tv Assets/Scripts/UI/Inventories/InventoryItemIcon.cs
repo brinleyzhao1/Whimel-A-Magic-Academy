@@ -14,7 +14,7 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
     {
         // CONFIG DATA
         [Tooltip("child: Image")]
-        [SerializeField] GameObject textContainer = null;
+        [SerializeField] GameObject roundDotImage = null;
         [Tooltip("child: Text")]
         [SerializeField] TextMeshProUGUI itemNumber = null;
 
@@ -28,6 +28,7 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
         public void SetItem(InventoryItem item, int number)
         {
             var iconImage = GetComponent<Image>();
+            //set up item image
             if (item == null)
             {
                 iconImage.enabled = false;
@@ -38,18 +39,20 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
                 iconImage.sprite = item.GetIcon();
             }
 
+            //set up  number image
             if (itemNumber)
             {
                 if (number <= 1)
                 {
-                    textContainer.SetActive(false);
+                    roundDotImage.SetActive(false);
                 }
                 else
                 {
-                    textContainer.SetActive(true);
+                    roundDotImage.SetActive(true);
                     itemNumber.text = number.ToString();
                 }
             }
+
         }
     }
 }
