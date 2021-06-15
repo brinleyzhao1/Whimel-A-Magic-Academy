@@ -29,7 +29,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
         /// <param name="user">The character that is using this action.</param>
         public void Use(GameObject user)
         {
-            Debug.Log("Using action: " + this);
+            // Debug.Log("Using action: " + this);
             PlayerEnergy player = FindObjectOfType<PlayerEnergy>();
             player.UpdateEnergyByValue(energyChange);
         }

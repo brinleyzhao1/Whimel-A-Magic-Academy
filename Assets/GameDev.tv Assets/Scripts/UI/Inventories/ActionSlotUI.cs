@@ -17,40 +17,40 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
         [SerializeField] int index = 0;
 
         // CACHE
-        ActionStore store;
+        ActionStore actionStore;
 
         // LIFECYCLE METHODS
         private void Awake()
         {
-            store = GameObject.FindGameObjectWithTag("Player").GetComponent<ActionStore>();
-            store.storeUpdated += UpdateIcon;
+            actionStore = GameObject.FindGameObjectWithTag("Player").GetComponent<ActionStore>();
+            actionStore.StoreUpdated += UpdateIcon;
         }
 
         // PUBLIC
 
         public void AddItems(InventoryItem item, int number)
         {
-            store.AddAction(item, index, number);
+            actionStore.AddAction(item, index, number);
         }
 
         public InventoryItem GetItem()
         {
-            return store.GetAction(index);
+            return actionStore.GetAction(index);
         }
 
         public int GetNumber()
         {
-            return store.GetNumber(index);
+            return actionStore.GetNumber(index);
         }
 
         public int MaxAcceptable(InventoryItem item)
         {
-            return store.MaxAcceptable(item, index);
+            return actionStore.MaxAcceptable(item, index);
         }
 
         public void RemoveItems(int number)
         {
-            store.RemoveItems(index, number);
+            actionStore.RemoveItems(index, number);
         }
 
         // PRIVATE
