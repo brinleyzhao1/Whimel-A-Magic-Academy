@@ -10,7 +10,7 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
     /// update the icon and number.
     /// </summary>
     [RequireComponent(typeof(Image))]
-    public class InventoryItemIcon : MonoBehaviour
+    public class InventoryItemIconInChild : MonoBehaviour
     {
         // CONFIG DATA
         [Tooltip("child: Image")]

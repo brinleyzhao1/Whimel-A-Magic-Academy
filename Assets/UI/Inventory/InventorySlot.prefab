@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b095f3bfc3afb4ffdbc07cd08aa5ff11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 8951438440326052869}
+  iconInChild: {fileID: 8951438440326052869}
   gray: {fileID: 2993478752042382023}
   index: 0
 --- !u!114 &4483070056409188611

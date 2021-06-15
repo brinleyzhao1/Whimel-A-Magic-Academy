@@ -17,7 +17,7 @@ namespace GameDevTV.UI.Inventories
     {
         // CONFIG DATA
 
-        [SerializeField] InventoryItemIcon icon = null;
+        [SerializeField] InventoryItemIconInChild iconInChild = null;
         [SerializeField] EquipLocation equipLocation = EquipLocation.Weapon;
 
         // CACHE
@@ -80,7 +80,7 @@ namespace GameDevTV.UI.Inventories
 
         void RedrawUI()
         {
-            icon.SetItem(playerEquipment.GetItemInSlot(equipLocation));
+            iconInChild.SetItem(playerEquipment.GetItemInSlot(equipLocation));
         }
     }
 }

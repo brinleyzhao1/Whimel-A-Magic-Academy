@@ -9,7 +9,7 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
   public class InventorySlotUi : MonoBehaviour, IItemHolder, IDragContainer<InventoryItem>
   {
     // CONFIG DATA
-    [SerializeField] InventoryItemIcon icon = null; // own child
+    [SerializeField] InventoryItemIconInChild iconInChild = null; // own child
     [SerializeField] GameObject gray;
 
     // STATE
@@ -23,7 +23,7 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
     {
       this.inventory = inventory;
       this.index = index;
-      icon.SetItem(inventory.GetItemInSlot(index), inventory.GetNumberInSlot(index));
+      iconInChild.SetItem(inventory.GetItemInSlot(index), inventory.GetNumberInSlot(index));
     }
 
     public int MaxAcceptable(InventoryItem item)

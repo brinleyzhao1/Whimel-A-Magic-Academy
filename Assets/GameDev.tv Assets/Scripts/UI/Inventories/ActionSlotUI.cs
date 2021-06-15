@@ -10,10 +10,10 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
     /// <summary>
     /// The UI slot for the player action bar.
     /// </summary>
-    public class ActionSlotUI : MonoBehaviour, IItemHolder, IDragContainer<InventoryItem>
+    public class ActionSlotUi : MonoBehaviour, IItemHolder, IDragContainer<InventoryItem>
     {
         // CONFIG DATA
-        [SerializeField] InventoryItemIcon icon = null;
+        [SerializeField] InventoryItemIconInChild iconInChild = null;
         [SerializeField] int index = 0;
 
         // CACHE
@@ -57,7 +57,7 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
 
         void UpdateIcon()
         {
-            icon.SetItem(GetItem(), GetNumber());
+            iconInChild.SetItem(GetItem(), GetNumber());
         }
     }
 }
