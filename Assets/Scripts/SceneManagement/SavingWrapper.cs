@@ -1,4 +1,5 @@
 using System.Collections;
+using GameDev.tv_Assets.Scripts.Saving;
 using GameDevTV.Saving;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ namespace SceneManagement
 
         private void Awake()
         {
-            StartCoroutine(LoadLastScene());
+            // StartCoroutine(LoadLastScene()); //todo appearantly causing unity to crash!
         }
 
         private IEnumerator LoadLastScene() {
@@ -43,6 +44,7 @@ namespace SceneManagement
         public void Save()
         {
             GetComponent<SavingSystem>().Save(DefaultSaveFile);
+            print("saved");
         }
 
         public void Delete()

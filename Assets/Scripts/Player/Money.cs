@@ -20,7 +20,7 @@ namespace Player
 
     private void Update()
     {
-      if (Input.GetKeyDown(KeyCode.M)) //todo temp
+      if (Input.GetKeyDown(KeyCode.M)) //todo testing
       {
         AddOrMinusMoney(5);
       }
