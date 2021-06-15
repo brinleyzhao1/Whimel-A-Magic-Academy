@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 3007896082266252686}
   - component: {fileID: 7651874586322136125}
   m_Layer: 5
-  m_Name: ShopItemUI
+  m_Name: ShopEntryUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,8 +168,8 @@ RectTransform:
   m_Children:
   - {fileID: 6629165660457988463}
   - {fileID: 6503839964588970394}
-  - {fileID: 2866112460603386008}
   - {fileID: 2114643686677753851}
+  - {fileID: 2866112460603386008}
   - {fileID: 6580617459061095383}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -255,6 +255,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e3488e067c8420c82753b8516ed7d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entryImage: {fileID: 7215293224009662615}
+  entryNameText: {fileID: 6482001107135571788}
+  entryPriceText: {fileID: 3835008876034903530}
 --- !u!1 &4184493981115685365
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,7 +288,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 432412933547873862}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -567,7 +570,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 432412933547873862}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
