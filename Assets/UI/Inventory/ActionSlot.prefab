@@ -92,6 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconInChild: {fileID: 707368911694698189}
   index: 0
+  selectedColor: {r: 0.8962264, g: 0.82503563, b: 0.6552599, a: 1}
 --- !u!114 &3824114093794569618
 MonoBehaviour:
   m_ObjectHideFlags: 0

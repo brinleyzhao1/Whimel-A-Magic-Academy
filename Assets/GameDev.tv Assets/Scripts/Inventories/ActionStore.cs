@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using GameDev.tv_Assets.Scripts.Saving;
-using GameDevTV.Inventories;
-using GameDevTV.Saving;
 using UnityEngine;
 
 namespace GameDev.tv_Assets.Scripts.Inventories
@@ -16,7 +14,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
   public class ActionStore : MonoBehaviour, ISaveable
   {
     private int maxIndexOfActionSlot = 6;
-    // private int currentIndexSelected;
+    public int currentIndexSelected = 18;
 
 
     // STATE
@@ -28,17 +26,20 @@ namespace GameDev.tv_Assets.Scripts.Inventories
       public int ActionBarNumber;
     }
 
+
     private void Update()
     {
       //if press a number key, select that action slot
-
-      for (int i = 0; i < maxIndexOfActionSlot; ++i)
+      for (int i = 0; i < maxIndexOfActionSlot+1; ++i)
       {
         if (Input.GetKeyDown("" + i))
         {
-          // currentIndexSelected = i;
-          // visual highlight that slot
+          currentIndexSelected = i-1;
+          //use that item
           bool canBeUsed = Use(i - 1, GameObject.FindWithTag("Player"));
+
+          StoreUpdated?.Invoke();
+          //todo if click the same key again, deselect that slot
         }
       }
     }
@@ -184,6 +185,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
 
 
     #region Saving
+    //todo add currentSelectedItem to saves
 
     /// PRIVATE
     [System.Serializable]

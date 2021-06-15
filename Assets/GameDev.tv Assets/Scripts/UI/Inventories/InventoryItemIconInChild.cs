@@ -36,6 +36,7 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
             else
             {
                 iconImage.enabled = true;
+
                 iconImage.sprite = item.GetIcon();
             }
 
@@ -52,6 +53,8 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
                     itemNumber.text = number.ToString();
                 }
             }
+
+
 
         }
     }
