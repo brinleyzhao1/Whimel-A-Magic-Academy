@@ -1,10 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using GameDev.tv_Assets.Scripts.Inventories;
-using UnityEngine;
-using GameDevTV.Inventories;
+﻿using GameDev.tv_Assets.Scripts.Inventories;
 
-namespace GameDevTV.UI.Inventories
+namespace GameDev.tv_Assets.Scripts.UI.Inventories
 {
     /// <summary>
     /// Allows the `ItemTooltipSpawner` to display the right information.

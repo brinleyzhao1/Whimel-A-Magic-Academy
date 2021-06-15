@@ -8,12 +8,12 @@ namespace GameDevTV.Core.UI.Dragging
 {
     /// <summary>
     /// Allows a UI element to be dragged and dropped from and to a container.
-    /// 
+    ///
     /// Create a subclass for the type you want to be draggable. Then place on
     /// the UI element you want to make draggable.
-    /// 
+    ///
     /// During dragging, the item is reparented to the parent canvas.
-    /// 
+    ///
     /// After the item is dropped it will be automatically return to the
     /// original UI parent. It is the job of components implementing `IDragContainer`,
     /// `IDragDestination and `IDragSource` to update the interface after a drag
@@ -74,7 +74,7 @@ namespace GameDevTV.Core.UI.Dragging
                 DropItemIntoContainer(container);
             }
 
-            
+
         }
 
         private IDragDestination<T> GetContainer(PointerEventData eventData)
@@ -96,8 +96,8 @@ namespace GameDevTV.Core.UI.Dragging
             var sourceContainer = source as IDragContainer<T>;
 
             // Swap won't be possible
-            if (destinationContainer == null || sourceContainer == null || 
-                destinationContainer.GetItem() == null || 
+            if (destinationContainer == null || sourceContainer == null ||
+                destinationContainer.GetItem() == null ||
                 object.ReferenceEquals(destinationContainer.GetItem(), sourceContainer.GetItem()))
             {
                 AttemptSimpleTransfer(destination);
@@ -109,7 +109,7 @@ namespace GameDevTV.Core.UI.Dragging
 
         private void AttemptSwap(IDragContainer<T> destination, IDragContainer<T> source)
         {
-            // Provisionally remove item from both sides. 
+            // Provisionally remove item from both sides.
             var removedSourceNumber = source.GetNumber();
             var removedSourceItem = source.GetItem();
             var removedDestinationNumber = destination.GetNumber();
@@ -159,12 +159,12 @@ namespace GameDevTV.Core.UI.Dragging
             var draggingNumber = source.GetNumber();
 
             var acceptable = destination.MaxAcceptable(draggingItem);
-            var toTransfer = Mathf.Min(acceptable, draggingNumber);
+            var amountToTransfer = Mathf.Min(acceptable, draggingNumber);
 
-            if (toTransfer > 0)
+            if (amountToTransfer > 0)
             {
-                source.RemoveItems(toTransfer);
-                destination.AddItems(draggingItem, toTransfer);
+                source.RemoveItems(amountToTransfer);
+                destination.AddItems(draggingItem, amountToTransfer);
                 return false;
             }
 
