@@ -17,8 +17,6 @@ namespace Player.Interaction
     [SerializeField] public GameObject setInventoryTab;
     public static GameObject InventoryTab;
 
-    [SerializeField] public GameObject setSellingTray;
-    public static GameObject SellingTray;
 
     [SerializeField] public GameObject setStatsTab;
     public static GameObject StatsTab;
@@ -49,6 +47,9 @@ namespace Player.Interaction
     [SerializeField] public GameObject setShopItem;
     public static GameObject ShopItem;
 
+    [SerializeField] public GameObject setSellTray;
+    public static GameObject SellTray;
+
     // [Header("Sound")]
     // [SerializeField] public GameObject setUiPaperSound;
     // public static GameObject UiPaperSound;
@@ -57,10 +58,8 @@ namespace Player.Interaction
     {
       // Player = setPlayer;
 
-
       sleepPanel = setSleepPanel;
       InventoryTab = setInventoryTab;
-      SellingTray = setSellingTray;
       StatsTab = setStatsTab;
       ScheduleTab = setScheduleTab;
       ChestPanel = setChestPanel;
@@ -71,6 +70,7 @@ namespace Player.Interaction
 
       ShopPanel = setShopPanel;
       ShopItem = setShopItem;
+      SellTray = setSellTray;
 
       // UiPaperSound = setUiPaperSound;
 

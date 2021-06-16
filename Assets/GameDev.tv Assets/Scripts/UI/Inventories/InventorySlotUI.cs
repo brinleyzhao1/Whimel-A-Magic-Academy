@@ -15,18 +15,12 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
     [SerializeField] InventoryItemIconInChild iconInChild = null; // own child
     [SerializeField] GameObject gray;
 
-     private SellTray sellTray;
-
     // STATE
     public int index;
     InventoryItem item;
     Inventory inventory;
 
 
-    private void Start()
-    {
-      sellTray = FindObjectOfType<SellTray>();
-    }
     // PUBLIC
 
     public void Setup(Inventory inventory, int index)
@@ -99,7 +93,7 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
     public void OnSelect(BaseEventData eventData)
     {
       //tell sell tray what item and how many
-      sellTray.ReceiveInfoAboutSelectedItemForSell(index, inventory.GetItemInSlot(index),
+      SellTray.Instance.ReceiveInfoAboutSelectedItemForSell(index, inventory.GetItemInSlot(index),
         inventory.GetNumberInSlot(index));
     }
   }

@@ -16,6 +16,34 @@ namespace UI.Shop
   /// </summary>
   public class SellTray : MonoBehaviour
   {
+
+    #region Singleton
+
+    private static SellTray _instance;
+
+    public static SellTray Instance
+    {
+      get { return _instance; }
+    }
+
+
+    private void Awake()
+    {
+      if (_instance != null && _instance != this)
+      {
+        Destroy(this.gameObject);
+      }
+      else
+      {
+        _instance = this;
+      }
+    }
+
+    #endregion
+
+
+
+
     // PRIVATE STATE
     [Tooltip("in child")] [SerializeField] private InventorySlotUi sellSlotUi; //in child
     [SerializeField] private TextMeshProUGUI priceText;
@@ -36,7 +64,7 @@ namespace UI.Shop
       // sellButton = GameAssets.SellingTray.transform.Find("sell button");
       // sellButton = FindObjectOfType<SellButtonUi>();
 
-      sellingTrayItemImage = GameAssets.SellingTray.transform.Find("sell tray box/sell item image")
+      sellingTrayItemImage = GameAssets.SellTray.transform.Find("sell tray box/sell item image")
         .GetComponent<Image>();
     }
 

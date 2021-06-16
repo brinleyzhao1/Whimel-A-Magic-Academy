@@ -16,6 +16,10 @@ namespace Player.Interaction
       GameAssets.ShopPanel.GetComponent<ShopMenu>().SetUpShopList(itemsForSell);
       FindObjectOfType<ShowHideUiWithKey>().OpenOrCloseTabs();
       FindObjectOfType<SwitchTabs>().SwitchToInventoryTab();
+
+
+      GameAssets.SellTray.gameObject.SetActive(true);
+      
     }
 
   }

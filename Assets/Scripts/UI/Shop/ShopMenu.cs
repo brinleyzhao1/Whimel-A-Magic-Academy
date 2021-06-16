@@ -33,5 +33,10 @@ namespace UI.Shop
       }
     }
 
+    public override void CloseThisPanel()
+    {
+      base.CloseThisPanel();
+      GameAssets.SellTray.gameObject.SetActive(false);
+    }
   }
 }
