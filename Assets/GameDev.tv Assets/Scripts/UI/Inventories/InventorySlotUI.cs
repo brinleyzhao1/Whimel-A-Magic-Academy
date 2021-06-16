@@ -47,6 +47,7 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
 
     public InventoryItem GetItem()
     {
+      print(index);
       return inventory.GetItemInSlot(index);
     }
 

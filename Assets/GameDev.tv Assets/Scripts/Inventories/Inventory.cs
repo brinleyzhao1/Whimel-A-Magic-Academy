@@ -80,10 +80,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
 
       slots[i].Item = item;
       slots[i].Number += number;
-      if (InventoryUpdated != null)
-      {
-        InventoryUpdated();
-      }
+      InventoryUpdated?.Invoke();
 
       return true;
     }
