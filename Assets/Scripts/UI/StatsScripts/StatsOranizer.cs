@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace UI.StatsScripts
 {
-  public class StatsTabUi : MonoBehaviour
+  public class StatsOranizer : MonoBehaviour
   {
 
     [SerializeField] private GameObject statsItemPrefab;

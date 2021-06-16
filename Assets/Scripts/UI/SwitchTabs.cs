@@ -8,7 +8,7 @@ namespace UI
     public void SwitchToInventoryTab()
     {
 
-      GameAssets.StatsTab.gameObject.SetActive(false);
+      GameAssets.StatsOrganizer.gameObject.SetActive(false);
       GameAssets.ScheduleTab.gameObject.SetActive(false);
       GameAssets.InventoryTab.gameObject.SetActive(true);
     }
@@ -17,18 +17,18 @@ namespace UI
     {
       GameAssets.InventoryTab.gameObject.SetActive(false);
       GameAssets.ScheduleTab.gameObject.SetActive(false);
-      GameAssets.StatsTab.gameObject.SetActive(true);
+      GameAssets.StatsOrganizer.gameObject.SetActive(true);
     }
     public void SwitchToScheduleTab()
     {
       GameAssets.InventoryTab.gameObject.SetActive(false);
       GameAssets.ScheduleTab.gameObject.SetActive(true);
-      GameAssets.StatsTab.gameObject.SetActive(false);
+      GameAssets.StatsOrganizer.gameObject.SetActive(false);
     }
 
     public void SwitchToHeartTab(){
       GameAssets.InventoryTab.gameObject.SetActive(false);
-      GameAssets.StatsTab.gameObject.SetActive(false);
+      GameAssets.StatsOrganizer.gameObject.SetActive(false);
       GameAssets.ScheduleTab.gameObject.SetActive(false);
     }
   }

@@ -43,11 +43,9 @@ namespace UI.Shop
 
 
 
-
     // PRIVATE STATE
     [Tooltip("in child")] [SerializeField] private InventorySlotUi sellSlotUi; //in child
     [SerializeField] private TextMeshProUGUI priceText;
-    private Image sellingTrayItemImage;
 
     private int indexInInventorySelected;
     private int totalValueToBeExchanged;
@@ -59,13 +57,6 @@ namespace UI.Shop
       // sellSlotUi = GetComponent<InventorySlotUi>();
       inventory = Inventory.GetPlayerInventory();
 
-      // priceText = GameAssets.SellingTray.transform.Find("price text").GetComponent<TMP_Text>();
-
-      // sellButton = GameAssets.SellingTray.transform.Find("sell button");
-      // sellButton = FindObjectOfType<SellButtonUi>();
-
-      sellingTrayItemImage = GameAssets.SellTray.transform.Find("sell tray box/sell item image")
-        .GetComponent<Image>();
     }
 
     public void ButtonSellFunction() // for sell button

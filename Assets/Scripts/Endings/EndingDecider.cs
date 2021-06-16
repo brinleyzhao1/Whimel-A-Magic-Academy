@@ -8,7 +8,7 @@ namespace Endings
   public class EndingDecider : MonoBehaviour
   {
     private EndingItem[] allEndings;
-    private Dictionary<string, int> _currentPlayerStats;
+    private Dictionary<Stats, int> _currentPlayerStats;
     [SerializeField] private EndingItem defaultEnding; //note the default ending can't be in the same folder as the other endings
     [SerializeField] private EndingDisplayer endingDisplayer;
 
@@ -17,7 +17,7 @@ namespace Endings
       allEndings = Resources.LoadAll<EndingItem>("EndingItems");
       // print("there are a total of endings: " + allEndings.Length);
 
-      _currentPlayerStats = (Dictionary<string, int>)FindObjectOfType<PlayerStats>().CaptureState();
+      _currentPlayerStats = (Dictionary<Stats, int>)PlayerStats.Instance.CaptureState();
 
     }
 
@@ -41,25 +41,25 @@ namespace Endings
       foreach (var ending in allEndings)
       {
         //todo this is not smart to repeat but ok for now
-        string conditionName1 = ending.condition1.ToString();
+        Stats conditionName1 = ending.condition1;
         int currentStat1 = _currentPlayerStats[conditionName1];
         int goalStat1 = ending.minVal1;
         if (currentStat1 < goalStat1)
           break;
 
-        string conditionName2 = ending.condition2.ToString();
+        Stats conditionName2 = ending.condition2;
         int currentStat2 = _currentPlayerStats[conditionName2];
         int goalStat2 = ending.minVal2;
         if (currentStat2 < goalStat2)
           break;
 
-        string conditionName3 = ending.condition3.ToString();
+        Stats conditionName3 = ending.condition3;
         int currentStat3 = _currentPlayerStats[conditionName3];
         int goalStat3 = ending.minVal3;
         if (currentStat3 < goalStat3)
           break;
 
-        string conditionName4 = ending.condition4.ToString();
+        Stats conditionName4 = ending.condition4;
         int currentStat4 = _currentPlayerStats[conditionName4];
         int goalStat4 = ending.minVal4;
         if (currentStat4 < goalStat4)

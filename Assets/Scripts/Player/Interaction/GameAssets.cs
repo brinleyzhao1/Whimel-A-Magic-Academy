@@ -18,8 +18,8 @@ namespace Player.Interaction
     public static GameObject InventoryTab;
 
 
-    [SerializeField] public GameObject setStatsTab;
-    public static GameObject StatsTab;
+    [SerializeField] public GameObject setStatsOranizer;
+    public static GameObject StatsOrganizer;
 
     [SerializeField] public GameObject setScheduleTab;
     public static GameObject ScheduleTab;
@@ -60,7 +60,7 @@ namespace Player.Interaction
 
       sleepPanel = setSleepPanel;
       InventoryTab = setInventoryTab;
-      StatsTab = setStatsTab;
+      StatsOrganizer = setStatsOranizer;
       ScheduleTab = setScheduleTab;
       ChestPanel = setChestPanel;
       CraftingPanel = setCraftingPanel;

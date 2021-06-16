@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using GameDev.tv_Assets.Scripts.Saving;
+using Player.Interaction;
 using UI.StatsScripts;
 using UnityEngine;
 
@@ -34,20 +35,18 @@ namespace Player
 
     #endregion
 
-
-    private Dictionary<Stats, int>
-      statsToValueDictionary =
+    private Dictionary<Stats, int> statsToValueDictionary =
         new Dictionary<Stats, int>(); // note stats is referenced across using string, be cautious;
 
-    private StatsTabUi statsTabUi;
+    private StatsOranizer statsOrganizer;
     private VisualTextFeedbackSpawner visualTextFeedbackSpawner;
 
     private void Start()
     {
-      statsTabUi = FindObjectOfType<StatsTabUi>(); //todo
+      statsOrganizer = GameAssets.StatsOrganizer.GetComponent<StatsOranizer>();
       visualTextFeedbackSpawner = FindObjectOfType<VisualTextFeedbackSpawner>();
       SetupStatDictionaryAllToZero();
-      statsTabUi.UpdateStatsUi(statsToValueDictionary);
+      statsOrganizer.UpdateStatsUi(statsToValueDictionary);
     }
 
 
@@ -78,7 +77,7 @@ namespace Player
     //     statsToValueDictionary[stat] += stat.Value;
     //   }
     //
-    //   statsTabUi.UpdateStatsUi(statsToValueDictionary);
+    //   statsOrganizer.UpdateStatsUi(statsToValueDictionary);
     //   //todo spawn visual feedback for each stat
     // }
 
@@ -88,7 +87,7 @@ namespace Player
       //sister method to UpdateStatDictionary; update only one entry of statDictionary
     {
       statsToValueDictionary[stat] += valueToAdd;
-      statsTabUi.UpdateStatsUi(statsToValueDictionary);
+      statsOrganizer.UpdateStatsUi(statsToValueDictionary);
 
       visualTextFeedbackSpawner.SpawnStatsChangeVisualItem(stat.ToString(), valueToAdd);
     }
@@ -103,7 +102,7 @@ namespace Player
     public void RestoreState(object state)
     {
       statsToValueDictionary = (Dictionary<Stats, int>) state;
-      statsTabUi.UpdateStatsUi(statsToValueDictionary);
+      statsOrganizer.UpdateStatsUi(statsToValueDictionary);
     }
   }
 }
