@@ -1,22 +1,32 @@
-﻿using GameDev.tv_Assets.Scripts.Inventories;
+﻿using System;
+using GameDev.tv_Assets.Scripts.Inventories;
 using GameDev.tv_Assets.Scripts.Utils.UI.Dragging;
 using GameDevTV.Inventories;
 using GameDevTV.UI.Inventories;
+using UI.Shop;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace GameDev.tv_Assets.Scripts.UI.Inventories
 {
-  public class InventorySlotUi : MonoBehaviour, IItemHolder, IDragContainer<InventoryItem>
+  public class InventorySlotUi : MonoBehaviour, IItemHolder, IDragContainer<InventoryItem>, ISelectHandler
   {
     // CONFIG DATA
     [SerializeField] InventoryItemIconInChild iconInChild = null; // own child
     [SerializeField] GameObject gray;
+
+     private SellTray sellTray;
 
     // STATE
     public int index;
     InventoryItem item;
     Inventory inventory;
 
+
+    private void Start()
+    {
+      sellTray = FindObjectOfType<SellTray>();
+    }
     // PUBLIC
 
     public void Setup(Inventory inventory, int index)
@@ -81,5 +91,16 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
     // }
 
     // }
+
+    /// <summary>
+    /// select for sell tray
+    /// </summary>
+    /// <param name="eventData"></param>
+    public void OnSelect(BaseEventData eventData)
+    {
+      //tell sell tray what item and how many
+      sellTray.ReceiveInfoAboutSelectedItemForSell(index, inventory.GetItemInSlot(index),
+        inventory.GetNumberInSlot(index));
+    }
   }
 }

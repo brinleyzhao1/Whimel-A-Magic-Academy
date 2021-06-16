@@ -11,7 +11,7 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
   public class InventoryUi : MonoBehaviour
   {
     // CONFIG DATA
-    [SerializeField] protected InventorySlotUi inventoryItemPrefab = null;
+    [SerializeField] protected InventorySlotUi inventorySlotPrefab = null;
 
     // CACHE
     protected Inventory PlayerInventory;
@@ -40,7 +40,7 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
 
       for (int i = 0; i < PlayerInventory.GetSize(); i++)
       {
-        var itemUi = Instantiate(inventoryItemPrefab, transform);
+        var itemUi = Instantiate(inventorySlotPrefab, transform);
         itemUi.Setup(PlayerInventory, i);
       }
     }
