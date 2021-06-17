@@ -27,7 +27,16 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
     {
       this.inventory = inventory;
       this.index = index;
-      iconInChild.SetItem(inventory.GetItemInSlot(index), inventory.GetNumberInSlot(index));
+
+
+      if (index == -1) //this is an attempt to clear this slot
+      {
+        iconInChild.SetItem(null, 0);
+      }
+      else // else
+      {
+        iconInChild.SetItem(inventory.GetItemInSlot(index), inventory.GetNumberInSlot(index));
+      }
     }
 
     public int MaxAcceptable(InventoryItem item)
@@ -47,7 +56,6 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
 
     public InventoryItem GetItem()
     {
-      print(index);
       return inventory.GetItemInSlot(index);
     }
 
@@ -67,25 +75,6 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
       //transform.Find("grayMask").gameObject.SetActive(true);
     }
 
-
-    //------ sell system
-
-    // void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
-    // {
-    //   if (GameAssets.ShopPanel.activeSelf)
-    //   {
-    //     GameAssets.SellingTray.SetActive(true);
-
-
-    // foreach (var sellItem in transform.parent.GetComponentsInChildren<SellItem>())
-    // {
-    //   sellItem.enabled = false;
-    // }
-    //
-    // GetComponent<SellItem>().enabled = true;
-    // }
-
-    // }
 
     /// <summary>
     /// select for sell tray

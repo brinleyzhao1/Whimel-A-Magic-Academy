@@ -42,7 +42,6 @@ namespace UI.Shop
     #endregion
 
 
-
     // PRIVATE STATE
     [Tooltip("in child")] [SerializeField] private InventorySlotUi sellSlotUi; //in child
     [SerializeField] private TextMeshProUGUI priceText;
@@ -96,16 +95,16 @@ namespace UI.Shop
     // }
 
     // }
+    public void ClearSellTray()
+    {
+      sellSlotUi.Setup(inventory, indexInInventorySelected);
+      priceText.text = "";
+    }
 
     private void UpdateSellTray()
     {
-      // sellingTrayItemImage.sprite = sellSlotUi.GetItem().GetIcon();
-      // sellingTrayItemImage.enabled = true;
-
       sellSlotUi.Setup(inventory, indexInInventorySelected);
 
-      // currentItemToSell = inventory.GetItemInSlot(indexInInventorySelected);
-      // currentAmountToSell = inventory.GetNumberInSlot(indexInInventorySelected);
       if (inventory.GetItemInSlot(indexInInventorySelected) != null)
       {
         priceText.text = (totalValueToBeExchanged).ToString();

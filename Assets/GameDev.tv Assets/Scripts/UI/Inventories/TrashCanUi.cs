@@ -1,6 +1,7 @@
 ﻿using System;
 using GameDev.tv_Assets.Scripts.Inventories;
 using GameDev.tv_Assets.Scripts.Utils.UI.Dragging;
+using UI.Shop;
 using UnityEngine;
 
 namespace GameDev.tv_Assets.Scripts.UI.Inventories
@@ -14,8 +15,10 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
 
     public void AddItems(InventoryItem item, int number)
     {
-      //equivenlent to deleting item
-      print("threw away " + item.name );
+      //equivalent to deleting item
+      //clear sell tray
+      SellTray.Instance.ClearSellTray();
+      //play audio clip "trash can"
 
     }
 

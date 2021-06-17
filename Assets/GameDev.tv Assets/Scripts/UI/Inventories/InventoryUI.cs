@@ -10,8 +10,8 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
   /// </summary>
   public class InventoryUi : MonoBehaviour
   {
-    // CONFIG DATA
-    [SerializeField] protected InventorySlotUi inventorySlotPrefab = null;
+    // CONFIG DATAififif
+    [SerializeField] private InventorySlotUi inventorySlotPrefab;
 
     // CACHE
     protected Inventory PlayerInventory;
