@@ -17,9 +17,9 @@ MonoBehaviour:
   sellingPrice: 10
   description: 
   icon: {fileID: 21300000, guid: ea0eb620544dd463bbd3f78d9ec3e033, type: 3}
-  pickup: {fileID: 0}
+  inGame3DPickup: {fileID: 0}
   stackable: 0
   isPotionIngredient: 0
   isForgeIngredient: 0
-  directlyEdible: 0
+  directlyConsumable: 1
   energyChange: 0

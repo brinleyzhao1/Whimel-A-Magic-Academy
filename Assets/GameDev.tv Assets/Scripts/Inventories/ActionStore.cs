@@ -22,7 +22,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
 
     private class DockedItemSlot
     {
-      public ActionItem ActionBarItem;
+      public ActionScriptableItem ActionScriptableBarItem;
       public int ActionBarNumber;
     }
 
@@ -38,6 +38,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
           //use that item
           bool canBeUsed = Use(i - 1, GameObject.FindWithTag("Player"));
 
+          print("item used: "+ canBeUsed);
           StoreUpdated?.Invoke();
           //todo if click the same key again, deselect that slot
         }
@@ -53,11 +54,11 @@ namespace GameDev.tv_Assets.Scripts.Inventories
     /// <summary>
     /// Get the action at the given index.
     /// </summary>
-    public ActionItem GetAction(int index)
+    public ActionScriptableItem GetAction(int index)
     {
       if (dockedItems.ContainsKey(index))
       {
-        return dockedItems[index].ActionBarItem;
+        return dockedItems[index].ActionScriptableBarItem;
       }
 
       return null;
@@ -90,7 +91,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
     {
       if (dockedItems.ContainsKey(index))
       {
-        if (object.ReferenceEquals(item, dockedItems[index].ActionBarItem))
+        if (object.ReferenceEquals(item, dockedItems[index].ActionScriptableBarItem))
         {
           dockedItems[index].ActionBarNumber += number;
         }
@@ -98,7 +99,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
       else
       {
         var slot = new DockedItemSlot();
-        slot.ActionBarItem = item as ActionItem;
+        slot.ActionScriptableBarItem = item as ActionScriptableItem;
         slot.ActionBarNumber = number;
         dockedItems[index] = slot;
       }
@@ -120,8 +121,8 @@ namespace GameDev.tv_Assets.Scripts.Inventories
     {
       if (dockedItems.ContainsKey(index))
       {
-        dockedItems[index].ActionBarItem.Use(user);
-        if (dockedItems[index].ActionBarItem.IsConsumable())
+        dockedItems[index].ActionScriptableBarItem.Use(user);
+        if (dockedItems[index].ActionScriptableBarItem.IsConsumable())
         {
           RemoveItems(index, 1);
         }
@@ -162,10 +163,10 @@ namespace GameDev.tv_Assets.Scripts.Inventories
     /// <returns>Will return int.MaxValue when there is not effective bound.</returns>
     public int MaxAcceptable(InventoryItem item, int index)
     {
-      var actionItem = item as ActionItem;
+      var actionItem = item as ActionScriptableItem;
       if (!actionItem) return 0;
 
-      if (dockedItems.ContainsKey(index) && !object.ReferenceEquals(item, dockedItems[index].ActionBarItem))
+      if (dockedItems.ContainsKey(index) && !object.ReferenceEquals(item, dockedItems[index].ActionScriptableBarItem))
       {
         return 0;
       }
@@ -201,7 +202,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
       foreach (var pair in dockedItems)
       {
         var record = new DockedItemRecord();
-        record.itemID = pair.Value.ActionBarItem.GetItemID();
+        record.itemID = pair.Value.ActionScriptableBarItem.GetItemID();
         record.number = pair.Value.ActionBarNumber;
         state[pair.Key] = record;
       }

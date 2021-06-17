@@ -6,8 +6,8 @@ namespace Alchemy
 {[CreateAssetMenu(fileName = "Potion Recipes", menuName = "Recipes/Potion")]
   public class PotionRecipes : ScriptableObject
   {
-    public List<ActionItem> ingredients;
+    public List<ActionScriptableItem> ingredients;
 
-    public ActionItem finalPotion;
+    public ActionScriptableItem finalPotion;
   }
 }

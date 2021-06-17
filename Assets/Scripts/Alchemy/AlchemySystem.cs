@@ -63,7 +63,7 @@ namespace Alchemy
 
     public void MakePotion() // button
     {
-      // HashSet<ActionItem> tray = ingredients.toset
+      // HashSet<ActionScriptableItem> tray = ingredients.toset
       foreach (var recipe in allRecipes)
       {
         var difference1 = ingredients.Except(recipe.ingredients);

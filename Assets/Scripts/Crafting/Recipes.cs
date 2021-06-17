@@ -6,7 +6,7 @@ namespace Crafting
 {[CreateAssetMenu(fileName = "Recipes", menuName = "Recipes")]
   public class Recipes : ScriptableObject
   {
-    public List<ActionItem> ingredients;
+    public List<ActionScriptableItem> ingredients;
 
     public InventoryItem finalPotion;
   }
