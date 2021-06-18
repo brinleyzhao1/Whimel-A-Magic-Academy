@@ -5,8 +5,36 @@ using UnityEngine;
 
 namespace Control
 {
+  /// <summary>
+  /// has to sit on Player
+  /// </summary>
   public class CursorChanger : MonoBehaviour
   {
+    #region Singleton
+
+    private static CursorChanger _instance;
+
+    public static CursorChanger Instance
+    {
+      get { return _instance; }
+    }
+
+
+    private void Awake()
+    {
+      if (_instance != null && _instance != this)
+      {
+        Destroy(this.gameObject);
+      }
+      else
+      {
+        _instance = this;
+      }
+    }
+
+    #endregion
+
+
     [SerializeField] private Texture2D menuCursor;
     public int numberUiOut = 0;
 
@@ -14,6 +42,7 @@ namespace Control
     public void OneMoreUiOut()
     {
       numberUiOut += 1;
+      CursorChangeToLockedMode();
       // print("+, " +  numberUiOut);
     }
 
@@ -25,27 +54,33 @@ namespace Control
         numberUiOut = 0;
       }
 
-      // print("-, " +  numberUiOut);
-    }
-
-    private void Update()
-    {
       if (numberUiOut == 0)
       {
         //todo also close tabs off if it's opened
         CursorChangeToFreeMode();
       }
-      else
-      {
-        CursorChangeToLockedMode();
 
-      }
+      // print("-, " +  numberUiOut);
     }
+
+    // private void Update()
+    // {
+    //   if (numberUiOut == 0)
+    //   {
+    //     //todo also close tabs off if it's opened
+    //     CursorChangeToFreeMode();
+    //   }
+    //   else
+    //   {
+    //     CursorChangeToLockedMode();
+    //
+    //   }
+    // }
 
     private void Start()
     {
-      CursorChangeToFreeMode(); //todo
-      // print(numberUiOut);
+      // CursorChangeToFreeMode();
+      CursorChangeToLockedMode(); //because of the main menu UI
     }
 
     public void CursorChangeToFreeMode()
@@ -54,7 +89,6 @@ namespace Control
       Cursor.visible = false;
       GetComponent<MouseLookX>().enabled = true;
       GetComponentInChildren<MouseLookY>().enabled = true;
-
     }
 
     public void CursorChangeToLockedMode()
@@ -64,8 +98,6 @@ namespace Control
       GetComponent<MouseLookX>().enabled = false;
       GetComponentInChildren<MouseLookY>().enabled = false;
       Cursor.SetCursor(menuCursor, Vector2.zero, CursorMode.ForceSoftware);
-
-
     }
   }
 }

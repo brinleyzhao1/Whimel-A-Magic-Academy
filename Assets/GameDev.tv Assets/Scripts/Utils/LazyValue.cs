@@ -1,7 +1,7 @@
-﻿namespace GameDevTV.Utils
+﻿namespace GameDev.tv_Assets.Scripts.Utils
 {
     /// <summary>
-    /// Container class that wraps a value and ensures initialisation is 
+    /// Container class that wraps a value and ensures initialisation is
     /// called just before first use.
     /// </summary>
     public class LazyValue<T>
@@ -15,8 +15,8 @@
         /// <summary>
         /// Setup the container but don't initialise the value yet.
         /// </summary>
-        /// <param name="initializer"> 
-        /// The initialiser delegate to call when first used. 
+        /// <param name="initializer">
+        /// The initialiser delegate to call when first used.
         /// </param>
         public LazyValue(InitializerDelegate initializer)
         {
@@ -27,7 +27,7 @@
         /// Get or set the contents of this container.
         /// </summary>
         /// <remarks>
-        /// Note that setting the value before initialisation will initialise 
+        /// Note that setting the value before initialisation will initialise
         /// the class.
         /// </remarks>
         public T value
