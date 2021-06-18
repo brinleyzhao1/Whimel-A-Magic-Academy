@@ -30,21 +30,24 @@ namespace GameDev.tv_Assets.Scripts.Inventories
     private void Update()
     {
       //if press a number key, select that action slot
-      for (int i = 0; i < maxIndexOfActionSlot+1; ++i)
+      SelectAndUse();
+    }
+
+    private void SelectAndUse()
+    {
+      for (int i = 0; i < maxIndexOfActionSlot + 1; ++i)
       {
         if (Input.GetKeyDown("" + i))
         {
-          currentIndexSelected = i-1;
+          currentIndexSelected = i - 1;
           //use that item
           bool canBeUsed = Use(i - 1, GameObject.FindWithTag("Player"));
 
-          print("item used: "+ canBeUsed);
           StoreUpdated?.Invoke();
           //todo if click the same key again, deselect that slot
         }
       }
     }
-    // PUBLIC
 
     /// <summary>
     /// Broadcasts when the items in the slots are added/removed.
@@ -108,7 +111,6 @@ namespace GameDev.tv_Assets.Scripts.Inventories
       {
         StoreUpdated();
       }
-
     }
 
     /// <summary>
@@ -146,10 +148,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
           dockedItems.Remove(index);
         }
 
-        if (StoreUpdated != null)
-        {
-          StoreUpdated();
-        }
+        StoreUpdated?.Invoke();
       }
     }
 
@@ -171,7 +170,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
         return 0;
       }
 
-      if (actionItem.IsConsumable())
+      if (actionItem != null && actionItem.IsConsumable())
       {
         return int.MaxValue;
       }
@@ -186,13 +185,14 @@ namespace GameDev.tv_Assets.Scripts.Inventories
 
 
     #region Saving
+
     //todo add currentSelectedItem to saves
 
     /// PRIVATE
     [System.Serializable]
     private struct DockedItemRecord
     {
-      public string itemID;
+      public string itemId;
       public int number;
     }
 
@@ -202,7 +202,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
       foreach (var pair in dockedItems)
       {
         var record = new DockedItemRecord();
-        record.itemID = pair.Value.ActionScriptableBarItem.GetItemID();
+        record.itemId = pair.Value.ActionScriptableBarItem.GetItemID();
         record.number = pair.Value.ActionBarNumber;
         state[pair.Key] = record;
       }
@@ -215,7 +215,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
       var stateDict = (Dictionary<int, DockedItemRecord>) state;
       foreach (var pair in stateDict)
       {
-        AddAction(InventoryItem.GetFromID(pair.Value.itemID), pair.Key, pair.Value.number);
+        AddAction(InventoryItem.GetFromID(pair.Value.itemId), pair.Key, pair.Value.number);
       }
     }
 

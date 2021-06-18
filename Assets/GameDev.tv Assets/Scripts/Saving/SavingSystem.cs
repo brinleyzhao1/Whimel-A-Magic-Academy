@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using GameDevTV.Saving;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -51,12 +50,23 @@ namespace GameDev.tv_Assets.Scripts.Saving
             File.Delete(GetPathFromSaveFile(saveFile));
         }
 
-        // PRIVATE
-
-        private void Load(string saveFile)
+        public void Load(string saveFile)
         {
             RestoreState(LoadFile(saveFile));
         }
+
+        public IEnumerable<string> ListSaves()
+        {
+            foreach (string path in Directory.EnumerateFiles(Application.persistentDataPath))
+            {
+                if (Path.GetExtension(path) == ".sav")
+                {
+                    yield return Path.GetFileNameWithoutExtension(path);
+                }
+            }
+        }
+
+        // PRIVATE
 
         private Dictionary<string, object> LoadFile(string saveFile)
         {

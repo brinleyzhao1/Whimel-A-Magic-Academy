@@ -77,7 +77,7 @@ namespace UI.Shop
       // }
     }
 
-    public void ReceiveInfoAboutSelectedItemForSell(int index, InventoryItem item, int amount)
+    public void ReceiveInfoAboutSelectedItemForSell(int index)
     {
       indexInInventorySelected = index;
       totalValueToBeExchanged = inventory.GetItemInSlot(index).sellingPrice * inventory.GetNumberInSlot(index);

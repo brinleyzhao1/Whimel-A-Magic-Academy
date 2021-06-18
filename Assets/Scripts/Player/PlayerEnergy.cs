@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Control;
-using GameDev.tv_Assets.Scripts.Saving;
-using GameDevTV.Saving;
+﻿using GameDev.tv_Assets.Scripts.Saving;
 using Player.Movement;
-using TMPro;
 using UI;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,14 +12,10 @@ namespace Player
     public int currentEnergy = 100;
     [SerializeField] private int energyCostPerHour = 2;
 
-    [Header("UI")]
-    [SerializeField] private Image energyBar;
+    [Header("UI")] [SerializeField] private Image energyBar;
 
     [SerializeField] private UiPanelGeneric forcedSleepNotificationPanel;
 
-
-    // private TextMeshProUGUI currentEnergyText;
-    // [SerializeField] private TextMeshProUGUI maxEnergyText;
 
     private void Start()
     {
@@ -95,11 +85,11 @@ namespace Player
       FindObjectOfType<PlayerEnergy>().UpdateEnergyByValue(maxEnergy);
     }
 
+    #region Saving
 
     public object CaptureState()
     {
       int[] energyData = {maxEnergy, currentEnergy};
-      // print("energy saved "+currentEnergy);
       return energyData;
     }
 
@@ -109,7 +99,8 @@ namespace Player
       maxEnergy = energyData[0];
       currentEnergy = energyData[1];
       UpdateEnergyUi();
-      // print("energy restored "+currentEnergy);
     }
+
+    #endregion
   }
 }

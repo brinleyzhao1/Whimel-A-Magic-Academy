@@ -1,36 +1,93 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using GameDev.tv_Assets.Scripts.Saving;
-using GameDevTV.Saving;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace SceneManagement
 {
     public class SavingWrapper : MonoBehaviour
     {
-        [SerializeField] KeyCode saveKey = KeyCode.S;
-        [SerializeField] KeyCode loadKey = KeyCode.L;
-        [SerializeField] KeyCode deleteKey = KeyCode.Delete;
-        const string DefaultSaveFile = "save";
+        private const string currentSaveKey = "currentSaveName";
+        [SerializeField] float fadeInTime = 0.2f;
+        [SerializeField] float fadeOutTime = 0.2f;
+        [SerializeField] int firstLevelBuildIndex = 1;
+        [SerializeField] int menuLevelBuildIndex = 0;
 
-        private void Awake()
+        private void Start()
         {
-            // StartCoroutine(LoadLastScene()); //todo appearantly causing unity to crash!
+          //the fact that it starts at Start which is the same time as many other things causes trouble
+          // Load();
         }
 
-        private IEnumerator LoadLastScene() {
-            yield return GetComponent<SavingSystem>().LoadLastScene(DefaultSaveFile);
+        public void ContinueGame()
+        {
+            StartCoroutine(LoadLastScene());
         }
 
-        private void Update() {
-            if (Input.GetKeyDown(saveKey))
+        public void NewGame(string saveFile)
+        {
+            SetCurrentSave(saveFile);
+            StartCoroutine(LoadFirstScene());
+        }
+
+        public void LoadGame(string saveFile)
+        {
+            SetCurrentSave(saveFile);
+            ContinueGame();
+        }
+
+        public void LoadMenu()
+        {
+            StartCoroutine(LoadMenuScene());
+        }
+
+        private void SetCurrentSave(string saveFile)
+        {
+            PlayerPrefs.SetString(currentSaveKey, saveFile);
+        }
+
+        private string GetCurrentSave()
+        {
+            return PlayerPrefs.GetString(currentSaveKey);
+        }
+
+        private IEnumerator LoadLastScene()
+        {
+            Fader fader = FindObjectOfType<Fader>();
+            yield return fader.FadeOut(fadeOutTime);
+            yield return GetComponent<SavingSystem>().LoadLastScene(GetCurrentSave());
+            yield return fader.FadeIn(fadeInTime);
+        }
+
+        private IEnumerator LoadFirstScene()
+        {
+            Fader fader = FindObjectOfType<Fader>();
+            yield return fader.FadeOut(fadeOutTime);
+            yield return SceneManager.LoadSceneAsync(firstLevelBuildIndex);
+            yield return fader.FadeIn(fadeInTime);
+        }
+
+        private IEnumerator LoadMenuScene()
+        {
+            Fader fader = FindObjectOfType<Fader>();
+            yield return fader.FadeOut(fadeOutTime);
+            yield return SceneManager.LoadSceneAsync(menuLevelBuildIndex);
+            yield return fader.FadeIn(fadeInTime);
+        }
+
+        private void Update() {//todo temporary
+
+            if (Input.GetKeyDown(KeyCode.C))
             {
                 Save();
             }
-            if (Input.GetKeyDown(loadKey))
+            if (Input.GetKeyDown(KeyCode.L))
             {
                 Load();
             }
-            if (Input.GetKeyDown(deleteKey))
+            if (Input.GetKeyDown(KeyCode.Delete))
             {
                 Delete();
             }
@@ -38,18 +95,22 @@ namespace SceneManagement
 
         public void Load()
         {
-            StartCoroutine(GetComponent<SavingSystem>().LoadLastScene(DefaultSaveFile));
+            GetComponent<SavingSystem>().Load(GetCurrentSave());
         }
 
         public void Save()
         {
-            GetComponent<SavingSystem>().Save(DefaultSaveFile);
-            print("saved");
+            GetComponent<SavingSystem>().Save(GetCurrentSave());
         }
 
         public void Delete()
         {
-            GetComponent<SavingSystem>().Delete(DefaultSaveFile);
+            GetComponent<SavingSystem>().Delete(GetCurrentSave());
+        }
+
+        public IEnumerable<string> ListSaves()
+        {
+            return GetComponent<SavingSystem>().ListSaves();
         }
     }
 }

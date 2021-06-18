@@ -1,10 +1,15 @@
+
+
 namespace GameDev.tv_Assets.Scripts.Saving
 {
     /// <summary>
     /// Implement in any component that has state to save/restore.
+    /// Must have component SaveableEntity!!!
     /// </summary>
+
     public interface ISaveable
     {
+
         /// <summary>
         /// Called when saving to capture the state of the component.
         /// </summary>

@@ -1,13 +1,11 @@
-using System;
 using System.Collections.Generic;
-using GameDev.tv_Assets.Scripts.Saving;
 using UnityEditor;
 using UnityEngine;
 
-namespace GameDevTV.Saving
+namespace GameDev.tv_Assets.Scripts.Saving
 {
     /// <summary>
-    /// To be placed on any GameObject that has ISaveable components that
+    /// !!! To be placed on any GameObject that has ISaveable components that
     /// require saving.
     ///
     /// This class gives the GameObject a unique ID in the scene file. The ID is
@@ -17,11 +15,12 @@ namespace GameDevTV.Saving
     /// this in a prefab unless you want to link all instances between scenes.
     /// </summary>
     [ExecuteAlways]
+    [RequireComponent(typeof(ISaveable))]
     public class SaveableEntity : MonoBehaviour
     {
         // CONFIG DATA
         [Tooltip("The unique ID is automatically generated in a scene file if " +
-        "left empty. Do not set in a prefab unless you want all instances to " + 
+        "left empty. Do not set in a prefab unless you want all instances to " +
         "be linked.")]
         [SerializeField] string uniqueIdentifier = "";
 
@@ -76,7 +75,7 @@ namespace GameDevTV.Saving
 
             SerializedObject serializedObject = new SerializedObject(this);
             SerializedProperty property = serializedObject.FindProperty("uniqueIdentifier");
-            
+
             if (string.IsNullOrEmpty(property.stringValue) || !IsUnique(property.stringValue))
             {
                 property.stringValue = System.Guid.NewGuid().ToString();

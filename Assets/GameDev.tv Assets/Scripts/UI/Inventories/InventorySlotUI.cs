@@ -83,8 +83,7 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
     public void OnSelect(BaseEventData eventData)
     {
       //tell sell tray what item and how many
-      SellTray.Instance.ReceiveInfoAboutSelectedItemForSell(index, inventory.GetItemInSlot(index),
-        inventory.GetNumberInSlot(index));
+      SellTray.Instance.ReceiveInfoAboutSelectedItemForSell(index);
     }
   }
 }
