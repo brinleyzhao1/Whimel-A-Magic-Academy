@@ -215,6 +215,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2045510999565679801, guid: 0d568d5ada1c44ef28405a0a6170490a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045510999565679801, guid: 0d568d5ada1c44ef28405a0a6170490a,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2045510999565679803, guid: 0d568d5ada1c44ef28405a0a6170490a,
         type: 3}
       propertyPath: m_Name

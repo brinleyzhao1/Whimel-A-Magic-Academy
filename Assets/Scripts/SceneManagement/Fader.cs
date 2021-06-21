@@ -32,6 +32,11 @@ namespace SceneManagement
       while (_canvasGroup.alpha < 1)
       {
         _canvasGroup.alpha += Time.deltaTime / time;
+
+        if (Math.Abs(Time.timeScale) < 0.2) //when pause menu wants to fade out but time is paused
+        {
+          _canvasGroup.alpha = 1;
+        }
         yield return null;
       }
     }

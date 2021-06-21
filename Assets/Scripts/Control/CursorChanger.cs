@@ -43,7 +43,7 @@ namespace Control
     {
       numberUiOut += 1;
       CursorChangeToLockedMode();
-      print("+, " +  numberUiOut);
+      // print("+, " +  numberUiOut);
     }
 
     public void OneLessUiOut()
@@ -60,7 +60,7 @@ namespace Control
         CursorChangeToFreeMode();
       }
 
-      print("-, " +  numberUiOut);
+      // print("-, " +  numberUiOut);
     }
 
     // private void Update()
