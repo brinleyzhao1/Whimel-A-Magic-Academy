@@ -43,7 +43,7 @@ namespace Control
     {
       numberUiOut += 1;
       CursorChangeToLockedMode();
-      // print("+, " +  numberUiOut);
+      print("+, " +  numberUiOut);
     }
 
     public void OneLessUiOut()
@@ -60,7 +60,7 @@ namespace Control
         CursorChangeToFreeMode();
       }
 
-      // print("-, " +  numberUiOut);
+      print("-, " +  numberUiOut);
     }
 
     // private void Update()
@@ -83,7 +83,7 @@ namespace Control
       // CursorChangeToLockedMode(); //because of the main menu UI
     }
 
-    public void CursorChangeToFreeMode()
+    private void CursorChangeToFreeMode()
     {
       Cursor.lockState = CursorLockMode.Locked;
       Cursor.visible = false;
@@ -91,7 +91,7 @@ namespace Control
       GetComponentInChildren<MouseLookY>().enabled = true;
     }
 
-    public void CursorChangeToLockedMode()
+    private void CursorChangeToLockedMode()
     {
       Cursor.lockState = CursorLockMode.None;
       Cursor.visible = true;

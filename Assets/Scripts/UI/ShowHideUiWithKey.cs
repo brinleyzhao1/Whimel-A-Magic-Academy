@@ -11,8 +11,6 @@ namespace UI
     private CursorChanger _cursorChanger;
 
 
-
-
     void Start()
     {
       uiContainer.SetActive(false);
@@ -22,10 +20,24 @@ namespace UI
     // Update is called once per frame
     void Update()
     {
+      //todo testing purpose
+      RaycastHit hit;
+      // // Does the ray intersect any objects excluding the player layer
+      // if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+      // {
+      //   Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+      //   Debug.Log("Did Hit "+ transform.name);
+      // }
+      // Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+      // if(Physics.Raycast(ray, out hit))
+      // {
+      //   Debug.Log(hit.transform.name);
+      // }
+
+
       if (Input.GetKeyDown(toggleKey))
       {
         OpenOrCloseTabs();
-
       }
     }
 
