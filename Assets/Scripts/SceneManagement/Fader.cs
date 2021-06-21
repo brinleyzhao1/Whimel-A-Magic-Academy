@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SceneManagement
@@ -20,8 +19,6 @@ namespace SceneManagement
     public void FadeOutImmediate()
     {
       _canvasGroup.alpha = 1;
-
-
     }
 
      IEnumerator FadeOutIn()
@@ -29,6 +26,7 @@ namespace SceneManagement
       yield return FadeOut(3f);
       yield return FadeIn(1f);
     }
+
     public IEnumerator FadeOut(float time)
     {
       while (_canvasGroup.alpha < 1)

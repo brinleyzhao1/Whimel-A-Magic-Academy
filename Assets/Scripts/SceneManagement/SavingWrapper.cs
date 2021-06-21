@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using GameDev.tv_Assets.Scripts.Saving;
@@ -9,17 +8,11 @@ namespace SceneManagement
 {
     public class SavingWrapper : MonoBehaviour
     {
-        private const string CurrentSaveKey = "currentSaveName";
+        private const string currentSaveKey = "currentSaveName";
         [SerializeField] float fadeInTime = 0.2f;
         [SerializeField] float fadeOutTime = 0.2f;
         [SerializeField] int firstLevelBuildIndex = 1;
         [SerializeField] int menuLevelBuildIndex = 0;
-
-        private void Start()
-        {
-          //the fact that it starts at Start which is the same time as many other things causes trouble
-          // Load();
-        }
 
         public void ContinueGame()
         {
@@ -45,12 +38,12 @@ namespace SceneManagement
 
         private void SetCurrentSave(string saveFile)
         {
-            PlayerPrefs.SetString(CurrentSaveKey, saveFile);
+            PlayerPrefs.SetString(currentSaveKey, saveFile);
         }
 
         private string GetCurrentSave()
         {
-            return PlayerPrefs.GetString(CurrentSaveKey);
+            return PlayerPrefs.GetString(currentSaveKey);
         }
 
         private IEnumerator LoadLastScene()
@@ -77,15 +70,15 @@ namespace SceneManagement
             yield return fader.FadeIn(fadeInTime);
         }
 
-        private void Update() {//todo temporary
-
-            if (Input.GetKeyDown(KeyCode.C))
+        private void Update() {
+            if (Input.GetKeyDown(KeyCode.S))
             {
                 Save();
             }
             if (Input.GetKeyDown(KeyCode.L))
             {
-                Load();
+              ContinueGame();
+                // Load();
             }
             if (Input.GetKeyDown(KeyCode.Delete))
             {

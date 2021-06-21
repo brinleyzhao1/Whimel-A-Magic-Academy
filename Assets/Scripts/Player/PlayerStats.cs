@@ -102,7 +102,7 @@ namespace Player
     public void RestoreState(object state)
     {
       statsToValueDictionary = (Dictionary<Stats, int>) state;
-      statsOrganizer.UpdateStatsUi(statsToValueDictionary);
+      // statsOrganizer.UpdateStatsUi(statsToValueDictionary);//todo fix this
     }
   }
 }

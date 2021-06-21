@@ -79,8 +79,8 @@ namespace Control
 
     private void Start()
     {
-      // CursorChangeToFreeMode();
-      CursorChangeToLockedMode(); //because of the main menu UI
+      CursorChangeToFreeMode();
+      // CursorChangeToLockedMode(); //because of the main menu UI
     }
 
     public void CursorChangeToFreeMode()
