@@ -9,10 +9,11 @@ namespace Player.Interaction
     // public static GameObject Player;
 
 
-    [Header("UI: Tabs")] [SerializeField]
-    public GameObject setInventoryTab;
+    [Header("UI: Tabs")] [SerializeField] public GameObject setInventoryTab;
     public static GameObject InventoryTab;
 
+    [SerializeField] public GameObject setStatsTab;
+    public static GameObject StatsTab;
 
     [SerializeField] public GameObject setStatsOrganizer;
     public static GameObject StatsOrganizer;
@@ -37,7 +38,7 @@ namespace Player.Interaction
     [SerializeField] public GameObject setResultPanel;
     public static GameObject ResultPanel;
 
-    [SerializeField] public GameObject setdialogueUi;
+    [SerializeField] public GameObject setDialogueUi;
     public static GameObject DialogueUi;
 
     [Header("Shop UI")] [SerializeField] public GameObject setShopPanel;
@@ -65,8 +66,8 @@ namespace Player.Interaction
       CraftingPanel = setCraftingPanel;
       SkillsTab = setSkillsTab;
       ResultPanel = setResultPanel;
-      DialogueUi = setdialogueUi;
-
+      DialogueUi = setDialogueUi;
+      StatsTab = setStatsTab;
       ShopPanel = setShopPanel;
       ShopItem = setShopItem;
       SellTray = setSellTray;
