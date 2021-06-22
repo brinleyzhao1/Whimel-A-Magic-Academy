@@ -4,27 +4,27 @@ namespace Player.Interaction
 {
   public class GameAssets : MonoBehaviour
   {
-
     // [Header("Core")]
     // [SerializeField] public GameObject setPlayer;
     // public static GameObject Player;
 
 
-    [Header("UI: Tabs")]
-    [SerializeField] public GameObject setSleepPanel;
-    public static GameObject sleepPanel;
-
-    [SerializeField] public GameObject setInventoryTab;
+    [Header("UI: Tabs")] [SerializeField]
+    public GameObject setInventoryTab;
     public static GameObject InventoryTab;
 
 
-    [SerializeField] public GameObject setStatsOranizer;
+    [SerializeField] public GameObject setStatsOrganizer;
     public static GameObject StatsOrganizer;
+
+    [SerializeField] public GameObject setSkillsTab;
+    public static GameObject SkillsTab;
 
     [SerializeField] public GameObject setScheduleTab;
     public static GameObject ScheduleTab;
 
-    [Header("UI: Other")]
+    [Header("UI: Other")] [SerializeField] public GameObject setSleepPanel;
+    public static GameObject sleepPanel;
     [SerializeField] public GameObject setChestPanel;
     public static GameObject ChestPanel;
 
@@ -40,8 +40,7 @@ namespace Player.Interaction
     [SerializeField] public GameObject setdialogueUi;
     public static GameObject DialogueUi;
 
-    [Header("Shop UI")]
-    [SerializeField] public GameObject setShopPanel;
+    [Header("Shop UI")] [SerializeField] public GameObject setShopPanel;
     public static GameObject ShopPanel;
 
     [SerializeField] public GameObject setShopItem;
@@ -60,11 +59,11 @@ namespace Player.Interaction
 
       sleepPanel = setSleepPanel;
       InventoryTab = setInventoryTab;
-      StatsOrganizer = setStatsOranizer;
+      StatsOrganizer = setStatsOrganizer;
       ScheduleTab = setScheduleTab;
       ChestPanel = setChestPanel;
       CraftingPanel = setCraftingPanel;
-
+      SkillsTab = setSkillsTab;
       ResultPanel = setResultPanel;
       DialogueUi = setdialogueUi;
 
@@ -73,7 +72,6 @@ namespace Player.Interaction
       SellTray = setSellTray;
 
       // UiPaperSound = setUiPaperSound;
-
     }
 
     // private static GameAssets _i;
