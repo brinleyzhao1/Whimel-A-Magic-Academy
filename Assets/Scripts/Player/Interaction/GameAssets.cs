@@ -28,6 +28,8 @@ namespace Player.Interaction
     public static GameObject sleepPanel;
     [SerializeField] public GameObject setChestPanel;
     public static GameObject ChestPanel;
+    [SerializeField] public GameObject setPotionPanel;
+    public static GameObject PotionPanel;
 
     [SerializeField] public GameObject setCraftingPanel;
     public static GameObject CraftingPanel;
@@ -71,7 +73,7 @@ namespace Player.Interaction
       ShopPanel = setShopPanel;
       ShopItem = setShopItem;
       SellTray = setSellTray;
-
+      PotionPanel = setPotionPanel;
       // UiPaperSound = setUiPaperSound;
     }
 
