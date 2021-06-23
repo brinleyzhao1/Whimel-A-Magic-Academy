@@ -36,7 +36,7 @@ namespace Player
     #endregion
 
     private Dictionary<Stats, int> statsToValueDictionary =
-        new Dictionary<Stats, int>(); // note stats is referenced across using string, be cautious;
+        new Dictionary<Stats, int>();
 
     private StatsOranizer statsOrganizer;
     private VisualTextFeedbackSpawner visualTextFeedbackSpawner;

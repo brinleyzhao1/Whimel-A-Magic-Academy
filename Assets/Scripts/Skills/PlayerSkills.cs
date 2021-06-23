@@ -1,5 +1,9 @@
+using System;
 using System.Collections.Generic;
+using GameDev.tv_Assets.Scripts.Saving;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Skills
 {
@@ -7,7 +11,7 @@ namespace Skills
   /// keep record of what skills the player has and how much of each skill
   /// similar to playerStats
   /// </summary>
-  public class PlayerSkills : MonoBehaviour
+  public class PlayerSkills : MonoBehaviour, ISaveable
   {
     #region Singleton
 
@@ -38,26 +42,29 @@ namespace Skills
 
     [SerializeField] Progression progression = null;
 
-    struct SkillStats
+    [Header("UI")]
+    [SerializeField] private TextMeshProUGUI alchemyLevelText;
+
+    [SerializeField] private Image alchemyFillBar;
+    [SerializeField] private TextMeshProUGUI herbologyLevelText;
+    [SerializeField] private Image  herbologyFillBar;
+
+    [System.Serializable]struct SkillStats
     {
-      public int CurrentLevel;
-      public int CurrentExperience;
+      public int currentLevel;
+      public int currentExperience;
     }
 
-    private SkillStats alchemyStats = new SkillStats {CurrentLevel = 1, CurrentExperience = 0};
-    private SkillStats herbologyStats = new SkillStats {CurrentLevel = 1, CurrentExperience = 0};
+    private SkillStats alchemyStats = new SkillStats {currentLevel = 1, currentExperience = 0};
+    private SkillStats herbologyStats = new SkillStats {currentLevel = 1, currentExperience = 0};
 
     private Dictionary<SkillTypeEnum, SkillStats> skillsToValueDictionary =
-      new Dictionary<SkillTypeEnum, SkillStats>(); // note skill is referenced across using string, be cautious;
-
-    // private StatsOranizer statsOrganizer;
+      new Dictionary<SkillTypeEnum, SkillStats>();
 
 
     private void Start()
     {
-      // statsOrganizer = GameAssets.StatsOrganizer.GetComponent<StatsOranizer>();
-      // SetupSkillDictionaryAllToZero();
-      // statsOrganizer.UpdateStatsUi(skillsToValueDictionary);
+      UpdateSkillUi();
     }
 
 
@@ -65,7 +72,7 @@ namespace Skills
     {
       if (Input.GetKeyDown(KeyCode.U))
       {
-        AddExperienceToSkill(SkillTypeEnum.Alchemy, 20);
+        AddExperienceToSkill(SkillTypeEnum.Herbology, 20);
       }
     }
 
@@ -98,24 +105,43 @@ namespace Skills
       //sister method to UpdateStatDictionary; update only one entry of statDictionary
     {
       SkillStats thisSkillStat = skillsToValueDictionary[skill];
-      thisSkillStat.CurrentExperience = thisSkillStat.CurrentExperience  + valueToAdd;
+      thisSkillStat.currentExperience = thisSkillStat.currentExperience + valueToAdd;
       skillsToValueDictionary[skill] = CheckIfLevelUpAndUpdate(skill, thisSkillStat);
 
-      //todo update UI
-      // statsOrganizer.UpdateStatsUi(skillsToValueDictionary);
+      UpdateSkillUi();
     }
 
     private SkillStats CheckIfLevelUpAndUpdate(SkillTypeEnum skill, SkillStats thisSkillStat)
     {
       int[] experienceEachLevel = progression.GetProgressionForSkill(skill);
 
-      if (thisSkillStat.CurrentExperience > experienceEachLevel[thisSkillStat.CurrentLevel])
+      if (thisSkillStat.currentExperience > experienceEachLevel[thisSkillStat.currentLevel])
       {
-        thisSkillStat.CurrentExperience -= experienceEachLevel[thisSkillStat.CurrentLevel];
-        thisSkillStat.CurrentLevel += 1;
-
+        thisSkillStat.currentExperience -= experienceEachLevel[thisSkillStat.currentLevel];
+        thisSkillStat.currentLevel += 1;
       }
+
+
       return thisSkillStat;
+    }
+
+    private void UpdateSkillUi()
+    {
+      //alchemy ui
+      var currentAlchemyStats = skillsToValueDictionary[SkillTypeEnum.Alchemy];
+      alchemyLevelText.text = "Lvl. " + currentAlchemyStats.currentLevel;
+      int[] alchemyExperienceEachLevel = progression.GetProgressionForSkill(SkillTypeEnum.Alchemy);
+      int alchemyMaxExperienceThisLevel = alchemyExperienceEachLevel[currentAlchemyStats.currentLevel];
+      alchemyFillBar.fillAmount = currentAlchemyStats.currentExperience / (float) alchemyMaxExperienceThisLevel;
+
+
+      //herbology ui
+      var currentHerbologyStats = skillsToValueDictionary[SkillTypeEnum.Herbology];
+      herbologyLevelText.text = "Lvl. " + currentHerbologyStats.currentLevel;
+      int[] herbologyExperienceEachLevel = progression.GetProgressionForSkill(SkillTypeEnum.Herbology);
+      int herbologyMaxExperienceThisLevel = herbologyExperienceEachLevel[currentHerbologyStats.currentLevel];
+      herbologyFillBar.fillAmount = currentHerbologyStats.currentExperience / (float) herbologyMaxExperienceThisLevel;
+
     }
 
     #region Saving
