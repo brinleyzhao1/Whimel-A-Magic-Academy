@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using GameDev.tv_Assets.Scripts.Saving;
@@ -8,11 +9,13 @@ namespace SceneManagement
 {
   public class SavingWrapper : MonoBehaviour
   {
-    private const string currentSaveKey = "currentSaveName";
+    private const string CurrentSaveKey = "currentSaveName";
     [SerializeField] float fadeInTime = 0.2f;
     [SerializeField] float fadeOutTime = 0.2f;
     [SerializeField] int firstLevelBuildIndex = 1;
     [SerializeField] int menuLevelBuildIndex = 0;
+
+
 
     public void ContinueGame()
     {
@@ -38,12 +41,12 @@ namespace SceneManagement
 
     private void SetCurrentSave(string saveFile)
     {
-      PlayerPrefs.SetString(currentSaveKey, saveFile);
+      PlayerPrefs.SetString(CurrentSaveKey, saveFile);
     }
 
     private string GetCurrentSave()
     {
-      return PlayerPrefs.GetString(currentSaveKey);
+      return PlayerPrefs.GetString(CurrentSaveKey);
     }
 
     private IEnumerator LoadLastScene()
