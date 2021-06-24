@@ -1,4 +1,3 @@
-using GameDevTV.Inventories;
 using Player;
 using UnityEngine;
 
@@ -12,6 +11,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
     /// <remarks>
     /// This class should be used as a base. Subclasses must implement the `ActionStoreUse` method.
     /// </remarks>
+  // [System.Serializable]
     [CreateAssetMenu(menuName = ("Items/Action Item"))]
     public class ActionScriptableItem : InventoryItem
     {

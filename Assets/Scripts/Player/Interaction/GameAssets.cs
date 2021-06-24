@@ -24,10 +24,20 @@ namespace Player.Interaction
     [SerializeField] public GameObject setScheduleTab;
     public static GameObject ScheduleTab;
 
-    [Header("UI: Other")] [SerializeField] public GameObject setSleepPanel;
-    public static GameObject sleepPanel;
+    [Header("UI: Alchemy")]
+    [SerializeField] public GameObject setRecipeItemUiPrefab;
+    public static GameObject RecipeItemUi;
+
+    [SerializeField] public GameObject setRecipeBookPanel;
+    public static GameObject RecipeBookPanel;
+
+    [Header("UI: Other")]
+    [SerializeField] public GameObject setSleepPanel;
+    public static GameObject SleepPanel;
+
     [SerializeField] public GameObject setChestPanel;
     public static GameObject ChestPanel;
+
     [SerializeField] public GameObject setPotionPanel;
     public static GameObject PotionPanel;
 
@@ -59,8 +69,9 @@ namespace Player.Interaction
     private void Awake()
     {
       // Player = setPlayer;
-
-      sleepPanel = setSleepPanel;
+      RecipeBookPanel = setRecipeBookPanel;
+      RecipeItemUi = setRecipeItemUiPrefab;
+      SleepPanel = setSleepPanel;
       InventoryTab = setInventoryTab;
       StatsOrganizer = setStatsOrganizer;
       ScheduleTab = setScheduleTab;

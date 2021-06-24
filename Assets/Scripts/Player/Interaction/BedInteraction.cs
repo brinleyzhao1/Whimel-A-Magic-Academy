@@ -24,7 +24,7 @@ namespace Player.Interaction
 
     protected override void WhenTriggered()
     {
-      GameAssets.sleepPanel.gameObject.SetActive(true);
+      GameAssets.SleepPanel.gameObject.SetActive(true);
       // FindObjectOfType<CursorChanger>().CursorChangeToLockedMode();
     }
   }

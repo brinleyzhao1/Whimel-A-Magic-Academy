@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Alchemy
 {
-  public class KnownPotionRecipesStorage : MonoBehaviour,ISaveable
+  public class KnownPotionRecipesStorage : MonoBehaviour
   {
     #region Singleton
 
@@ -28,7 +28,7 @@ namespace Alchemy
     #endregion
 
 
-    [SerializeField]private List<PotionRecipeScriptableObject> knownPotionRecipes = new List<PotionRecipeScriptableObject>(20);
+    public List<PotionRecipeScriptableObject> knownPotionRecipes = new List<PotionRecipeScriptableObject>(20);
 
 
 
@@ -54,7 +54,7 @@ namespace Alchemy
     }
 
     #region Saving
-
+//todo cannot seriliaze a list
     public object CaptureState()
     {
       return knownPotionRecipes;

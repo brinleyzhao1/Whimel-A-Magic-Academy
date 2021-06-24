@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace GameDev.tv_Assets.Scripts.Inventories
@@ -11,6 +12,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
   /// In practice, you are likely to use a subclass such as `ActionScriptableItem` or
   /// `EquipableItem`.
   /// </remarks>
+  // [Serializable]
   public abstract class InventoryItem : ScriptableObject, ISerializationCallbackReceiver
   {
     // CONFIG DATA

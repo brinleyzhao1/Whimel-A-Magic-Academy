@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿
+using System.Collections.Generic;
 using GameDev.tv_Assets.Scripts.Inventories;
 using UnityEngine;
 
 namespace Alchemy
 {
+  // [Serializable]
   [CreateAssetMenu(fileName = "Potion Recipe", menuName = "Scriptables/Potion Recipe")]
   public class PotionRecipeScriptableObject : ActionScriptableItem
   {

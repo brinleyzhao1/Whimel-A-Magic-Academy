@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace UI.Shop
 {
+  /// <summary>
+  /// to be put on
+  /// </summary>
   public class ShopMenu : UiPanelGeneric
   {
     [SerializeField] private Transform shopItemsContainer;
