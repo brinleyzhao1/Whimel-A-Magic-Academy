@@ -10,7 +10,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
     /// so far it means ingredients, potions and food
     /// </summary>
     /// <remarks>
-    /// This class should be used as a base. Subclasses must implement the `Use` method.
+    /// This class should be used as a base. Subclasses must implement the `ActionStoreUse` method.
     /// </remarks>
     [CreateAssetMenu(menuName = ("Items/Action Item"))]
     public class ActionScriptableItem : InventoryItem
@@ -27,7 +27,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
         /// Trigger the use of this item. Override to provide functionality.
         /// </summary>
         /// <param name="user">The character that is using this action.</param>
-        public void Use(GameObject user)
+        public virtual void Use(GameObject user)
         {
             // Debug.Log("Using action: " + this);
             PlayerEnergy player = FindObjectOfType<PlayerEnergy>();

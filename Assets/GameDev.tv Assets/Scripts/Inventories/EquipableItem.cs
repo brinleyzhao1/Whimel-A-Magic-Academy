@@ -1,13 +1,12 @@
-using GameDev.tv_Assets.Scripts.Inventories;
 using UnityEngine;
 
-namespace GameDevTV.Inventories
+namespace GameDev.tv_Assets.Scripts.Inventories
 {
     /// <summary>
     /// An inventory item that can be equipped to the player. Weapons could be a
     /// subclass of this.
     /// </summary>
-    [CreateAssetMenu(menuName = ("GameDevTV/GameDevTV.UI.InventorySystem/Equipable Item"))]
+    [CreateAssetMenu(menuName = ("Items/Equipable Item"))]
     public class EquipableItem : InventoryItem
     {
         // CONFIG DATA

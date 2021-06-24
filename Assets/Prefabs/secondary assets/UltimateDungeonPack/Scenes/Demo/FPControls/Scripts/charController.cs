@@ -16,7 +16,7 @@ public class charController : MonoBehaviour {
     private float translation;
     private float straffe;
 
-    // Use this for initialization
+    // ActionStoreUse this for initialization
     void Start () {
         // turn off the cursor
         Cursor.lockState = CursorLockMode.Locked;

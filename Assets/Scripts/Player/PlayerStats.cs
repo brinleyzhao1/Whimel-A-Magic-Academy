@@ -36,7 +36,7 @@ namespace Player
     #endregion
 
     private Dictionary<Stats, int> statsToValueDictionary =
-        new Dictionary<Stats, int>();
+      new Dictionary<Stats, int>();
 
     private StatsOranizer statsOrganizer;
     private VisualTextFeedbackSpawner visualTextFeedbackSpawner;
@@ -93,7 +93,8 @@ namespace Player
     }
 
 
-    //saving
+    #region Saving
+
     public object CaptureState()
     {
       return statsToValueDictionary;
@@ -104,5 +105,7 @@ namespace Player
       statsToValueDictionary = (Dictionary<Stats, int>) state;
       // statsOrganizer.UpdateStatsUi(statsToValueDictionary);//todo fix this
     }
+
+    #endregion
   }
 }

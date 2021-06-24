@@ -31,7 +31,7 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
 
     public void AddItems(InventoryItem item, int number)
     {
-      actionStore.AddAction(item, index, number);
+      actionStore.AddActionItem(item, index, number);
     }
 
     public InventoryItem GetItem()

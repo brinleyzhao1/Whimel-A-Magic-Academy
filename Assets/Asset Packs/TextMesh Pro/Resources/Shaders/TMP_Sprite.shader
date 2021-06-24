@@ -14,7 +14,7 @@ Shader "TextMeshPro/Sprite"
 		_ColorMask ("Color Mask", Float) = 15
 		_ClipRect ("Clip Rect", vector) = (-32767, -32767, 32767, 32767)
 
-		[Toggle(UNITY_UI_ALPHACLIP)] _UseUIAlphaClip ("Use Alpha Clip", Float) = 0
+		[Toggle(UNITY_UI_ALPHACLIP)] _UseUIAlphaClip ("ActionStoreUse Alpha Clip", Float) = 0
 	}
 
 	SubShader

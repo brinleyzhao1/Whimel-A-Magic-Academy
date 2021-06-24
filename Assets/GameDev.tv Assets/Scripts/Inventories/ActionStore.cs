@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Alchemy;
 using GameDev.tv_Assets.Scripts.Saving;
 using UnityEngine;
 
@@ -41,7 +42,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
         {
           currentIndexSelected = i - 1;
           //use that item
-          bool canBeUsed = Use(i - 1, GameObject.FindWithTag("Player"));
+          bool canBeUsed = ActionStoreUse(i - 1, GameObject.FindWithTag("Player"));
 
           StoreUpdated?.Invoke();
           //todo if click the same key again, deselect that slot
@@ -90,7 +91,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
     /// <param name="item">What item should be added.</param>
     /// <param name="index">Where should the item be added.</param>
     /// <param name="number">How many items to add.</param>
-    public void AddAction(InventoryItem item, int index, int number)
+    public void AddActionItem(InventoryItem item, int index, int number)
     {
       if (dockedItems.ContainsKey(index))
       {
@@ -101,32 +102,46 @@ namespace GameDev.tv_Assets.Scripts.Inventories
       }
       else
       {
-        var slot = new DockedItemSlot();
-        slot.ActionScriptableBarItem = item as ActionScriptableItem;
-        slot.ActionBarNumber = number;
+        var slot = new DockedItemSlot
+        {
+          ActionScriptableBarItem = item as ActionScriptableItem, ActionBarNumber = number
+        };
         dockedItems[index] = slot;
       }
 
-      if (StoreUpdated != null)
-      {
-        StoreUpdated();
-      }
+      StoreUpdated?.Invoke();
     }
 
     /// <summary>
-    /// Use the item at the given slot. If the item is consumable one
+    /// ActionStoreUse the item at the given slot. If the item is consumable one
     /// instance will be destroyed until the item is removed completely.
     /// </summary>
     /// <param name="user">The character that wants to use this action.</param>
     /// <returns>False if the action could not be executed.</returns>
-    public bool Use(int index, GameObject user)
+    public bool ActionStoreUse(int index, GameObject user)
     {
       if (dockedItems.ContainsKey(index))
       {
-        dockedItems[index].ActionScriptableBarItem.Use(user);
-        if (dockedItems[index].ActionScriptableBarItem.IsConsumable())
+        var thisItem = dockedItems[index].ActionScriptableBarItem;
+        thisItem.Use(user);
+        if (thisItem.IsConsumable())
         {
           RemoveItems(index, 1);
+        }
+
+
+        if (thisItem.GetType() == typeof(PotionRecipeScriptableObject))
+        {
+          var thisIsAPotionRecipe = (PotionRecipeScriptableObject) thisItem;
+          if (!KnownPotionRecipesStorage.Instance.AlreadyKnownThisRecipe(thisIsAPotionRecipe))
+          {
+            KnownPotionRecipesStorage.Instance.AddNewPotionRecipe(thisIsAPotionRecipe);
+            RemoveItems(index, 1);
+          }
+          else
+          {
+            //not consume this recipe
+          }
         }
 
         return true;
@@ -215,7 +230,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
       var stateDict = (Dictionary<int, DockedItemRecord>) state;
       foreach (var pair in stateDict)
       {
-        AddAction(InventoryItem.GetFromID(pair.Value.itemId), pair.Key, pair.Value.number);
+        AddActionItem(InventoryItem.GetFromID(pair.Value.itemId), pair.Key, pair.Value.number);
       }
     }
 

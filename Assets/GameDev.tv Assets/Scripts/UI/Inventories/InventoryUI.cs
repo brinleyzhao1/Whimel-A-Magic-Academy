@@ -14,7 +14,7 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
     [SerializeField] private InventorySlotUi inventorySlotPrefab;
 
     // CACHE
-    protected Inventory PlayerInventory;
+     Inventory PlayerInventory;
 
     // LIFECYCLE METHODS
 
@@ -40,7 +40,7 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
 
       for (int i = 0; i < PlayerInventory.GetSize(); i++)
       {
-        var itemUi = Instantiate(inventorySlotPrefab, transform);
+        InventorySlotUi itemUi = Instantiate(inventorySlotPrefab, transform);
         itemUi.Setup(PlayerInventory, i);
       }
     }

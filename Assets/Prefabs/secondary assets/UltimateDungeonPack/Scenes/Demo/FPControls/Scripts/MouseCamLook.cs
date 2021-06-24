@@ -23,7 +23,7 @@ public class MouseCamLook : MonoBehaviour {
     // smooth the mouse moving
     private Vector2 smoothV;
 
-	// Use this for initialization
+	// ActionStoreUse this for initialization
 	void Start () {
         character = this.transform.parent.gameObject;
 	}

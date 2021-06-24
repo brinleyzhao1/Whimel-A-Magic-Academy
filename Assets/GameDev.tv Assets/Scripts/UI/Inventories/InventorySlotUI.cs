@@ -1,8 +1,5 @@
-﻿using System;
-using GameDev.tv_Assets.Scripts.Inventories;
+﻿using GameDev.tv_Assets.Scripts.Inventories;
 using GameDev.tv_Assets.Scripts.Utils.UI.Dragging;
-using GameDevTV.Inventories;
-using GameDevTV.UI.Inventories;
 using UI.Shop;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -83,7 +80,11 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
     public void OnSelect(BaseEventData eventData)
     {
       //tell sell tray what item and how many
-      SellTray.Instance.ReceiveInfoAboutSelectedItemForSell(index);
+      if (SellTray.Instance.gameObject.activeSelf)
+      {
+        SellTray.Instance.ReceiveInfoAboutSelectedItemForSell(index);
+      }
+
     }
   }
 }
