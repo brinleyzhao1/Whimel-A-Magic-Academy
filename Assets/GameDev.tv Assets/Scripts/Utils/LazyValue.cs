@@ -13,7 +13,7 @@
         public delegate T InitializerDelegate();
 
         /// <summary>
-        /// Setup the container but don't initialise the value yet.
+        /// UpdateIcon the container but don't initialise the value yet.
         /// </summary>
         /// <param name="initializer">
         /// The initialiser delegate to call when first used.

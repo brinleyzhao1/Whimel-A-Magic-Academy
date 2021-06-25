@@ -102,6 +102,31 @@ namespace GameDev.tv_Assets.Scripts.Inventories
     }
 
     /// <summary>
+    /// return total amount of a type of item in possession
+    /// </summary>
+    /// <param name="item"></param>
+    /// <returns></returns>
+    public int TotalAmountHad(InventoryItem item)
+    {
+      if (!HasItem(item))
+      {
+        return 0;
+      }
+
+      int total = 0;
+      for (int i = 0; i < slots.Length; i++)
+      {
+        if (object.ReferenceEquals(slots[i].Item, item))
+        {
+          total += slots[i].Number;
+        }
+      }
+
+      return total;
+
+    }
+
+    /// <summary>
     /// Return the item type in the given slot.
     /// </summary>
     public InventoryItem GetItemInSlot(int slot)

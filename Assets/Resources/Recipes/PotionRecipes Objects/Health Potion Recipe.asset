@@ -22,7 +22,10 @@ MonoBehaviour:
   stackable: 0
   directlyConsumable: 0
   energyChange: 0
-  ingredients:
-  - {fileID: 11400000, guid: fe803410dbd1047c387000e3cc5a9e31, type: 2}
-  - {fileID: 11400000, guid: f4c4c3bc672c843b19df3f43f43e8897, type: 2}
   finalPotion: {fileID: 11400000, guid: 62bec4a6b68cc41de8a67d6009d0486c, type: 2}
+  ingredient1: {fileID: 11400000, guid: fe803410dbd1047c387000e3cc5a9e31, type: 2}
+  quantity1: 2
+  ingredient2: {fileID: 11400000, guid: 3eb8c5d3a799c44e7be7782ed6f87f34, type: 2}
+  quantity2: 1
+  ingredient3: {fileID: 0}
+  quantity3: 0

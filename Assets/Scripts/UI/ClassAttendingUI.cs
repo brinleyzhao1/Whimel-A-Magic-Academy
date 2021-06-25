@@ -42,7 +42,7 @@
 //
 //       DecideRandomStat();
 //
-//       GameAssets.ResultPanel.GetComponent<ResultPanelUi>().Setup(statsChangeDictionary);
+//       GameAssets.ResultPanel.GetComponent<ResultPanelUi>().UpdateIcon(statsChangeDictionary);
 //       FindObjectOfType<PlayerStats>().UpdateStatDictionary(statsChangeDictionary);
 //
 //

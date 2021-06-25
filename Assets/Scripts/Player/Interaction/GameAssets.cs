@@ -1,14 +1,18 @@
-﻿using UI;
+﻿using GameDev.tv_Assets.Scripts.Inventories;
+using UI;
 using UnityEngine;
 
 namespace Player.Interaction
 {
   public class GameAssets : MonoBehaviour
   {
-    // [Header("Core")]
+    [Header("Core")]
     // [SerializeField] public GameObject setPlayer;
     // public static GameObject Player;
 
+    [SerializeField]
+    private Inventory setPlayerInventory;
+    public static Inventory PlayerInventory;
 
     [Header("UI: Tabs")] [SerializeField] public GameObject setInventoryTab;
     public static GameObject InventoryTab;
@@ -73,6 +77,7 @@ namespace Player.Interaction
     private void Awake()
     {
       // Player = setPlayer;
+      PlayerInventory = setPlayerInventory;
       BrewPanel = setBrewPanel;
       RecipeBookPanel = setRecipeBookPanel;
       RecipeItemUi = setRecipeItemUiPrefab;
