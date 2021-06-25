@@ -39,12 +39,16 @@ namespace UI
 
     private void SetUpText(ActionScriptableItem ingredient, int quantityRequired)
     {
-      int quantityHave = GameAssets.PlayerInventory.TotalAmountHad(ingredient);
+      int quantityHave = GameAssets.PlayerInventory.TotalAmountHave(ingredient);
       number.text = quantityRequired + "/" + quantityHave;
-      
+
       if (quantityRequired > quantityHave)
       {
         number.color = Color.red;
+      }
+      else
+      {
+        number.color = Color.white;
       }
 
       if (quantityRequired == 0)

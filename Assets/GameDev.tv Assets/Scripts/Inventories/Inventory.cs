@@ -106,7 +106,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
     /// </summary>
     /// <param name="item"></param>
     /// <returns></returns>
-    public int TotalAmountHad(InventoryItem item)
+    public int TotalAmountHave(InventoryItem item)
     {
       if (!HasItem(item))
       {
