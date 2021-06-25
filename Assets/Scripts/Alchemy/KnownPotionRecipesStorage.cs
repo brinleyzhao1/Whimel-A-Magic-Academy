@@ -1,10 +1,13 @@
+using System;
 using System.Collections.Generic;
+using GameDev.tv_Assets.Scripts.Inventories;
 using GameDev.tv_Assets.Scripts.Saving;
+using UnityEditor;
 using UnityEngine;
 
 namespace Alchemy
 {
-  public class KnownPotionRecipesStorage : MonoBehaviour
+  public class KnownPotionRecipesStorage : MonoBehaviour,ISaveable
   {
     #region Singleton
 
@@ -29,7 +32,6 @@ namespace Alchemy
 
 
     public List<PotionRecipeScriptableObject> knownPotionRecipes = new List<PotionRecipeScriptableObject>(20);
-
 
 
     public bool AlreadyKnownThisRecipe(PotionRecipeScriptableObject recipe)
@@ -57,12 +59,26 @@ namespace Alchemy
 //todo cannot seriliaze a list
     public object CaptureState()
     {
-      return knownPotionRecipes;
+      //convert to an array of id for storage
+      List<string> listOfKnownIds = new List<string>();
+      foreach (var recipeObject in knownPotionRecipes)
+      {
+        listOfKnownIds.Add(recipeObject.GetItemID());
+      }
+
+      var arrayKnownRecipes = listOfKnownIds.ToArray();
+      return arrayKnownRecipes;
     }
 
     public void RestoreState(object state)
     {
-      knownPotionRecipes = (List<PotionRecipeScriptableObject>) state;
+      var restoreList = new List<PotionRecipeScriptableObject>();
+      foreach (string id in (Array)state)
+      {
+        PotionRecipeScriptableObject item = InventoryItem.GetFromID(id) as PotionRecipeScriptableObject;
+        restoreList.Add(item);
+      }
+      knownPotionRecipes = restoreList;
     }
 
     #endregion

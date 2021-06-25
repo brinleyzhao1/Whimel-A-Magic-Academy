@@ -21,8 +21,8 @@ namespace UI
 
     public void SetUp(PotionRecipeScriptableObject recipe)
     {
-      iconImage.sprite = thisRecipe.GetIcon();
-      recipeNameText.text = thisRecipe.name;
+      iconImage.sprite = recipe.GetIcon();
+      recipeNameText.text = recipe.name;
       // entryPriceText.text = item.buyingPrice.ToString();
       // // transform.GetChild(0).GetComponent<Image>().sprite = item.GetIcon();
       // // transform.GetChild(1).GetComponent<TMP_Text>().text = item.name;
