@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UI;
+using UnityEngine;
 
 namespace Player.Interaction
 {
@@ -30,6 +31,9 @@ namespace Player.Interaction
 
     [SerializeField] public GameObject setRecipeBookPanel;
     public static GameObject RecipeBookPanel;
+
+    [SerializeField] public BrewingUi setBrewPanel;
+    public static BrewingUi BrewPanel;
 
     [Header("UI: Other")]
     [SerializeField] public GameObject setSleepPanel;
@@ -69,6 +73,7 @@ namespace Player.Interaction
     private void Awake()
     {
       // Player = setPlayer;
+      BrewPanel = setBrewPanel;
       RecipeBookPanel = setRecipeBookPanel;
       RecipeItemUi = setRecipeItemUiPrefab;
       SleepPanel = setSleepPanel;

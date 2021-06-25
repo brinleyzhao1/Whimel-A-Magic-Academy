@@ -16,7 +16,7 @@ MonoBehaviour:
   itemID: 0abd4124-9863-4108-bd9e-be11992f44ce
   buyingPrice: 10
   sellingPrice: 10
-  description: 
+  description: A potion that helps you regenerate energy.
   icon: {fileID: 21300000, guid: 889c1334a2fd443ee9be55330c714308, type: 3}
   inGame3DPickup: {fileID: 0}
   stackable: 0
