@@ -1,4 +1,7 @@
-﻿using Alchemy;
+﻿using System;
+using System.Collections;
+using Alchemy;
+using GameDev.tv_Assets.Scripts.UI.Inventories;
 using Player.Interaction;
 using TMPro;
 using UnityEngine;
@@ -10,6 +13,7 @@ namespace UI
   {
     [SerializeField] private TextMeshProUGUI titleText;
     [SerializeField] private TextMeshProUGUI descriptionText;
+    [SerializeField] private InventoryUi playerInventoryUi;
 
 
     [Header("ingredient slot UIs")] [SerializeField]
@@ -19,11 +23,36 @@ namespace UI
     [SerializeField] private IngredientSlotUi ingredientSlot3;
 
     [SerializeField] private Button brewButton;
+
+    private PotionRecipeScriptableObject thisRecipe = null;
+
+    private bool canBrew;
     // [SerializeField] private
+
+    private void OnEnable()
+    {
+      //todo: onenable, clear right side, thisRecipe = null
+      thisRecipe = null;
+
+      ClearOutBrewSectionUi();
+    }
+
+    private void ClearOutBrewSectionUi()
+    {
+      titleText.text = "";
+      descriptionText.text = "";
+      ingredientSlot1.UpdateIcon(null, 0);
+      ingredientSlot2.UpdateIcon(null, 0);
+      ingredientSlot3.UpdateIcon(null, 0);
+      canBrew = false;
+      brewButton.gameObject.GetComponent<Image>().color = Color.white;
+    }
 
     //when selected, update visual
     public void UpdateDisplayedInfo(PotionRecipeScriptableObject recipe)
     {
+      thisRecipe = recipe;
+
       titleText.text = recipe.GetDisplayName();
       descriptionText.text = recipe.GetDescription();
 
@@ -35,22 +64,49 @@ namespace UI
       if (!CheckIfHaveAllIngredients(recipe))
       {
         brewButton.gameObject.GetComponent<Image>().color = Color.gray;
-        brewButton.onClick = null;
+        canBrew = false;
       }
       else
       {
         brewButton.gameObject.GetComponent<Image>().color = Color.white;
-        brewButton.onClick.AddListener(ButtonBrew);
+        canBrew = true;
       }
     }
 
 
+
     public void ButtonBrew()
     {
-      print("potion brewed");
+      if (canBrew)
+      {
+        StartCoroutine(Brew());
+      }
+      else if (thisRecipe == null)
+      {
+        print("you dont have a recipe selected");
+      }
+      else
+      {
+        print("oops you don't have all the ingredients");
+      }
+    }
+
+    IEnumerator Brew()
+    {
+
       //wait some seconds / animation
+      yield return new WaitForSeconds(thisRecipe.timeNeedToBrew);
+
       //subtract all ingredients from inventory
+      GameAssets.PlayerInventory.RemoveItemsFromInventory(thisRecipe.ingredient1, thisRecipe.quantity1);
+      GameAssets.PlayerInventory.RemoveItemsFromInventory(thisRecipe.ingredient2, thisRecipe.quantity2);
+      GameAssets.PlayerInventory.RemoveItemsFromInventory(thisRecipe.ingredient3, thisRecipe.quantity3);
+      playerInventoryUi.Redraw();
+
       //add final potion to inventory
+      GameAssets.PlayerInventory.AddToFirstEmptySlot(thisRecipe.finalPotion, 1);
+
+      UpdateDisplayedInfo(thisRecipe);
 
     }
 

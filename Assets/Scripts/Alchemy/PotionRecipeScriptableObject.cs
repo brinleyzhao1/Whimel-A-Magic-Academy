@@ -10,6 +10,7 @@ namespace Alchemy
   public class PotionRecipeScriptableObject : ActionScriptableItem
   {
     public ActionScriptableItem finalPotion;
+    public int timeNeedToBrew;
 
     [Header("Ingredients")] public ActionScriptableItem ingredient1;
     public int quantity1;

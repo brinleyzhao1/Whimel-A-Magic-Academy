@@ -123,7 +123,44 @@ namespace GameDev.tv_Assets.Scripts.Inventories
       }
 
       return total;
+    }
 
+    /// <summary>
+    /// subtract some amount of items, possibly  across multiple slots
+    /// </summary>
+    /// <param name="item"></param>
+    /// <param name="amount"></param>
+    public void RemoveItemsFromInventory(InventoryItem item, int amount)
+    {
+      if (TotalAmountHave(item) < amount)
+      {
+        Debug.LogError("trying to remove items more than the inventory has");
+      }
+
+      int amountLeftToRemove = amount;
+
+      for (int i = 0; i < slots.Length; i++)
+      {
+        if (object.ReferenceEquals(slots[i].Item, item))
+        {
+          if (amountLeftToRemove <= slots[i].Number)
+          {
+            slots[i].Number -= amountLeftToRemove;
+            amountLeftToRemove = 0;
+            slots[i].Item = null;
+          }
+          else
+          {
+            amountLeftToRemove -= slots[i].Number;
+            slots[i].Number = 0;
+          }
+        }
+
+        if (amountLeftToRemove == 0)
+        {
+          break;
+        }
+      }
     }
 
     /// <summary>

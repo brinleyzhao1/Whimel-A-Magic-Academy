@@ -31,7 +31,7 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
 
     // PRIVATE
 
-    protected virtual void Redraw()
+    public virtual void Redraw()
     {
       foreach (Transform child in transform)
       {
