@@ -57,10 +57,15 @@ public class TimeManager : MonoBehaviour, ISaveable
     {
       CalculateTime();
 
+
+      if (Input.GetKeyDown(KeyCode.R))
+      {
+        Hour += 3;
+      }
     }
 
 
-    private void UpdateText()
+    private void UpdateText() //todo: can probably replace with coroutine to improve performance
     {
       dayText.text = Day.ToString();
       clockText.text = Hour + ":" + Minute;
@@ -130,12 +135,11 @@ public class TimeManager : MonoBehaviour, ISaveable
     }
 
 
-
+    #region Saving
 
     public object CaptureState()
     {
-      return new int[] { Minute, Hour, Day, Year };
-
+      return new int[] {Minute, Hour, Day, Year};
     }
 
     public void RestoreState(object state)
@@ -147,4 +151,7 @@ public class TimeManager : MonoBehaviour, ISaveable
       Year = data[3];
       UpdateText();
     }
+    #endregion
+
+
 }

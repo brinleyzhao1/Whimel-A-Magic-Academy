@@ -1,4 +1,5 @@
 ﻿using GameDev.tv_Assets.Scripts.Saving;
+using Player.Interaction;
 using Player.Movement;
 using UI;
 using UnityEngine;
@@ -10,9 +11,14 @@ namespace Player
   {
     public int maxEnergy = 100;
     public int currentEnergy = 100;
+    [SerializeField] [Range(0, 100)] private int criticalEnergyLevel = 10;
     [SerializeField] private int energyCostPerHour = 2;
 
-    [Header("UI")] [SerializeField] private Image energyBar;
+    [Header("UI")] [SerializeField] [TextArea]
+    private string forcedSleepText;
+
+    [SerializeField] [TextArea] private string criticalEnergyText;
+    [SerializeField] private Image energyBar;
 
     [SerializeField] private UiPanelGeneric forcedSleepNotificationPanel;
 
@@ -26,8 +32,8 @@ namespace Player
     {
       if (Input.GetKeyDown(KeyCode.T))
       {
-        ForcedToSleepHours(1);
-        // UpdateEnergyByValue(-30);
+        // ForcedToSleepHours(1);
+        UpdateEnergyByValue(-30);
       }
     }
 
@@ -41,11 +47,24 @@ namespace Player
     public void UpdateEnergyByValue(int amount)
     {
       currentEnergy += amount;
+
+      //cap at max energy
       if (currentEnergy > maxEnergy)
       {
         currentEnergy = maxEnergy;
       }
 
+      //energy critical?
+      if (currentEnergy <= criticalEnergyLevel)
+      {
+        if (TimeManager.Hour <= 20)
+        {
+          GameAssets.MessagePanel.gameObject.SetActive(true);
+          GameAssets.MessagePanel.SetMessageText(criticalEnergyText);
+        }
+      }
+
+      //forced to sleep?
       if (currentEnergy < 0)
       {
         currentEnergy = 0;
@@ -66,12 +85,11 @@ namespace Player
 
     private void ForcedToSleepHours(int sleepHour)
     {
-      //todo add fade in and message to let player know
+      //todo add fade in
 
       //bring out force sleep panel
-      // FindObjectOfType<CursorChanger>().OneMoreUiOut();
-      forcedSleepNotificationPanel.gameObject.SetActive(true);
-
+      GameAssets.MessagePanel.gameObject.SetActive(true);
+      GameAssets.MessagePanel.SetMessageText(forcedSleepText);
 
       //teleport player to their dorm
       CharacterController charController = FindObjectOfType<CharacterController>();

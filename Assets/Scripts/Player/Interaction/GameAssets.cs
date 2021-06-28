@@ -40,6 +40,9 @@ namespace Player.Interaction
     public static BrewingUi BrewPanel;
 
     [Header("UI: Other")]
+    [SerializeField] public SetMessage setMessagePanel;
+    public static SetMessage MessagePanel;
+
     [SerializeField] public GameObject setSleepPanel;
     public static GameObject SleepPanel;
 
@@ -77,6 +80,7 @@ namespace Player.Interaction
     private void Awake()
     {
       // Player = setPlayer;
+      MessagePanel = setMessagePanel;
       PlayerInventory = setPlayerInventory;
       BrewPanel = setBrewPanel;
       RecipeBookPanel = setRecipeBookPanel;

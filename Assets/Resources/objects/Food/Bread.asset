@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7970efe4ec7b3420195bd065085214e9, type: 3}
   m_Name: Bread
   m_EditorClassIdentifier: 
+  displayName: 
   itemID: dbbd4747-3ada-455f-9b32-6bcd5521a728
   buyingPrice: 10
   sellingPrice: 5
@@ -20,7 +21,5 @@ MonoBehaviour:
   inGame3DPickup: {fileID: 467602121696786876, guid: 11144f05dee6445e8bf0e57ea8c46881,
     type: 3}
   stackable: 1
-  isPotionIngredient: 0
-  isForgeIngredient: 0
-  directlyEdible: 1
+  directlyConsumable: 1
   energyChange: 5
