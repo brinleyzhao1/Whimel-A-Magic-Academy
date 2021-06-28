@@ -42,6 +42,7 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
       {
         InventorySlotUi itemUi = Instantiate(inventorySlotPrefab, transform);
         itemUi.Setup(PlayerInventory, i);
+
       }
     }
   }

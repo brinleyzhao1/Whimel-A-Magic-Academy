@@ -13,6 +13,7 @@ namespace UI
   {
     [SerializeField] private TextMeshProUGUI titleText;
     [SerializeField] private TextMeshProUGUI descriptionText;
+    [SerializeField] private TextMeshProUGUI timeCountDownText;
     [SerializeField] private InventoryUi playerInventoryUi;
 
 
@@ -55,6 +56,7 @@ namespace UI
 
       titleText.text = recipe.GetDisplayName();
       descriptionText.text = recipe.GetDescription();
+      timeCountDownText.text = recipe.timeNeedToBrew.ToString();
 
       //update ingredients list
       ingredientSlot1.UpdateIcon(recipe.ingredient1, recipe.quantity1);
@@ -74,7 +76,6 @@ namespace UI
     }
 
 
-
     public void ButtonBrew()
     {
       if (canBrew)
@@ -91,22 +92,39 @@ namespace UI
       }
     }
 
+    IEnumerator CountDown()
+    {
+      int timeLeft = thisRecipe.timeNeedToBrew;
+      while (timeLeft > 0)
+      {
+        yield return new WaitForSeconds(1);
+        // print(1);
+        timeLeft -= 1;
+        timeCountDownText.text = timeLeft.ToString();
+      }
+    }
+
     IEnumerator Brew()
     {
-
       //wait some seconds / animation
-      yield return new WaitForSeconds(thisRecipe.timeNeedToBrew);
+      // yield return new WaitForSeconds(thisRecipe.timeNeedToBrew);
+      yield return StartCoroutine(CountDown());
 
       //subtract all ingredients from inventory
       GameAssets.PlayerInventory.RemoveItemsFromInventory(thisRecipe.ingredient1, thisRecipe.quantity1);
       GameAssets.PlayerInventory.RemoveItemsFromInventory(thisRecipe.ingredient2, thisRecipe.quantity2);
       GameAssets.PlayerInventory.RemoveItemsFromInventory(thisRecipe.ingredient3, thisRecipe.quantity3);
-      playerInventoryUi.Redraw();
 
       //add final potion to inventory
       GameAssets.PlayerInventory.AddToFirstEmptySlot(thisRecipe.finalPotion, 1);
 
       UpdateDisplayedInfo(thisRecipe);
+
+      if (playerInventoryUi.isActiveAndEnabled) //probably is not active
+      {
+         playerInventoryUi.Redraw();
+      }
+
 
     }
 
