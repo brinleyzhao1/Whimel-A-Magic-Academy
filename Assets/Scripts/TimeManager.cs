@@ -4,6 +4,7 @@ using Endings;
 using GameDev.tv_Assets.Scripts.Saving;
 using NPC.Schedule;
 using Player;
+using Player.Interaction;
 using TMPro;
 using UnityEngine;
 
@@ -32,6 +33,8 @@ public class TimeManager : MonoBehaviour, ISaveable
 
 
   [SerializeField] private int totalInGameYears = 3;
+  [SerializeField] private int daysPerYear = 14;
+  [SerializeField] [TextArea]private string newYearMessage;
 
   private const int TimeScale = 800; //the bigger the faster in-game time is
 
@@ -60,7 +63,7 @@ public class TimeManager : MonoBehaviour, ISaveable
 
       if (Input.GetKeyDown(KeyCode.R))
       {
-        Hour += 3;
+        Day += 3;
       }
     }
 
@@ -99,11 +102,14 @@ public class TimeManager : MonoBehaviour, ISaveable
         Hour = Hour - 24; //for fast forward's sake
         UpdateText();
       }
-      else if (Day > 14)
+      else if (Day > daysPerYear)
       {
         Year++;
         Day = 0;
         UpdateText();
+
+        GameAssets.MessagePanel.gameObject.SetActive(true);
+        GameAssets.MessagePanel.SetMessageText(newYearMessage);
       }
       else if (Year > totalInGameYears)
       {
