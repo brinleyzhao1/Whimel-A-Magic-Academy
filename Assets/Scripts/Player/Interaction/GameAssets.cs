@@ -46,6 +46,9 @@ namespace Player.Interaction
     [SerializeField] public GameObject setBookOnShelfPrefab;
     public static GameObject BookOnShelfPrefab;
 
+    [SerializeField] public GameObject setBookDetailPanel;
+    public static GameObject BookDetailPanel;
+
     #region UI: Other
 
     [Header("UI: Other")]
@@ -94,6 +97,7 @@ namespace Player.Interaction
     private void Awake()
     {
       // Player = setPlayer;
+      BookDetailPanel = setBookDetailPanel;
       BookOnShelfPrefab = setBookOnShelfPrefab;
       BookShelfPanel = setBookShelfPanel;
       MessagePanel = setMessagePanel;

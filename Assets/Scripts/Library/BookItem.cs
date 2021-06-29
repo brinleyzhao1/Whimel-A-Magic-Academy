@@ -6,7 +6,7 @@ namespace Library
   [CreateAssetMenu(fileName = "FILENAME", menuName = "Items/Book Item", order = 0)]
   public class BookItem : InventoryItem
   {
-    [SerializeField] private int level = 1;
+  public int level = 1;
 
     //type: info (world building), potion, herb, etc
 
