@@ -32,7 +32,6 @@ namespace UI
 
     private void OnEnable()
     {
-      //todo: onenable, clear right side, thisRecipe = null
       thisRecipe = null;
 
       ClearOutBrewSectionUi();

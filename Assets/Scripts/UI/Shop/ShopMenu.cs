@@ -6,7 +6,7 @@ using UnityEngine;
 namespace UI.Shop
 {
   /// <summary>
-  /// to be put on
+  /// to be put on ui shop panel
   /// </summary>
   public class ShopMenu : UiPanelGeneric
   {

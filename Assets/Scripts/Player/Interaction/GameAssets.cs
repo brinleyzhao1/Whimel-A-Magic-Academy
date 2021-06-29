@@ -39,6 +39,14 @@ namespace Player.Interaction
     [SerializeField] public BrewingUi setBrewPanel;
     public static BrewingUi BrewPanel;
 
+    [Header("UI: Library")]
+    [SerializeField] public BookShelfMenu setBookShelfPanel;
+    public static BookShelfMenu BookShelfPanel;
+
+
+
+    #region UI: Other
+
     [Header("UI: Other")]
     [SerializeField] public SetMessage setMessagePanel;
     public static SetMessage MessagePanel;
@@ -73,6 +81,9 @@ namespace Player.Interaction
     [SerializeField] public GameObject setSellTray;
     public static GameObject SellTray;
 
+    #endregion
+
+
     // [Header("Sound")]
     // [SerializeField] public GameObject setUiPaperSound;
     // public static GameObject UiPaperSound;
@@ -80,6 +91,7 @@ namespace Player.Interaction
     private void Awake()
     {
       // Player = setPlayer;
+      BookShelfPanel = setBookShelfPanel;
       MessagePanel = setMessagePanel;
       PlayerInventory = setPlayerInventory;
       BrewPanel = setBrewPanel;
