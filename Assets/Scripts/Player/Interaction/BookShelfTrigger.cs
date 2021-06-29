@@ -7,14 +7,27 @@ namespace Player.Interaction
 {
   public class BookShelfTrigger : TriggerUi
   {
+    public int schoolYearRequired = 1;
     public List<BookItem> booksInThisShelf = new List<BookItem>();
 
 
     protected override void WhenTriggered()
     {
-      GameAssets.BookShelfPanel.gameObject.SetActive(true);
-      GameAssets.ShopPanel.GetComponent<BookShelfMenu>().SetUpShopList(booksInThisShelf);
 
+      int currentSchoolYear = TimeManager.Year;
+
+      //only unlock if above a certain schoolYear
+      if (currentSchoolYear >= schoolYearRequired)
+      {
+        GameAssets.BookShelfPanel.gameObject.SetActive(true);
+              GameAssets.ShopPanel.GetComponent<BookShelfMenu>().SetUpShopList(booksInThisShelf);
+
+      }
+      else
+      {
+        GameAssets.MessagePanel.gameObject.SetActive(true);
+        GameAssets.MessagePanel.SetMessageText("Sorry, this book shelf will unlock to you at school year "+ schoolYearRequired);
+      }
 
     }
 
