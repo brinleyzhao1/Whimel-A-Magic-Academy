@@ -118,8 +118,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
 
     public string GetDisplayName()
     {
-      return name;
-      // return displayName;
+      return displayName;
     }
 
     public string GetDescription()

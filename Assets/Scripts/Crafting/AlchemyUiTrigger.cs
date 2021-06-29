@@ -12,7 +12,7 @@ namespace Crafting
       GameAssets.PotionPanel.gameObject.SetActive(true);
       var knownList = KnownPotionRecipesStorage.Instance.knownPotionRecipes;
       GameAssets.RecipeBookPanel.GetComponent<PotionRecipeBookUi>().SetUpRecipeBook(knownList);
-      // GameAssets.ShopPanel.GetComponent<ShopMenu>().SetUpShopList(itemsForSell);
+      // GameAssets.ShopPanel.GetComponent<ShopMenu>().SetUpBookShelf(itemsForSell);
       // FindObjectOfType<ShowHideUiWithKey>().OpenOrCloseTabs();
       // FindObjectOfType<SwitchTabs>().SwitchToInventoryTab();
     }

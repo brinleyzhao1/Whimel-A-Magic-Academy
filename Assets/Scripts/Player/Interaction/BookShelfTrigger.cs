@@ -13,23 +13,20 @@ namespace Player.Interaction
 
     protected override void WhenTriggered()
     {
-
       int currentSchoolYear = TimeManager.Year;
 
       //only unlock if above a certain schoolYear
       if (currentSchoolYear >= schoolYearRequired)
       {
         GameAssets.BookShelfPanel.gameObject.SetActive(true);
-              GameAssets.ShopPanel.GetComponent<BookShelfMenu>().SetUpShopList(booksInThisShelf);
-
+        GameAssets.BookShelfPanel.GetComponent<BookShelfMenu>().SetUpBookShelf(booksInThisShelf);
       }
       else
       {
         GameAssets.MessagePanel.gameObject.SetActive(true);
-        GameAssets.MessagePanel.SetMessageText("Sorry, this book shelf will unlock to you at school year "+ schoolYearRequired);
+        GameAssets.MessagePanel.SetMessageText("Sorry, this book shelf will unlock to you at school year " +
+                                               schoolYearRequired);
       }
-
     }
-
   }
 }

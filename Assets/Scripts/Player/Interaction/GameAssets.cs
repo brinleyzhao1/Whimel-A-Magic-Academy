@@ -43,7 +43,8 @@ namespace Player.Interaction
     [SerializeField] public BookShelfMenu setBookShelfPanel;
     public static BookShelfMenu BookShelfPanel;
 
-
+    [SerializeField] public GameObject setBookOnShelfPrefab;
+    public static GameObject BookOnShelfPrefab;
 
     #region UI: Other
 
@@ -71,6 +72,8 @@ namespace Player.Interaction
 
     [SerializeField] public GameObject setDialogueUi;
     public static GameObject DialogueUi;
+        #endregion
+
 
     [Header("Shop UI")] [SerializeField] public GameObject setShopPanel;
     public static GameObject ShopPanel;
@@ -81,7 +84,7 @@ namespace Player.Interaction
     [SerializeField] public GameObject setSellTray;
     public static GameObject SellTray;
 
-    #endregion
+
 
 
     // [Header("Sound")]
@@ -91,6 +94,7 @@ namespace Player.Interaction
     private void Awake()
     {
       // Player = setPlayer;
+      BookOnShelfPrefab = setBookOnShelfPrefab;
       BookShelfPanel = setBookShelfPanel;
       MessagePanel = setMessagePanel;
       PlayerInventory = setPlayerInventory;

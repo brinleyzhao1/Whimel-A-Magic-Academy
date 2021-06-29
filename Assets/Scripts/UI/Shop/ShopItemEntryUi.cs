@@ -8,7 +8,7 @@ namespace UI.Shop
 {
   public class ShopItemEntryUi : MonoBehaviour
   {
-    private string itemId;
+    // private string itemId;
     private InventoryItem thisItem;
 
     [Header("from children")]
@@ -20,11 +20,8 @@ namespace UI.Shop
     public void SetUp(InventoryItem item)
     {
       entryImage.sprite = item.GetIcon();
-      entryNameText.text = item.name;
+      entryNameText.text = item.GetDisplayName();
       entryPriceText.text = item.buyingPrice.ToString();
-      // transform.GetChild(0).GetComponent<Image>().sprite = item.GetIcon();
-      // transform.GetChild(1).GetComponent<TMP_Text>().text = item.name;
-      // transform.GetChild(3).GetComponent<TMP_Text>().text = item.buyingPrice.ToString();
 
       thisItem = item;
     }
