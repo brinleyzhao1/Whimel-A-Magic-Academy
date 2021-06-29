@@ -1,4 +1,5 @@
 ﻿
+using System.Collections;
 using Course_System;
 using Endings;
 using GameDev.tv_Assets.Scripts.Saving;
@@ -130,6 +131,17 @@ public class TimeManager : MonoBehaviour, ISaveable
       }
     }
 
+
+    public IEnumerator CountDownWithText(int timeLeft, TextMeshProUGUI timeCountDownText) //todo same as in brewing, can abstract to timemanager
+    {
+
+      while (timeLeft > 0)
+      {
+        yield return new WaitForSeconds(1);
+        timeLeft -= 1;
+        timeCountDownText.text = timeLeft.ToString() + "s";
+      }
+    }
     private void UpdateHourOnNPCs()
     {
       // BroadcastMessage("UpdateHo  ur", hour);

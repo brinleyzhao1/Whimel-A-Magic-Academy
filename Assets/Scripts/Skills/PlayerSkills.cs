@@ -68,13 +68,13 @@ namespace Skills
     }
 
 
-    private void Update() //testing purpose
-    {
-      if (Input.GetKeyDown(KeyCode.U))
-      {
-        AddExperienceToSkill(SkillTypeEnum.Herbology, 20);
-      }
-    }
+    // private void Update() //testing purpose
+    // {
+    //   if (Input.GetKeyDown(KeyCode.U))
+    //   {
+    //     AddExperienceToSkill(SkillTypeEnum.Herbology, 20);
+    //   }
+    // }
 
     // private void SetupSkillDictionaryAllToZero()
     // {

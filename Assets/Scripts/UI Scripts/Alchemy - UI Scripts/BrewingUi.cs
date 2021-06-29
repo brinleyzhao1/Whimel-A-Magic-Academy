@@ -28,7 +28,7 @@ namespace UI
     private PotionRecipeScriptableObject thisRecipe = null;
 
     private bool canBrew;
-    // [SerializeField] private
+
 
     private void OnEnable()
     {
@@ -48,7 +48,10 @@ namespace UI
       brewButton.gameObject.GetComponent<Image>().color = Color.white;
     }
 
-    //when selected, update visual
+    /// <summary>
+    /// when selected, update visual
+    /// </summary>
+    /// <param name="recipe"></param>
     public void UpdateDisplayedInfo(PotionRecipeScriptableObject recipe)
     {
       thisRecipe = recipe;
@@ -91,23 +94,14 @@ namespace UI
       }
     }
 
-    IEnumerator CountDown()
-    {
-      int timeLeft = thisRecipe.timeNeedToBrew;
-      while (timeLeft > 0)
-      {
-        yield return new WaitForSeconds(1);
-        // print(1);
-        timeLeft -= 1;
-        timeCountDownText.text = timeLeft.ToString();
-      }
-    }
+
 
     IEnumerator Brew()
     {
       //wait some seconds / animation
       // yield return new WaitForSeconds(thisRecipe.timeNeedToBrew);
-      yield return StartCoroutine(CountDown());
+
+      yield return StartCoroutine(TimeManager.Instance.CountDownWithText(thisRecipe.timeNeedToBrew, timeCountDownText));
 
       //subtract all ingredients from inventory
       GameAssets.PlayerInventory.RemoveItemsFromInventory(thisRecipe.ingredient1, thisRecipe.quantity1);
@@ -127,7 +121,8 @@ namespace UI
 
     }
 
-    public bool CheckIfHaveAllIngredients(PotionRecipeScriptableObject recipe)
+
+    private bool CheckIfHaveAllIngredients(PotionRecipeScriptableObject recipe)
     {
       int quantityRequired1 = recipe.quantity1;
       int quantityHave1 = GameAssets.PlayerInventory.TotalAmountHave(recipe.ingredient1);

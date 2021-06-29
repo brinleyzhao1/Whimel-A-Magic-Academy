@@ -50,13 +50,13 @@ namespace Player
     }
 
 
-    private void Update() //testing purpose
-    {
-      if (Input.GetKeyDown(KeyCode.C))
-      {
-        UpdateOneStatByValue(Stats.Charisma, 20);
-      }
-    }
+    // private void Update() //testing purpose
+    // {
+    //   if (Input.GetKeyDown(KeyCode.C))
+    //   {
+    //     UpdateOneStatByValue(Stats.Charisma, 20);
+    //   }
+    // }
 
     private void SetupStatDictionaryAllToZero()
     {

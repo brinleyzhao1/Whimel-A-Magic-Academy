@@ -1,4 +1,7 @@
+using System;
 using GameDev.tv_Assets.Scripts.Inventories;
+using Player;
+using Skills;
 using UnityEngine;
 
 namespace Library
@@ -8,8 +11,31 @@ namespace Library
   {
   public int level = 1;
 
-    //type: info (world building), potion, herb, etc
+  public int timeNeedToRead = 5;//seconds
+  //type: info (world building), potion, herb, etc
 
-    //reward
+  [Header("Rewards")]
+  public StatReward statReward1;
+  public SkillExpReward expReward2;
+
+  #region reward structs
+
+   [Serializable]
+    public class StatReward
+    {
+      [SerializeField] public Stats rewardStats;
+      public int value;
+    }
+
+    [Serializable]
+    public class SkillExpReward
+    {
+      [SerializeField] public SkillTypeEnum rewardSkill;
+      public int expValue;
+    }
+
+  #endregion
+
+  //reward
   }
 }

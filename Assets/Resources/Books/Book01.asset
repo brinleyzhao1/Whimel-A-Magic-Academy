@@ -21,3 +21,10 @@ MonoBehaviour:
   inGame3DPickup: {fileID: 0}
   stackable: 0
   level: 1
+  timeNeedToRead: 5
+  statReward1:
+    rewardStats: 0
+    value: 2
+  expReward2:
+    rewardSkill: 0
+    expValue: 3
