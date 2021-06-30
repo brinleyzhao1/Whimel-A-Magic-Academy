@@ -40,7 +40,7 @@ namespace UI_Scripts
       if (!inProcessOfReading)
       {
         StartCoroutine(Read());
-        SetUpBookDetail(thisBook); //refresh the visual, especially the timer
+
       }
 
     }
@@ -55,6 +55,10 @@ namespace UI_Scripts
       //todo: for now add each by hand, might want to consider using a list in the future
       PlayerStats.Instance.UpdateOneStatByValue(thisBook.statReward1.rewardStats, thisBook.statReward1.value);
       PlayerSkills.Instance.AddExperienceToSkill(thisBook.expReward2.rewardSkill, thisBook.expReward2.expValue);
+
+      TimeManager.Instance.FastForwardByRealLifeSeconds(thisBook.timeNeedToRead);
+
+      SetUpBookDetail(thisBook); //refresh the visual, especially the timer
 
       inProcessOfReading = false;
     }

@@ -35,6 +35,7 @@ public class TimeManager : MonoBehaviour, ISaveable
 
   [SerializeField] private int totalInGameYears = 3;
   [SerializeField] private int daysPerYear = 14;
+  [SerializeField] private int  minutesPerRealLifeSecond = 30;
   [SerializeField] [TextArea]private string newYearMessage;
 
   private const int TimeScale = 800; //the bigger the faster in-game time is
@@ -132,7 +133,7 @@ public class TimeManager : MonoBehaviour, ISaveable
     }
 
 
-    public IEnumerator CountDownWithText(int timeLeft, TextMeshProUGUI timeCountDownText) //todo same as in brewing, can abstract to timemanager
+    public IEnumerator CountDownWithText(int timeLeft, TextMeshProUGUI timeCountDownText) 
     {
 
       while (timeLeft > 0)
@@ -141,6 +142,17 @@ public class TimeManager : MonoBehaviour, ISaveable
         timeLeft -= 1;
         timeCountDownText.text = timeLeft.ToString() + "s";
       }
+    }
+
+    public void FastForwardByRealLifeSeconds(int seconds) //todo: another method is to temporarily temper with timeRate
+    {
+      int inGameMinutesPassed = seconds * minutesPerRealLifeSecond;
+
+      int min = Minute + inGameMinutesPassed;
+      int hourDiff = Mathf.FloorToInt(min / 60);
+      Hour += hourDiff;
+      Minute = min % 60;
+
     }
     private void UpdateHourOnNPCs()
     {

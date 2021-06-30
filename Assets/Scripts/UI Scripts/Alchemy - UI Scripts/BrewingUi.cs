@@ -112,6 +112,8 @@ namespace UI
       //add final potion to inventory
       GameAssets.PlayerInventory.AddToFirstEmptySlot(thisRecipe.finalPotion, 1);
 
+      TimeManager.Instance.FastForwardByRealLifeSeconds(thisRecipe.timeNeedToBrew);
+
       UpdateDisplayedInfo(thisRecipe);
 
       if (playerInventoryUi.isActiveAndEnabled) //probably is not active
