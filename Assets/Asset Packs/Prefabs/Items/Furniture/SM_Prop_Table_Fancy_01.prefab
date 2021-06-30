@@ -124,3 +124,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notMealTimeMessage: Come back during lunch or dinner!s
+  lunchMenu:
+  - {fileID: 11400000, guid: 03d61a29c630e4c0286a0b789968c361, type: 2}
+  - {fileID: 11400000, guid: a916259748ce9424a8c9f1b9284dc3c3, type: 2}
+  dinnerMenu:
+  - {fileID: 11400000, guid: 60cc39618bd4448f39ce1b9463bb5cc5, type: 2}
+  - {fileID: 11400000, guid: 03d61a29c630e4c0286a0b789968c361, type: 2}

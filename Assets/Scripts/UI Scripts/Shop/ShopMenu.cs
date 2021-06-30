@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using GameDev.tv_Assets.Scripts.Inventories;
 using Player.Interaction;
+using UI;
+using UI.Shop;
 using UnityEngine;
 
-namespace UI.Shop
+namespace UI_Scripts.Shop
 {
   /// <summary>
   /// to be put on ui shop panel
@@ -12,6 +14,7 @@ namespace UI.Shop
   {
     [SerializeField] private Transform shopItemsContainer;
 
+    //todo: abstraction, with DiningMenu
 
     public void SetUpShopList(List<InventoryItem> itemsForSell)
     {

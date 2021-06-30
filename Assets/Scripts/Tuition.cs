@@ -20,7 +20,7 @@ public class Tuition : MonoBehaviour
   private void Start()
   {
     TimeManager.Instance.NewSchoolYear += AskForTuition;
-    print(1);
+
   }
 
   private void AskForTuition()

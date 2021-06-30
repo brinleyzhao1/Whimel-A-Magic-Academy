@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using Image = UnityEngine.UI.Image;
 
-namespace UI.Shop
+namespace UI_Scripts.Shop
 {
   public class ShopItemEntryUi : MonoBehaviour
   {

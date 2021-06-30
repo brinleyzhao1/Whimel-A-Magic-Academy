@@ -1,4 +1,7 @@
-﻿using UI;
+﻿using System.Collections.Generic;
+using GameDev.tv_Assets.Scripts.Inventories;
+using UI;
+using UI_Scripts.Dining;
 using UnityEngine;
 
 namespace Player.Interaction
@@ -6,6 +9,10 @@ namespace Player.Interaction
   public class DiningTrigger : TriggerUi
   {
     [SerializeField][TextArea] private string notMealTimeMessage = "Come back during lunch or dinner!s";
+
+
+    public List<ActionScriptableItem> lunchMenu = new List<ActionScriptableItem>();
+    public List<ActionScriptableItem> dinnerMenu = new List<ActionScriptableItem>();
 
     private bool isLunchTime;
     private bool isDinnerTime;
@@ -19,13 +26,18 @@ namespace Player.Interaction
         GameAssets.MessagePanel.SetMessageText(notMealTimeMessage);
       }
 
-      // GameAssets.ShopPanel.gameObject.SetActive(true);
-      // GameAssets.ShopPanel.GetComponent<ShopMenu>().SetUpShopList(itemsForSell);
-      // FindObjectOfType<ShowHideUiWithKey>().OpenOrCloseTabs();
-      // FindObjectOfType<SwitchTabs>().SwitchToInventoryTab();
+      if (isLunchTime)
+      {
+        GameAssets.DiningPanel.gameObject.SetActive(true);
+        GameAssets.DiningPanel.GetComponent<DiningMenu>().SetUpDiningList(lunchMenu);
 
+      }
+      if (isDinnerTime)
+      {
+        GameAssets.DiningPanel.gameObject.SetActive(true);
+        GameAssets.DiningPanel.GetComponent<DiningMenu>().SetUpDiningList(dinnerMenu);
 
-      // GameAssets.SellTray.gameObject.SetActive(true);
+      }
     }
 
     private void CheckIfIsMealTime()

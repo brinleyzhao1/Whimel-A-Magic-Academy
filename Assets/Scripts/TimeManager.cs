@@ -56,8 +56,6 @@ public class TimeManager : MonoBehaviour, ISaveable
     _playerEnergy = FindObjectOfType<PlayerEnergy>();
     clockText.text = "0:0";
 
-    // if (NewSchoolYear == null)
-    //   NewSchoolYear = new Action();
   }
 
   // Update is called once per frame
@@ -68,7 +66,7 @@ public class TimeManager : MonoBehaviour, ISaveable
 
     if (Input.GetKeyDown(KeyCode.R))
     {
-      Day += 3;
+      Hour += 1;
     }
   }
 

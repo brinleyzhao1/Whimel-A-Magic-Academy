@@ -9,9 +9,9 @@ namespace Player.Interaction
     [Header("Core")]
     // [SerializeField] public GameObject setPlayer;
     // public static GameObject Player;
-
     [SerializeField]
     private Inventory setPlayerInventory;
+
     public static Inventory PlayerInventory;
 
     [Header("UI: Tabs")] [SerializeField] public GameObject setInventoryTab;
@@ -29,8 +29,9 @@ namespace Player.Interaction
     [SerializeField] public GameObject setScheduleTab;
     public static GameObject ScheduleTab;
 
-    [Header("UI: Alchemy")]
-    [SerializeField] public GameObject setRecipeItemUiPrefab;
+    [Header("UI: Alchemy")] [SerializeField]
+    public GameObject setRecipeItemUiPrefab;
+
     public static GameObject RecipeItemUi;
 
     [SerializeField] public GameObject setRecipeBookPanel;
@@ -39,8 +40,9 @@ namespace Player.Interaction
     [SerializeField] public BrewingUi setBrewPanel;
     public static BrewingUi BrewPanel;
 
-    [Header("UI: Library")]
-    [SerializeField] public BookShelfMenu setBookShelfPanel;
+    [Header("UI: Library")] [SerializeField]
+    public BookShelfMenu setBookShelfPanel;
+
     public static BookShelfMenu BookShelfPanel;
 
     [SerializeField] public GameObject setBookOnShelfPrefab;
@@ -51,8 +53,7 @@ namespace Player.Interaction
 
     #region UI: Other
 
-    [Header("UI: Other")]
-    [SerializeField] public SetMessage setMessagePanel;
+    [Header("UI: Other")] [SerializeField] public SetMessage setMessagePanel;
     public static SetMessage MessagePanel;
 
     [SerializeField] public GameObject setSleepPanel;
@@ -75,7 +76,15 @@ namespace Player.Interaction
 
     [SerializeField] public GameObject setDialogueUi;
     public static GameObject DialogueUi;
-        #endregion
+
+    #endregion
+
+    [Header("Dining UI")]
+    [SerializeField] public GameObject setDiningPanel;
+    public static GameObject DiningPanel;
+
+    [SerializeField] public GameObject setDiningItem;
+    public static GameObject DiningItem;
 
 
     [Header("Shop UI")] [SerializeField] public GameObject setShopPanel;
@@ -88,8 +97,6 @@ namespace Player.Interaction
     public static GameObject SellTray;
 
 
-
-
     // [Header("Sound")]
     // [SerializeField] public GameObject setUiPaperSound;
     // public static GameObject UiPaperSound;
@@ -97,6 +104,8 @@ namespace Player.Interaction
     private void Awake()
     {
       // Player = setPlayer;
+      DiningPanel = setDiningPanel;
+      DiningItem = setDiningItem;
       BookDetailPanel = setBookDetailPanel;
       BookOnShelfPrefab = setBookOnShelfPrefab;
       BookShelfPanel = setBookShelfPanel;

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using GameDev.tv_Assets.Scripts.Inventories;
 using UI;
+using UI_Scripts.Shop;
 using UI.Shop;
 
 namespace Player.Interaction
@@ -19,7 +20,7 @@ namespace Player.Interaction
 
 
       GameAssets.SellTray.gameObject.SetActive(true);
-      
+
     }
 
   }
