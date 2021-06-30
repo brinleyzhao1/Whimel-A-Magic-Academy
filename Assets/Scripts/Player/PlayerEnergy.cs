@@ -11,7 +11,8 @@ namespace Player
   {
     public int maxEnergy = 100;
     public int currentEnergy = 100;
-    [SerializeField] [Range(0, 100)] private int criticalEnergyLevel = 10;
+    [SerializeField] private int maxOfMaxEnergy = 400;
+    [SerializeField] [Range(0, 100)] private int criticalEnergyPoint = 10;
     [SerializeField] private int energyCostPerHour = 2;
 
     [Header("UI")] [SerializeField] [TextArea]
@@ -19,8 +20,8 @@ namespace Player
 
     [SerializeField] [TextArea] private string criticalEnergyText;
     [SerializeField] private Image energyBar;
+    [SerializeField] private Image energyBarFill;
 
-    [SerializeField] private UiPanelGeneric forcedSleepNotificationPanel;
 
 
     private void Start()
@@ -33,13 +34,14 @@ namespace Player
       if (Input.GetKeyDown(KeyCode.T))
       {
         // ForcedToSleepHours(1);
-        UpdateEnergyByValue(-30);
+        // UpdateEnergyByValue(-30);
+        PermanentlyIncreaseEnergyUpperBound(20);
       }
     }
 
     private void UpdateEnergyUi()
     {
-      energyBar.fillAmount = currentEnergy / (float) maxEnergy;
+      energyBarFill.fillAmount = currentEnergy / (float) maxEnergy;
       // currentEnergyText.text = currentEnergy.ToString();
       // maxEnergyText.text = maxEnergy.ToString();
     }
@@ -55,7 +57,7 @@ namespace Player
       }
 
       //energy critical?
-      if (currentEnergy <= criticalEnergyLevel)
+      if (currentEnergy <= criticalEnergyPoint)
       {
         if (TimeManager.Hour <= 20)
         {
@@ -81,6 +83,15 @@ namespace Player
       {
         currentEnergy = 0;
       }
+    }
+
+    public void PermanentlyIncreaseEnergyUpperBound(int amount)
+    {
+      maxEnergy += amount;
+      maxEnergy = Mathf.Clamp(maxEnergy, 0, maxOfMaxEnergy);
+      energyBar.GetComponent<RectTransform>().sizeDelta = new Vector2(maxEnergy, 100);
+      energyBarFill.GetComponent<RectTransform>().sizeDelta = new Vector2(maxEnergy, 100);
+     UpdateEnergyUi();
     }
 
     private void ForcedToSleepHours(int sleepHour)
