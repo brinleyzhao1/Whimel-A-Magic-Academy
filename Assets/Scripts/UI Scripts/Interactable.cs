@@ -7,8 +7,7 @@ namespace UI_Scripts
 {
   public class Interactable : MonoBehaviour
   {
-    public float keyInteractableRadius = 5f;
-    public float clickInteractableRadius = 5f;
+    public float interactableRadius = 5f;
     [SerializeField] private CursorType cursorType = CursorType.UiCursor;
 
     private GameObject player;
@@ -21,13 +20,14 @@ namespace UI_Scripts
 
     private void OnMouseOver()
     {
-      CursorChanger.Instance.SetCentralCursor(cursorType);
-
-      //if within interactableRadius, can interact
       float distance = Vector3.Distance(player.transform.position, transform.position);
-      if (distance < keyInteractableRadius) //todo: if within range AND facing the interactable
+
+
+      if (distance < interactableRadius) //todo: if within range AND facing the interactable
       {
         //present [E]
+        CursorChanger.Instance.SetCentralCursor(cursorType);
+
         GameAssets.InteractHint.gameObject.SetActive(true);
         if (Input.GetKeyDown(KeyCode.F))
         {
@@ -44,7 +44,7 @@ namespace UI_Scripts
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, clickInteractableRadius))
+        if (Physics.Raycast(ray, out hit, interactableRadius))
         {
           Interact();
         }
@@ -53,6 +53,7 @@ namespace UI_Scripts
 
     private void OnMouseExit()
     {
+      GameAssets.InteractHint.gameObject.SetActive(false);
       CursorChanger.Instance.SetCentralCursor(CursorType.None);
     }
 
