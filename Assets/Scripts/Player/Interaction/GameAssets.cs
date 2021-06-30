@@ -65,6 +65,10 @@ namespace Player.Interaction
     #region UI: Other
 
     [Header("UI: Other")]
+
+    [SerializeField] public GameObject setCenterCross;
+    public static GameObject CenterCross ;
+
     [SerializeField] public GameObject setInteractHint;
     public static GameObject InteractHint ;
 
@@ -92,6 +96,8 @@ namespace Player.Interaction
 
     #endregion
 
+
+
     [Header("Dining UI")] [SerializeField] public GameObject setDiningPanel;
     public static GameObject DiningPanel;
 
@@ -115,6 +121,7 @@ namespace Player.Interaction
 
     private void Awake()
     {
+      CenterCross = setCenterCross;
       InteractHint = setInteractHint;
       Player = setPlayer;
       DiningPanel = setDiningPanel;

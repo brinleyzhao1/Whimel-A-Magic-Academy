@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Net.NetworkInformation;
+using Player.Interaction;
 using Player.Movement;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Control
 {
@@ -35,8 +36,42 @@ namespace Control
     #endregion
 
 
-    [SerializeField] private Texture2D menuCursor;
+    [SerializeField] private Texture2D defaultCursor;
     public int numberUiOut = 0;
+
+
+    [SerializeField] CursorMapping[] cursorMappings = null;
+
+    [Serializable]
+    struct CursorMapping
+    {
+      public CursorType type;
+      public Sprite sprite;
+      public Texture2D texture;
+      public Vector2 hotspot;
+    }
+
+    /// <summary>
+    /// for changing the central cross illusion of cursor in the middle of the screen
+    /// </summary>
+    /// <param name="cursorType"></param>
+    public void SetCentralCursor(CursorType cursorType)
+    {
+      CursorMapping mapping = GetCursorMapping(cursorType);
+      GameAssets.CenterCross.GetComponent<Image>().sprite = mapping.sprite;
+    }
+
+    /// <summary>
+    /// for changing a free-moving cursor
+    /// </summary>
+    /// <param name="cursorType"></param>
+    public void SetMovingCursor(CursorType cursorType)
+    {
+      CursorMapping mapping = GetCursorMapping(cursorType);
+      Cursor.SetCursor(mapping.texture, mapping.hotspot, CursorMode.Auto);
+    }
+
+
 
 
     public void OneMoreUiOut()
@@ -83,6 +118,19 @@ namespace Control
       // CursorChangeToLockedMode(); //because of the main menu UI
     }
 
+
+    private CursorMapping GetCursorMapping(CursorType cursorType)
+    {
+      foreach (CursorMapping mapping in cursorMappings)
+      {
+        if (mapping.type == cursorType)
+        {
+          return mapping;
+        }
+      }
+      return cursorMappings[0];
+    }
+
     private void CursorChangeToFreeMode()
     {
       Cursor.lockState = CursorLockMode.Locked;
@@ -97,7 +145,7 @@ namespace Control
       Cursor.visible = true;
       GetComponent<MouseLookX>().enabled = false;
       GetComponentInChildren<MouseLookY>().enabled = false;
-      Cursor.SetCursor(menuCursor, Vector2.zero, CursorMode.ForceSoftware);
+      Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.ForceSoftware);
     }
   }
 }

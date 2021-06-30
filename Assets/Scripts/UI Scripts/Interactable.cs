@@ -1,5 +1,7 @@
-﻿using Player.Interaction;
+﻿using System;
+using Player.Interaction;
 using UnityEngine;
+using Control;
 
 namespace UI_Scripts
 {
@@ -7,6 +9,7 @@ namespace UI_Scripts
   {
     public float keyInteractableRadius = 5f;
     public float clickInteractableRadius = 5f;
+    [SerializeField] private CursorType cursorType = CursorType.UiCursor;
 
     private GameObject player;
 
@@ -18,9 +21,11 @@ namespace UI_Scripts
 
     private void OnMouseOver()
     {
+      CursorChanger.Instance.SetCentralCursor(cursorType);
+
       //if within interactableRadius, can interact
       float distance = Vector3.Distance(player.transform.position, transform.position);
-      if (distance < keyInteractableRadius) //todo: question - should interactableRadius be the same for clicking?
+      if (distance < keyInteractableRadius) //todo: if within range AND facing the interactable
       {
         //present [E]
         GameAssets.InteractHint.gameObject.SetActive(true);
@@ -44,6 +49,11 @@ namespace UI_Scripts
           Interact();
         }
       }
+    }
+
+    private void OnMouseExit()
+    {
+      CursorChanger.Instance.SetCentralCursor(CursorType.None);
     }
 
 
