@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 23831907286010132}
   - component: {fileID: 64578851719435118}
   - component: {fileID: 7550884310002159267}
+  - component: {fileID: 4278490100601776082}
   m_Layer: 0
   m_Name: SM_Prop_Table_Fancy_01
   m_TagString: Untagged
@@ -105,8 +106,21 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1925423263558212}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.870029, y: 0.8982232, z: 4.590738}
   m_Center: {x: 0, y: 0.44431445, z: 0}
+--- !u!114 &4278490100601776082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925423263558212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06877c78baab5459895a19dcae35f0a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notMealTimeMessage: Come back during lunch or dinner!s
