@@ -14,7 +14,7 @@ namespace UI_Scripts.Dining
   public class DiningItemEntryUi : MonoBehaviour
   {
     // private string itemId;
-    private ActionScriptableItem thisItem;
+    private ActionScriptableItem thisFood;
 
     [Header("from children")] [SerializeField]
     private Image entryImage;
@@ -27,15 +27,17 @@ namespace UI_Scripts.Dining
       entryImage.sprite = item.GetIcon();
       entryNameText.text = item.GetDisplayName();
 
-      thisItem = item;
+      thisFood = item;
     }
 
     public void ButtonEat()
     {
       var player = GameObject.FindGameObjectWithTag("Player");
-      var inventory = player.GetComponent<Inventory>();
-      inventory.AddToFirstEmptySlot(thisItem, 1);
-      player.GetComponent<Money>().AddOrMinusMoney(-thisItem.buyingPrice);
+      // var inventory = player.GetComponent<Inventory>();
+      thisFood.Use(player);
+      //todo: limit to only energy change
+      // inventory.AddToFirstEmptySlot(thisFood, 1);
+      // player.GetComponent<Money>().AddOrMinusMoney(-thisFood.buyingPrice);
     }
   }
 }

@@ -30,11 +30,11 @@ namespace Player
 
     private void Update() //todo test purpose
     {
-      // if (Input.GetKeyDown(KeyCode.T))
-      // {
-      //   // ForcedToSleepHours(1);
-      //   UpdateEnergyByValue(-30);
-      // }
+      if (Input.GetKeyDown(KeyCode.T))
+      {
+        // ForcedToSleepHours(1);
+        UpdateEnergyByValue(-30);
+      }
     }
 
     private void UpdateEnergyUi()
