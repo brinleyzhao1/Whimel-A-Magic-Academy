@@ -15,17 +15,14 @@ namespace Player
 
     private static PlayerStats _instance;
 
-    public static PlayerStats Instance
-    {
-      get { return _instance; }
-    }
+    public static PlayerStats Instance => _instance;
 
 
     private void Awake()
     {
       if (_instance != null && _instance != this)
       {
-        Destroy(this.gameObject);
+        Destroy(gameObject);
       }
       else
       {

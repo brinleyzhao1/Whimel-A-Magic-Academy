@@ -1,5 +1,4 @@
 ﻿using GameDev.tv_Assets.Scripts.Inventories;
-using GameDevTV.Inventories;
 using UnityEngine;
 
 namespace GameDev.tv_Assets.Scripts.UI.Inventories

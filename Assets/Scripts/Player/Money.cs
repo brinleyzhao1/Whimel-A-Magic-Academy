@@ -8,9 +8,32 @@ namespace Player
 {
   public class Money : MonoBehaviour, ISaveable
   {
+    #region Singleton
+
+    private static Money _instance;
+
+    public static Money Instance => _instance;
+
+
+    private void Awake()
+    {
+      if (_instance != null && _instance != this)
+      {
+        Destroy(gameObject);
+      }
+      else
+      {
+        _instance = this;
+      }
+    }
+
+    #endregion
+
+
     [SerializeField] private TextMeshProUGUI moneyText;
 
-    [SerializeField] private int money;
+    public int money;
+
 
     private void Start()
     {
@@ -32,6 +55,7 @@ namespace Player
       {
         money = 0;
       }
+
       UpdateMoneyUi();
     }
 
@@ -39,7 +63,6 @@ namespace Player
     {
       moneyText.text = money.ToString();
     }
-
 
 
     public object CaptureState()
