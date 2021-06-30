@@ -5,10 +5,10 @@
 //   public class ForgeTrigger : CraftingTrigger
 //   {
 //     // private readonly CraftingSystem _craftingSystem = GameAssets.CraftingPanel.GetComponent<CraftingSystem>();
-//     protected override void WhenTriggered()
+//     protected override void Interact()
 //     {
 //       CraftingSystem _craftingSystem = GameAssets.CraftingPanel.GetComponent<CraftingSystem>();
-//       base.WhenTriggered();
+//       base.Interact();
 //       _craftingSystem.alchemyOrForge = CraftingSystem.CraftMode.Forge;
 //       FindObjectOfType<CraftingInventoryUi>().alchemyOrForge = CraftingSystem.CraftMode.Forge;
 //

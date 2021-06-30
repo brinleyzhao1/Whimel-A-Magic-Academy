@@ -45,7 +45,7 @@ public class ChaseState : StateMachineBehaviour
         }
     }
 
-    //Tries RepathCount times to find a path near the player, increasing the radius each time.
+    //Tries RepathCount times to find a path near the player, increasing the interactableRadius each time.
     //This is needed in case the player is not on valid Navmesh
     public void SetDestinationNearTarget(NavMeshAgent _agent, PlayerExample _target)
     {

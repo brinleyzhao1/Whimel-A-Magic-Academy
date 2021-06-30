@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
+using Control;
 using GameDev.tv_Assets.Scripts.Inventories;
 using UI;
+using UI_Scripts;
 using UI_Scripts.Dining;
 using UnityEngine;
 
 namespace Player.Interaction
 {
-  public class DiningTrigger : TriggerUi
+  public class DiningTrigger : Interactable
   {
     [SerializeField][TextArea] private string notMealTimeMessage = "Come back during lunch or dinner!s";
 
@@ -16,8 +18,9 @@ namespace Player.Interaction
 
     private bool isLunchTime;
     private bool isDinnerTime;
-    protected override void WhenTriggered()
+    protected override void Interact()
     {
+      FindObjectOfType<CursorChanger>().OneMoreUiOut();
       CheckIfIsMealTime();
 
       if (!isLunchTime && !isDinnerTime) //if not in meal time

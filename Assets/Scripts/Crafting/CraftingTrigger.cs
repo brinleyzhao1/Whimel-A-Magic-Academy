@@ -4,10 +4,10 @@
 //
 // namespace Crafting
 // {
-//   public class CraftingTrigger : TriggerUi
+//   public class CraftingTrigger : Interactable
 //   {
 //
-//     protected override void WhenTriggered()
+//     protected override void Interact()
 //     {
 //       FindObjectOfType<ShowHideUiWithKey>().OpenOrCloseTabs();
 //       FindObjectOfType<SwitchTabs>().SwitchToInventoryTab();

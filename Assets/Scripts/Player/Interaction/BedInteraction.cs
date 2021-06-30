@@ -1,10 +1,11 @@
 ﻿using Control;
 using UI;
+using UI_Scripts;
 using UnityEngine;
 
 namespace Player.Interaction
 {
-  public class BedInteraction : TriggerUi
+  public class BedInteraction : Interactable
   {
     // private void OnMouseOver()
     // {
@@ -22,8 +23,9 @@ namespace Player.Interaction
     //   }
     // }
 
-    protected override void WhenTriggered()
+    protected override void Interact()
     {
+      FindObjectOfType<CursorChanger>().OneMoreUiOut();
       GameAssets.SleepPanel.gameObject.SetActive(true);
       // FindObjectOfType<CursorChanger>().CursorChangeToLockedMode();
     }

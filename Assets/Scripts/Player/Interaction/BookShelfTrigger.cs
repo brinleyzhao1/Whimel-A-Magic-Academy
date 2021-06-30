@@ -1,18 +1,22 @@
 ﻿using System.Collections.Generic;
+using Control;
 using Library;
 using UI;
+using UI_Scripts;
 using UnityEngine;
 
 namespace Player.Interaction
 {
-  public class BookShelfTrigger : TriggerUi
+  public class BookShelfTrigger : Interactable
   {
     public int schoolYearRequired = 1;
     public List<BookItem> booksInThisShelf = new List<BookItem>();
 
 
-    protected override void WhenTriggered()
+    protected override void Interact()
     {
+      FindObjectOfType<CursorChanger>().OneMoreUiOut();
+
       int currentSchoolYear = TimeManager.Year;
 
       //only unlock if above a certain schoolYear

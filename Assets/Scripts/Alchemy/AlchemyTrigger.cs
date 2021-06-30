@@ -4,10 +4,10 @@
 //
 // namespace Alchemy
 // {
-//   public class AlchemyTrigger : TriggerUi
+//   public class AlchemyTrigger : Interactable
 //   {
 //     [SerializeField] private GameObject alchemySystem;
-//     protected override void WhenTriggered()
+//     protected override void Interact()
 //     {
 //
 //       FindObjectOfType<ShowHideUiWithKey>().OpenOrCloseTabs();

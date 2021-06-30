@@ -6,13 +6,14 @@ namespace Player.Interaction
 {
   public class GameAssets : MonoBehaviour
   {
-    [Header("Core")]
-    // [SerializeField] public GameObject setPlayer;
-    // public static GameObject Player;
-    [SerializeField]
-    private Inventory setPlayerInventory;
+    [Header("Core")] [SerializeField] public GameObject setPlayer;
+    public static GameObject Player;
+
+    [SerializeField] private Inventory setPlayerInventory;
 
     public static Inventory PlayerInventory;
+
+    #region Tabs
 
     [Header("UI: Tabs")] [SerializeField] public GameObject setInventoryTab;
     public static GameObject InventoryTab;
@@ -29,6 +30,10 @@ namespace Player.Interaction
     [SerializeField] public GameObject setScheduleTab;
     public static GameObject ScheduleTab;
 
+    #endregion
+
+    #region Alchemy
+
     [Header("UI: Alchemy")] [SerializeField]
     public GameObject setRecipeItemUiPrefab;
 
@@ -39,6 +44,12 @@ namespace Player.Interaction
 
     [SerializeField] public BrewingUi setBrewPanel;
     public static BrewingUi BrewPanel;
+
+    [SerializeField] public GameObject setPotionPanel;
+    public static GameObject PotionPanel;
+
+    #endregion
+
 
     [Header("UI: Library")] [SerializeField]
     public BookShelfMenu setBookShelfPanel;
@@ -53,7 +64,11 @@ namespace Player.Interaction
 
     #region UI: Other
 
-    [Header("UI: Other")] [SerializeField] public SetMessage setMessagePanel;
+    [Header("UI: Other")]
+    [SerializeField] public GameObject setInteractHint;
+    public static GameObject InteractHint ;
+
+    [SerializeField] public SetMessage setMessagePanel;
     public static SetMessage MessagePanel;
 
     [SerializeField] public GameObject setSleepPanel;
@@ -62,8 +77,6 @@ namespace Player.Interaction
     [SerializeField] public GameObject setChestPanel;
     public static GameObject ChestPanel;
 
-    [SerializeField] public GameObject setPotionPanel;
-    public static GameObject PotionPanel;
 
     [SerializeField] public GameObject setCraftingPanel;
     public static GameObject CraftingPanel;
@@ -79,8 +92,7 @@ namespace Player.Interaction
 
     #endregion
 
-    [Header("Dining UI")]
-    [SerializeField] public GameObject setDiningPanel;
+    [Header("Dining UI")] [SerializeField] public GameObject setDiningPanel;
     public static GameObject DiningPanel;
 
     [SerializeField] public GameObject setDiningItem;
@@ -103,7 +115,8 @@ namespace Player.Interaction
 
     private void Awake()
     {
-      // Player = setPlayer;
+      InteractHint = setInteractHint;
+      Player = setPlayer;
       DiningPanel = setDiningPanel;
       DiningItem = setDiningItem;
       BookDetailPanel = setBookDetailPanel;
