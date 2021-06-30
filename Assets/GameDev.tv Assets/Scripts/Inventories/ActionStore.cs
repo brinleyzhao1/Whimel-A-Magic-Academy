@@ -58,7 +58,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
     /// <summary>
     /// Get the action at the given index.
     /// </summary>
-    public ActionScriptableItem GetAction(int index)
+    public ActionScriptableItem GetActionItem(int index)
     {
       if (dockedItems.ContainsKey(index))
       {
@@ -204,7 +204,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
     //todo add currentSelectedItem to saves
 
     /// PRIVATE
-    [System.Serializable]
+    [Serializable]
     private struct DockedItemRecord
     {
       public string itemId;

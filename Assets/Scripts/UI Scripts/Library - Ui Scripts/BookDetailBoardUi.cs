@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Library;
 using Player;
-using Player.Interaction;
 using Skills;
 using TMPro;
 using UnityEngine;
@@ -23,6 +22,8 @@ namespace UI_Scripts
     [SerializeField] private TextMeshProUGUI lvlText;
     [SerializeField] private TextMeshProUGUI timeText;
 
+    private bool inProcessOfReading;
+
     public void SetUpBookDetail(BookItem book)
     {
       iconImage.sprite = book.GetIcon();
@@ -36,13 +37,17 @@ namespace UI_Scripts
 
     public void ButtonReadThisBook() //activity
     {
-      StartCoroutine(Read());
+      if (!inProcessOfReading)
+      {
+        StartCoroutine(Read());
+        SetUpBookDetail(thisBook); //refresh the visual, especially the timer
+      }
+
     }
 
     IEnumerator Read()
     {
-      //todo: limit players from reading when a reading activity is already going on
-
+      inProcessOfReading = true;
       //wait some seconds / animation
       yield return StartCoroutine(TimeManager.Instance.CountDownWithText(thisBook.timeNeedToRead, timeText));
 
@@ -50,7 +55,8 @@ namespace UI_Scripts
       //todo: for now add each by hand, might want to consider using a list in the future
       PlayerStats.Instance.UpdateOneStatByValue(thisBook.statReward1.rewardStats, thisBook.statReward1.value);
       PlayerSkills.Instance.AddExperienceToSkill(thisBook.expReward2.rewardSkill, thisBook.expReward2.expValue);
-      
+
+      inProcessOfReading = false;
     }
   }
 }

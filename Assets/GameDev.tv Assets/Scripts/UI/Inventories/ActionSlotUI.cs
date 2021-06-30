@@ -36,7 +36,7 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
 
     public InventoryItem GetItem()
     {
-      return actionStore.GetAction(index);
+      return actionStore.GetActionItem(index);
     }
 
     public int GetNumber()

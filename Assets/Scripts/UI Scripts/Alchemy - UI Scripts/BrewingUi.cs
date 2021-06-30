@@ -27,7 +27,8 @@ namespace UI
 
     private PotionRecipeScriptableObject thisRecipe = null;
 
-    private bool canBrew;
+    private bool haveAllIngredientsCanBrew;
+    private bool inProcessOfBrewing;
 
 
     private void OnEnable()
@@ -44,7 +45,7 @@ namespace UI
       ingredientSlot1.UpdateIcon(null, 0);
       ingredientSlot2.UpdateIcon(null, 0);
       ingredientSlot3.UpdateIcon(null, 0);
-      canBrew = false;
+      haveAllIngredientsCanBrew = false;
       brewButton.gameObject.GetComponent<Image>().color = Color.white;
     }
 
@@ -68,19 +69,19 @@ namespace UI
       if (!CheckIfHaveAllIngredients(recipe))
       {
         brewButton.gameObject.GetComponent<Image>().color = Color.gray;
-        canBrew = false;
+        haveAllIngredientsCanBrew = false;
       }
       else
       {
         brewButton.gameObject.GetComponent<Image>().color = Color.white;
-        canBrew = true;
+        haveAllIngredientsCanBrew = true;
       }
     }
 
 
     public void ButtonBrew()
     {
-      if (canBrew)
+      if (haveAllIngredientsCanBrew && !inProcessOfBrewing)
       {
         StartCoroutine(Brew());
       }
@@ -100,7 +101,7 @@ namespace UI
     {
       //wait some seconds / animation
       // yield return new WaitForSeconds(thisRecipe.timeNeedToBrew);
-
+      inProcessOfBrewing = true;
       yield return StartCoroutine(TimeManager.Instance.CountDownWithText(thisRecipe.timeNeedToBrew, timeCountDownText));
 
       //subtract all ingredients from inventory
@@ -118,7 +119,7 @@ namespace UI
          playerInventoryUi.Redraw();
       }
 
-
+      inProcessOfBrewing = false;
     }
 
 
