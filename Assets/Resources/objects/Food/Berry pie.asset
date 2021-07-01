@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7970efe4ec7b3420195bd065085214e9, type: 3}
+  m_Name: Berry pie
+  m_EditorClassIdentifier: 
+  displayName: berry pie
+  itemID: 98d17071-6c3b-4409-b514-11518f82ac60
+  buyingPrice: 10
+  sellingPrice: 5
+  description: 
+  icon: {fileID: 21300000, guid: bd14aacbeb1de4170b6df96f51252ceb, type: 3}
+  inGame3DPickup: {fileID: -8791278466660215238, guid: 7cc4832def3b5a2469b0b020b797d26a,
+    type: 3}
+  stackable: 1
+  directlyConsumable: 1
+  energyChange: 30

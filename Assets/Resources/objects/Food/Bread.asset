@@ -17,8 +17,8 @@ MonoBehaviour:
   buyingPrice: 10
   sellingPrice: 5
   description: 
-  icon: {fileID: 21300000, guid: 40fc7dbcd954a4b3598e0e1cb1fa155e, type: 3}
-  inGame3DPickup: {fileID: 467602121696786876, guid: 11144f05dee6445e8bf0e57ea8c46881,
+  icon: {fileID: 21300000, guid: 37f3f705b2cc8432cbb69cec43b85655, type: 3}
+  inGame3DPickup: {fileID: -2647885097120286732, guid: 84e4c8146d27c4644a3f80d2087c93a2,
     type: 3}
   stackable: 1
   directlyConsumable: 1

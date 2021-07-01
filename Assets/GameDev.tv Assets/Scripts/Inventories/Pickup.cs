@@ -1,4 +1,5 @@
-﻿using GameDevTV.Inventories;
+﻿using Control;
+using GameDevTV.Inventories;
 using UnityEngine;
 
 namespace GameDev.tv_Assets.Scripts.Inventories
@@ -7,6 +8,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
     /// To be placed at the root of a Pickup prefab. Contains the data about the
     /// pickup such as the type of item and the number.
     /// </summary>
+     [RequireComponent(typeof(ClickablePickup))]
     public class Pickup : MonoBehaviour
     {
         // STATE
