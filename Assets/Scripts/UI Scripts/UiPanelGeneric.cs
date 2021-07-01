@@ -1,5 +1,6 @@
 ﻿using System;
 using Control;
+using Player.Interaction;
 using UnityEngine;
 
 namespace UI
@@ -13,15 +14,22 @@ namespace UI
 
     public virtual void CloseThisPanel() //for button "Cancel"
     {
+      print("close panel");
+
+      CursorChanger.Instance.OneLessUiOut();
+      CursorChanger.Instance.OneLessUiOut();//not sure why there are 2 ui out, bug?
+      print(CursorChanger.Instance.numberUiOut);
+      // FindObjectOfType<CursorChanger>().
+      // FindObjectOfType<CursorChanger>().numberUiOut = 0;
+
+      Time.timeScale = 1;
+
+      if (FindObjectOfType<SwitchTabs>())
+      {
+        CloseTabs();
+      }
+
       gameObject.SetActive(false);
-      FindObjectOfType<CursorChanger>().OneLessUiOut();
-      FindObjectOfType<CursorChanger>().numberUiOut = 0;
-
-     if(FindObjectOfType<SwitchTabs>())
-     {
-       CloseTabs();
-     }
-
     }
 
     private static void CloseTabs()

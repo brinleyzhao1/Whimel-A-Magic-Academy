@@ -43,7 +43,7 @@ public class TimeManager : MonoBehaviour, ISaveable
   public TextMeshProUGUI dayText;
   public TextMeshProUGUI clockText;
 
-  public static int Minute, Hour, Day, Year = 1;
+  public static int Minute, Hour, Day=1, Year = 1;
 
   private static float _second;
 
@@ -102,7 +102,7 @@ public class TimeManager : MonoBehaviour, ISaveable
     else if (Hour >= 24)
     {
       Day++;
-      Hour = Hour - 24; //for fast forward's sake
+      Hour -= 24;
       UpdateText();
     }
     else if (Day > daysPerYear)
@@ -127,7 +127,7 @@ public class TimeManager : MonoBehaviour, ISaveable
       ClassAttender.Instance.GetTheTwoClassesForThisTime(Year, Day, 0);
     }
 
-    if (Hour == 12)
+    if (Hour == 13)
     {
       ClassAttender.Instance.GetTheTwoClassesForThisTime(Year, Day, 1);
     }

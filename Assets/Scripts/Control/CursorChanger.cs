@@ -51,6 +51,14 @@ namespace Control
       public Vector2 hotspot;
     }
 
+    private void Update()
+    {
+      if (Input.GetKeyDown(KeyCode.J))
+      {
+        print("number ui out = "+numberUiOut);
+      }
+    }
+
     /// <summary>
     /// for changing the central cross illusion of cursor in the middle of the screen
     /// </summary>

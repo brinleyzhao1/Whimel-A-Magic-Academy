@@ -9,6 +9,9 @@ namespace Player.Interaction
     [Header("Core")] [SerializeField] public GameObject setPlayer;
     public static GameObject Player;
 
+    // [SerializeField] public GameObject setPlayer;
+    // public static GameObject Player;
+
     [SerializeField] private Inventory setPlayerInventory;
 
     public static Inventory PlayerInventory;

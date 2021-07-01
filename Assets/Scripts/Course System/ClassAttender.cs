@@ -4,11 +4,14 @@ using UnityEngine;
 
 namespace Course_System
 {
+  /// <summary>
+  /// this script acts as an intermediate between time system and class attending ui.
+  ///this script is triggered whenever it's class time, pulls the correct classes from courseSchedule,
+  ///pull out ui to let player choose what classes they want to take and then execute its consequences
+
+  /// </summary>
   public class ClassAttender : MonoBehaviour
   {
-    //this script acts as an intermediate between time system and class attending ui.
-    //this script is triggered whenever it's class time, pulls the correct classes from courseSchedule,
-    //pull out ui to let player choose what classes they want to take and then execute its consequences
 
     #region Singleton
 
@@ -43,11 +46,6 @@ namespace Course_System
 
     private void Start()
     {
-      //testing
-
-
-      // GetTheTwoClassesForThisTime(1, 1, 0);
-      // print(GetTheTwoClassesForThisTime(1,1,1));
     }
 
 
@@ -66,6 +64,7 @@ namespace Course_System
 
       // ClassPanelUi classPanelUi = FindObjectOfType<ClassPanelUi>();
       // print(classPanelUi.name);
+      Time.timeScale = 0;
       classPanelUi.gameObject.SetActive(true);
       classPanelUi.SetUpClassAttendingPanel(firstClass, secondClass);
     }
@@ -74,14 +73,17 @@ namespace Course_System
 
     public void ConfirmTakingClass(int currentClassNum)
     {
-      if (currentClassNum == 1 ^ currentClassNum == 2)
+      if (currentClassNum == 0 ^ currentClassNum == 1)
       {
         //execute taking this class
+        //todo coroutine time passes
+        TimeManager.Hour += 4;
+
         CalculateAllResultsFromClassTaken(currentTwoClasses[currentClassNum]);
         print("confirmed to take class "+ currentClassNum);
       }
 
-      else if (currentClassNum == 3)
+      else if (currentClassNum == 2)
       {
         //actually skipping
       }
@@ -98,7 +100,7 @@ namespace Course_System
         PlayerStats.Instance.UpdateOneStatByValue(oneStatChange.stat, oneStatChange.valueChange);
       }
 
-      TimeManager.Hour += 4;
+
     }
   }
 }
