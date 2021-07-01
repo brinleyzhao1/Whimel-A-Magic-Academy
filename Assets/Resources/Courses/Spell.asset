@@ -13,12 +13,6 @@ MonoBehaviour:
   m_Name: Spell
   m_EditorClassIdentifier: 
   description: 
-  statsChange:
-  - stat: 0
-    valueChange: 0
-  - stat: 0
-    valueChange: 0
-  - stat: 0
-    valueChange: 0
-  - stat: 0
-    valueChange: 0
+  classLevel: 1
+  statsIncreased: 01000000
+  statDecreased: 0

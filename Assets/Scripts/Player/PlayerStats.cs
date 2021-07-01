@@ -32,8 +32,8 @@ namespace Player
 
     #endregion
 
-    private Dictionary<Stats, int> statsToValueDictionary =
-      new Dictionary<Stats, int>();
+    private Dictionary<StatsType, int> statsToValueDictionary =
+      new Dictionary<StatsType, int>();
 
     private StatsOranizer statsOrganizer;
     private VisualTextFeedbackSpawner visualTextFeedbackSpawner;
@@ -51,13 +51,13 @@ namespace Player
     // {
     //   if (Input.GetKeyDown(KeyCode.C))
     //   {
-    //     UpdateOneStatByValue(Stats.Charisma, 20);
+    //     UpdateOneStatByValue(StatsType.Charisma, 20);
     //   }
     // }
 
     private void SetupStatDictionaryAllToZero()
     {
-      foreach (Stats statType in Enum.GetValues(typeof(Stats)))
+      foreach (StatsType statType in Enum.GetValues(typeof(StatsType)))
       {
         if (!statsToValueDictionary.ContainsKey(statType))
         {
@@ -67,26 +67,26 @@ namespace Player
     }
 
     // public void UpdateStatDictionary(
-    //     Dictionary<Stats, int> statsChangeDictionary) //update statDictionary by adding another dictionary
+    //     Dictionary<StatsType, int> statsChangeDictionary) //update statDictionary by adding another dictionary
     // {
-    //   foreach (Stats stat in statsChangeDictionary)
+    //   foreach (StatsType statType in statsChangeDictionary)
     //   {
-    //     statsToValueDictionary[stat] += stat.Value;
+    //     statsToValueDictionary[statType] += statType.Value;
     //   }
     //
     //   statsOrganizer.UpdateStatsUi(statsToValueDictionary);
-    //   //todo spawn visual feedback for each stat
+    //   //todo spawn visual feedback for each statType
     // }
 
 
     public void
-      UpdateOneStatByValue(Stats stat, int valueToAdd)
+      UpdateOneStatByValue(StatsType statType, int valueToAdd)
       //sister method to UpdateStatDictionary; update only one entry of statDictionary
     {
-      statsToValueDictionary[stat] += valueToAdd;
+      statsToValueDictionary[statType] += valueToAdd;
       statsOrganizer.UpdateStatsUi(statsToValueDictionary);
 
-      visualTextFeedbackSpawner.SpawnStatsChangeVisualItem(stat.ToString(), valueToAdd);
+      visualTextFeedbackSpawner.SpawnStatsChangeVisualItem(statType.ToString(), valueToAdd);
     }
 
 
@@ -99,7 +99,7 @@ namespace Player
 
     public void RestoreState(object state)
     {
-      statsToValueDictionary = (Dictionary<Stats, int>) state;
+      statsToValueDictionary = (Dictionary<StatsType, int>) state;
       // statsOrganizer.UpdateStatsUi(statsToValueDictionary);//todo fix this
     }
 

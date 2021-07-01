@@ -12,7 +12,7 @@ namespace UI.StatsScripts
     // [SerializeField] private string[] statsDescriptions;
 
 
-    public void UpdateStatsUi(Dictionary<Stats, int> stats)
+    public void UpdateStatsUi(Dictionary<StatsType, int> stats)
     {
       foreach (Transform child in transform) {
         Destroy(child.gameObject);

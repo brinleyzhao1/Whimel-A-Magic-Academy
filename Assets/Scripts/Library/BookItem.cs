@@ -23,7 +23,7 @@ namespace Library
    [Serializable]
     public class StatReward
     {
-      [SerializeField] public Stats rewardStats;
+      [SerializeField] public StatsType rewardStatsType;
       public int value;
     }
 

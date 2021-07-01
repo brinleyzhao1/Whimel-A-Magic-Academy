@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f4efee532b6d41bc80a87f71e33e0f9, type: 3}
-  m_Name: Divinition
+  m_Name: History
   m_EditorClassIdentifier: 
   description: 
   classLevel: 1
-  statsIncreased: 04000000
-  statDecreased: 3
+  statsIncreased: 03000000
+  statDecreased: 1

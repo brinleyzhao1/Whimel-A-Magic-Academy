@@ -13,12 +13,6 @@ MonoBehaviour:
   m_Name: Alchemy
   m_EditorClassIdentifier: 
   description: 
-  statsChange:
-  - stat: 4
-    valueChange: 2
-  - stat: 0
-    valueChange: 0
-  - stat: 0
-    valueChange: 0
-  - stat: 0
-    valueChange: 0
+  classLevel: 1
+  statsIncreased: 02000000
+  statDecreased: 1

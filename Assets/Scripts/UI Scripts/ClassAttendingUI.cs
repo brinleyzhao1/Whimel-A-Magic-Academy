@@ -57,9 +57,9 @@
 //         Debug.LogError(thisClass.courseName + "doesnt have 3 stats");
 //       }
 //
-//       foreach (var stat in thisClass.listOfStats)
+//       foreach (var statType in thisClass.listOfStats)
 //       {
-//         statsChangeDictionary.Add(stat.ToString(), Random.Range(1,5));
+//         statsChangeDictionary.Add(statType.ToString(), Random.Range(1,5));
 //       }
 //     }
 //   }

@@ -10,15 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f4efee532b6d41bc80a87f71e33e0f9, type: 3}
-  m_Name: Potion
+  m_Name: Elvan Language
   m_EditorClassIdentifier: 
   description: 
-  statsChange:
-  - stat: 4
-    valueChange: 10
-  - stat: 3
-    valueChange: 10
-  - stat: 5
-    valueChange: -5
-  - stat: 2
-    valueChange: -5
+  classLevel: 1
+  statsIncreased: 01000000
+  statDecreased: 4

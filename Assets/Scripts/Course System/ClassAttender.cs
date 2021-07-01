@@ -1,18 +1,17 @@
 ﻿using System;
 using Player;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Course_System
 {
   /// <summary>
-  /// this script acts as an intermediate between time system and class attending ui.
-  ///this script is triggered whenever it's class time, pulls the correct classes from courseSchedule,
+  /// this script acts as an intermediate between time system and className attending ui.
+  ///this script is triggered whenever it's className time, pulls the correct classes from courseSchedule,
   ///pull out ui to let player choose what classes they want to take and then execute its consequences
-
   /// </summary>
   public class ClassAttender : MonoBehaviour
   {
-
     #region Singleton
 
     private static ClassAttender _instance;
@@ -44,6 +43,12 @@ namespace Course_System
     // private CourseItem currentClass2;
 
 
+    // [Serializable]
+    // struct ClassLevelStatChangeRange
+    // {
+    //   int min
+    // }
+    //
     private void Start()
     {
     }
@@ -70,17 +75,16 @@ namespace Course_System
     }
 
 
-
     public void ConfirmTakingClass(int currentClassNum)
     {
       if (currentClassNum == 0 ^ currentClassNum == 1)
       {
-        //execute taking this class
+        //execute taking this className
         //todo coroutine time passes
         TimeManager.Hour += 4;
 
         CalculateAllResultsFromClassTaken(currentTwoClasses[currentClassNum]);
-        print("confirmed to take class "+ currentClassNum);
+        print("confirmed to take className " + currentClassNum);
       }
 
       else if (currentClassNum == 2)
@@ -89,18 +93,32 @@ namespace Course_System
       }
       else
       {
-        Debug.LogError("a class num that's not 1, 2 has been provided, " + currentClassNum);
+        Debug.LogError("a className num that's not 1, 2 has been provided, " + currentClassNum);
       }
     }
 
+
     private void CalculateAllResultsFromClassTaken(CourseItem className)
     {
-      foreach (var oneStatChange in className.statsChange)
+      foreach (var oneStatIncreased in className.statsIncreased)
       {
-        PlayerStats.Instance.UpdateOneStatByValue(oneStatChange.stat, oneStatChange.valueChange);
+        PlayerStats.Instance.UpdateOneStatByValue(oneStatIncreased, RandomChangeBaseOnClassLevel(className.classLevel));
       }
 
+      PlayerStats.Instance.UpdateOneStatByValue(className.statDecreased, -1*RandomChangeBaseOnClassLevel(className.classLevel));
+    }
 
+    /// <summary>
+    /// return a random number within the range for the appropriate class level
+    /// </summary>
+    /// <param name="classLevel"></param>
+    /// <returns></returns>
+    private int RandomChangeBaseOnClassLevel(int classLevel)
+    {
+      //todo more sophisticated random range?
+      int min = classLevel * 2 - 1;
+      int max = classLevel * 2 + 1;
+      return Random.Range(min, max);
     }
   }
 }

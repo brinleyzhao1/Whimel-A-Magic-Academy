@@ -89,15 +89,15 @@ namespace Skills
     // }
 
     // public void UpdateStatDictionary(
-    //     Dictionary<Stats, int> statsChangeDictionary) //update statDictionary by adding another dictionary
+    //     Dictionary<StatsType, int> statsChangeDictionary) //update statDictionary by adding another dictionary
     // {
-    //   foreach (Stats stat in statsChangeDictionary)
+    //   foreach (StatsType statType in statsChangeDictionary)
     //   {
-    //     skillsToValueDictionary[stat] += stat.Value;
+    //     skillsToValueDictionary[statType] += statType.Value;
     //   }
     //
     //   statsOrganizer.UpdateStatsUi(skillsToValueDictionary);
-    //   //todo spawn visual feedback for each stat
+    //   //todo spawn visual feedback for each statType
     // }
 
 

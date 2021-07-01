@@ -29,16 +29,16 @@ namespace Skills
       return alchemyLevelProgression;
     }
 
-    // public float GetStat(Stat stat, CharacterClass characterClass, int level)
+    // public float GetStat(Stat statType, CharacterClass characterClass, int level)
     // {
     //     BuildLookup();
     //
-    //     if (!lookupTable[characterClass].ContainsKey(stat))
+    //     if (!lookupTable[characterClass].ContainsKey(statType))
     //     {
     //         return 0;
     //     }
     //
-    //     float[] levels = lookupTable[characterClass][stat];
+    //     float[] levels = lookupTable[characterClass][statType];
     //
     //     if (levels.Length == 0)
     //     {
@@ -53,11 +53,11 @@ namespace Skills
     //     return levels[level - 1];
     // }
     //
-    // public int GetLevels(Stat stat, CharacterClass characterClass)
+    // public int GetLevels(Stat statType, CharacterClass characterClass)
     // {
     //     BuildLookup();
     //
-    //     float[] levels = lookupTable[characterClass][stat];
+    //     float[] levels = lookupTable[characterClass][statType];
     //     return levels.Length;
     // }
     //
@@ -73,7 +73,7 @@ namespace Skills
     //
     //         foreach (ProgressionStat progressionStat in progressionClass.stats)
     //         {
-    //             statLookupTable[progressionStat.stat] = progressionStat.levels;
+    //             statLookupTable[progressionStat.statType] = progressionStat.levels;
     //         }
     //
     //         lookupTable[progressionClass.characterClass] = statLookupTable;
@@ -90,7 +90,7 @@ namespace Skills
     // [System.Serializable]
     // class ProgressionStat
     // {
-    //     public Stat stat;
+    //     public Stat statType;
     //     public float[] levels;
     // }
   }

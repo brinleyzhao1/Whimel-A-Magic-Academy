@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using Player;
 using UnityEngine;
 
@@ -27,15 +28,18 @@ namespace Course_System
     string description = null;
 
 
-    [Serializable]
-    public struct StatChange
-    {
-      public Stats stat;
-      public int valueChange;
-    }
 
-    public StatChange[] statsChange = new StatChange[4];
+    // [Serializable]
+    // public struct StatChange
+    // {
+    //   public StatsType statType;
+    //   public int valueChange;
+    // }
+    // public StatChange[] statsChange = new StatChange[4];
+    public int classLevel=1;
 
+    public StatsType[] statsIncreased = new StatsType[1];
+    public StatsType statDecreased ;
 
     // STATE, id to courseItem
     // static Dictionary<string, CourseItem> _itemLookupCache;
