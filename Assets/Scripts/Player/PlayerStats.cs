@@ -4,6 +4,7 @@ using GameDev.tv_Assets.Scripts.Saving;
 using Player.Interaction;
 using UI.StatsScripts;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Player
 {
@@ -32,11 +33,22 @@ namespace Player
 
     #endregion
 
+
     private Dictionary<StatsType, int> statsToValueDictionary =
       new Dictionary<StatsType, int>();
 
     private StatsOranizer statsOrganizer;
     private VisualTextFeedbackSpawner visualTextFeedbackSpawner;
+
+    public Range[] classLevelToStatRewardRange;
+
+    [Serializable]
+    public struct Range
+    {
+      //all inclusive
+      public int min;
+      public int max;
+    }
 
     private void Start()
     {
@@ -51,7 +63,7 @@ namespace Player
     // {
     //   if (Input.GetKeyDown(KeyCode.C))
     //   {
-    //     UpdateOneStatByValue(StatsType.Charisma, 20);
+    //     UpdateOneStatByLevel(StatsType.Charisma, 20);
     //   }
     // }
 
@@ -79,14 +91,37 @@ namespace Player
     // }
 
 
+
     public void
-      UpdateOneStatByValue(StatsType statType, int valueToAdd)
+      UpdateOneStatByLevel(StatsType statType, int level, bool add)
       //sister method to UpdateStatDictionary; update only one entry of statDictionary
+    {
+      int randomValue = Random.Range(classLevelToStatRewardRange[level].min,classLevelToStatRewardRange[level].max);
+      if (!add)
+        randomValue *= -1;
+
+      UpdateOneStatByValue(statType, randomValue);
+    }
+
+    private void UpdateOneStatByValue(StatsType statType, int valueToAdd)
     {
       statsToValueDictionary[statType] += valueToAdd;
       statsOrganizer.UpdateStatsUi(statsToValueDictionary);
 
       visualTextFeedbackSpawner.SpawnStatsChangeVisualItem(statType.ToString(), valueToAdd);
+    }
+
+    /// <summary>
+    /// return a random number within the range for the appropriate class level. an alternative method to get random
+    /// </summary>
+    /// <param name="classLevel"></param>
+    /// <returns></returns>
+    private int RandomChangeBaseOnClassLevel(int classLevel)
+    {
+      //todo more sophisticated random range?
+      int min = classLevel * 2 - 1;
+      int max = classLevel * 2 + 1;
+      return Random.Range(min, max);
     }
 
 

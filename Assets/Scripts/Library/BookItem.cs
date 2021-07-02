@@ -24,7 +24,7 @@ namespace Library
     public class StatReward
     {
       [SerializeField] public StatsType rewardStatsType;
-      public int value;
+      public int level;
     }
 
     [Serializable]

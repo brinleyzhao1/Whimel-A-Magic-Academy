@@ -42,7 +42,7 @@ namespace DayNight
       RenderSettings.ambientLight = Preset.AmbientColor.Evaluate(timePercent);
       RenderSettings.fogColor = Preset.FogColor.Evaluate(timePercent);
 
-      //If the directional light is set then rotate and set it's color, I actually rarely use the rotation because it casts tall shadows unless you clamp the value
+      //If the directional light is set then rotate and set it's color, I actually rarely use the rotation because it casts tall shadows unless you clamp the level
       if (DirectionalLight != null)
       {
         DirectionalLight.color = Preset.DirectionalColor.Evaluate(timePercent);

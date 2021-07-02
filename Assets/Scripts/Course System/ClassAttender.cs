@@ -102,23 +102,12 @@ namespace Course_System
     {
       foreach (var oneStatIncreased in className.statsIncreased)
       {
-        PlayerStats.Instance.UpdateOneStatByValue(oneStatIncreased, RandomChangeBaseOnClassLevel(className.classLevel));
+        PlayerStats.Instance.UpdateOneStatByLevel(oneStatIncreased, className.classLevel, true);
       }
 
-      PlayerStats.Instance.UpdateOneStatByValue(className.statDecreased, -1*RandomChangeBaseOnClassLevel(className.classLevel));
+      PlayerStats.Instance.UpdateOneStatByLevel(className.statDecreased, className.classLevel, false);
     }
 
-    /// <summary>
-    /// return a random number within the range for the appropriate class level
-    /// </summary>
-    /// <param name="classLevel"></param>
-    /// <returns></returns>
-    private int RandomChangeBaseOnClassLevel(int classLevel)
-    {
-      //todo more sophisticated random range?
-      int min = classLevel * 2 - 1;
-      int max = classLevel * 2 + 1;
-      return Random.Range(min, max);
-    }
+
   }
 }
