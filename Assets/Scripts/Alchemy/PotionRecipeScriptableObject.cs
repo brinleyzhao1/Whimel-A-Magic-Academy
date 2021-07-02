@@ -13,6 +13,8 @@ namespace Alchemy
     public int level; //should always be the same level as the finalPotion?
     public int timeNeedToBrew;
 
+    
+
     [Header("Ingredients")] public ActionScriptableItem ingredient1;
     public int quantity1;
     public ActionScriptableItem ingredient2;

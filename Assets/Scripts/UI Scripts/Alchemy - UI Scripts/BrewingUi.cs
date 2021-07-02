@@ -1,13 +1,13 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using Alchemy;
 using GameDev.tv_Assets.Scripts.UI.Inventories;
 using Player.Interaction;
 using TMPro;
+using UI;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI
+namespace UI_Scripts
 {
   public class BrewingUi : MonoBehaviour
   {
@@ -38,16 +38,7 @@ namespace UI
       ClearOutBrewSectionUi();
     }
 
-    private void ClearOutBrewSectionUi()
-    {
-      titleText.text = "";
-      descriptionText.text = "";
-      ingredientSlot1.UpdateIcon(null, 0);
-      ingredientSlot2.UpdateIcon(null, 0);
-      ingredientSlot3.UpdateIcon(null, 0);
-      haveAllIngredientsCanBrew = false;
-      brewButton.gameObject.GetComponent<Image>().color = Color.white;
-    }
+
 
     /// <summary>
     /// when selected, update visual
@@ -97,10 +88,22 @@ namespace UI
 
 
 
+    #region Helper Functions
+
+    private void ClearOutBrewSectionUi()
+        {
+          titleText.text = "";
+          descriptionText.text = "";
+          ingredientSlot1.UpdateIcon(null, 0);
+          ingredientSlot2.UpdateIcon(null, 0);
+          ingredientSlot3.UpdateIcon(null, 0);
+          haveAllIngredientsCanBrew = false;
+          brewButton.gameObject.GetComponent<Image>().color = Color.white;
+        }
+
     IEnumerator Brew()
     {
       //wait some seconds / animation
-      // yield return new WaitForSeconds(thisRecipe.timeNeedToBrew);
       inProcessOfBrewing = true;
       yield return StartCoroutine(TimeManager.Instance.CountDownWithText(thisRecipe.timeNeedToBrew, timeCountDownText));
 
@@ -144,5 +147,10 @@ namespace UI
 
       return false;
     }
+
+
+      #endregion
+
+
   }
 }

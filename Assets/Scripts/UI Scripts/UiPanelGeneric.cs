@@ -19,14 +19,14 @@ namespace UI_Scripts
       Time.timeScale = 1;
 
       CloseTabs();
-      
+
       gameObject.SetActive(false);
     }
 
     private static void CloseTabs()
     {
       var tabs = FindObjectOfType<SwitchTabs>().gameObject;
-      if (tabs.activeSelf)
+      if (tabs)
       {
         tabs.SetActive(false);
       }
