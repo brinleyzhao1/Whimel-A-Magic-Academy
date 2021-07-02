@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using Alchemy;
 using GameDev.tv_Assets.Scripts.UI.Inventories;
+using Player;
 using Player.Interaction;
+using Skills;
 using TMPro;
 using UI;
 using UnityEngine;
@@ -123,6 +125,16 @@ namespace UI_Scripts
       {
          playerInventoryUi.Redraw();
       }
+
+      //reward skill exp
+      SkillProgression progression = PlayerSkills.Instance.skillProgression;
+      int expGained = progression.expPerActivityAtLevel[thisRecipe.level];
+      PlayerSkills.Instance.AddExperienceToSkill(SkillTypeEnum.Alchemy, expGained);
+
+
+      //consume energy
+      int energyConsumed = progression.energyConsumedPerActivityByLevel[thisRecipe.level];
+      PlayerEnergy.Instance.UpdateEnergyByValue(-energyConsumed);
 
       inProcessOfBrewing = false;
     }

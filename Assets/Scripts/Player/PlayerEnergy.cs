@@ -9,6 +9,31 @@ namespace Player
 {
   public class PlayerEnergy : MonoBehaviour, ISaveable
   {
+
+
+    #region Singleton
+
+    private static  PlayerEnergy _instance;
+
+    public static  PlayerEnergy Instance => _instance;
+
+
+    private void Awake()
+    {
+      if (_instance != null && _instance != this)
+      {
+        Destroy(this.gameObject);
+      }
+      else
+      {
+        _instance = this;
+      }
+
+    }
+
+    #endregion
+
+
     public int maxEnergy = 100;
     public int currentEnergy = 100;
     [SerializeField] private int maxOfMaxEnergy = 400;

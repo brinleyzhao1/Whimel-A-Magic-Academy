@@ -23,6 +23,10 @@ namespace Skills
     [Tooltip("how much energy is consumed when player performs an activity of that level. ignore level 0")]
     public int[] energyConsumedPerActivityByLevel = new int[8]; //ignore element 0
 
+    [Tooltip("how much experience is awarded when player performs an activity of that level. ignore level 0")]
+    public int[] expPerActivityAtLevel = new int[8]; //ignore element 0
+
+
     public readonly string[] rankNameByLevel = new string[]
     {
       "Ignore Me",

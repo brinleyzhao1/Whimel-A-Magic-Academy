@@ -40,7 +40,7 @@ namespace Skills
 
     #endregion
 
-    [SerializeField] SkillProgression skillProgression = null;
+    public SkillProgression skillProgression = null;
 
     [Header("UI")] [SerializeField] private TextMeshProUGUI alchemyLevelText;
 
@@ -67,14 +67,29 @@ namespace Skills
       UpdateSkillUi();
     }
 
+    private void OnEnable()
+    {
+      UpdateSkillUi();
+    }
 
-    // private void Update() //testing purpose
-    // {
-    //   if (Input.GetKeyDown(KeyCode.U))
-    //   {
-    //     AddExperienceToSkill(SkillTypeEnum.Herbology, 20);
-    //   }
-    // }
+
+    public void AddExperienceToSkill(SkillTypeEnum skill, int valueToAdd)
+      //sister method to UpdateStatDictionary; update only one entry of statDictionary
+    {
+      SkillStats thisSkillStat = skillsToValueDictionary[skill];
+      thisSkillStat.currentExperience = thisSkillStat.currentExperience + valueToAdd;
+      skillsToValueDictionary[skill] = CheckIfLevelUpAndUpdate(skill, thisSkillStat);
+
+      UpdateSkillUi();
+    }
+
+    private void Update() //testing purpose
+    {
+      if (Input.GetKeyDown(KeyCode.U))
+      {
+        AddExperienceToSkill(SkillTypeEnum.Alchemy, 20);
+      }
+    }
 
     // private void SetupSkillDictionaryAllToZero()
     // {
@@ -101,15 +116,9 @@ namespace Skills
     // }
 
 
-    public void AddExperienceToSkill(SkillTypeEnum skill, int valueToAdd)
-      //sister method to UpdateStatDictionary; update only one entry of statDictionary
-    {
-      SkillStats thisSkillStat = skillsToValueDictionary[skill];
-      thisSkillStat.currentExperience = thisSkillStat.currentExperience + valueToAdd;
-      skillsToValueDictionary[skill] = CheckIfLevelUpAndUpdate(skill, thisSkillStat);
 
-      UpdateSkillUi();
-    }
+    #region Private
+
 
     private SkillStats CheckIfLevelUpAndUpdate(SkillTypeEnum skill, SkillStats thisSkillStat)
     {
@@ -126,24 +135,29 @@ namespace Skills
       return thisSkillStat;
     }
 
+
     private void UpdateSkillUi()
-    {
-      //alchemy ui
-      var currentAlchemyStats = skillsToValueDictionary[SkillTypeEnum.Alchemy];
-      // alchemyLevelText.text = "Lvl. " + currentAlchemyStats.currentLevel;
-      alchemyLevelText.text = skillProgression.rankNameByLevel[currentAlchemyStats.currentLevel];
-      int[] alchemyExperienceEachLevel = skillProgression.skillExperienceNeededToLevelUpTo;
-      int alchemyMaxExperienceThisLevel = alchemyExperienceEachLevel[currentAlchemyStats.currentLevel];
-      alchemyFillBar.fillAmount = currentAlchemyStats.currentExperience / (float) alchemyMaxExperienceThisLevel;
+        {
+          //alchemy ui
+          var currentAlchemyStats = skillsToValueDictionary[SkillTypeEnum.Alchemy];
+          // alchemyLevelText.text = "Lvl. " + currentAlchemyStats.currentLevel;
+          alchemyLevelText.text = skillProgression.rankNameByLevel[currentAlchemyStats.currentLevel];
+          int[] alchemyExperienceEachLevel = skillProgression.skillExperienceNeededToLevelUpTo;
+          int alchemyMaxExperienceThisLevel = alchemyExperienceEachLevel[currentAlchemyStats.currentLevel];
+          alchemyFillBar.fillAmount = currentAlchemyStats.currentExperience / (float) alchemyMaxExperienceThisLevel;
 
 
-      //herbology ui
-      var currentHerbologyStats = skillsToValueDictionary[SkillTypeEnum.Herbology];
-      herbologyLevelText.text = skillProgression.rankNameByLevel[currentHerbologyStats.currentLevel];
-      int[] herbologyExperienceEachLevel = skillProgression.skillExperienceNeededToLevelUpTo;
-      int herbologyMaxExperienceThisLevel = herbologyExperienceEachLevel[currentHerbologyStats.currentLevel];
-      herbologyFillBar.fillAmount = currentHerbologyStats.currentExperience / (float) herbologyMaxExperienceThisLevel;
-    }
+          //herbology ui
+          var currentHerbologyStats = skillsToValueDictionary[SkillTypeEnum.Herbology];
+          herbologyLevelText.text = skillProgression.rankNameByLevel[currentHerbologyStats.currentLevel];
+          int[] herbologyExperienceEachLevel = skillProgression.skillExperienceNeededToLevelUpTo;
+          int herbologyMaxExperienceThisLevel = herbologyExperienceEachLevel[currentHerbologyStats.currentLevel];
+          herbologyFillBar.fillAmount = currentHerbologyStats.currentExperience / (float) herbologyMaxExperienceThisLevel;
+        }
+
+    #endregion
+
+
 
     #region Saving
 

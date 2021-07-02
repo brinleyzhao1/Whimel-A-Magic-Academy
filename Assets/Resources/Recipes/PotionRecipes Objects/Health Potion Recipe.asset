@@ -23,6 +23,7 @@ MonoBehaviour:
   directlyConsumable: 0
   energyChange: 0
   finalPotion: {fileID: 11400000, guid: 62bec4a6b68cc41de8a67d6009d0486c, type: 2}
+  level: 1
   timeNeedToBrew: 5
   ingredient1: {fileID: 11400000, guid: fe803410dbd1047c387000e3cc5a9e31, type: 2}
   quantity1: 2
