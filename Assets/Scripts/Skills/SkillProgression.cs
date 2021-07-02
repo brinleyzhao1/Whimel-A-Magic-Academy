@@ -3,8 +3,14 @@ using UnityEngine;
 
 namespace Skills
 {
-  [CreateAssetMenu(fileName = "Progression", menuName = "Scriptables/New Progression", order = 0)]
-  public class Progression : ScriptableObject
+  /// <summary>
+  /// A script to store info and govern the level system of skills
+  ///
+  ///  Level up by gaining exp (from performing activities in that discipline and sometimes from reading books and attending classes).
+  ///Determines which potion / plants can players interact with (perform activity).
+  /// Brewing higher level potion / growing higher level plants also gives higher rewards.
+  /// </summary>
+  public class SkillProgression : MonoBehaviour
   {
     // public struct levelToExp
     // {
@@ -12,22 +18,28 @@ namespace Skills
     //   public int level2;
     // }
     [Tooltip("how much experience is required for each level. ignore level 0")]
-    public int[] alchemyLevelProgression;
+    public int[] skillExperienceNeededToLevelUpTo = new int[8];
+
+    [Tooltip("how much energy is consumed when player performs an activity of that level. ignore level 0")]
+    public int[] energyConsumedPerActivityByLevel = new int[8]; //ignore element 0
+
+    public readonly string[] rankNameByLevel = new string[]
+    {
+      "Ignore Me",
+      "Introductory",
+      "Beginner",
+      "Basic",
+      "Proficient",
+      "Skilled",
+      "Master",
+      "Legend"
+    };
 
 
     // [SerializeField] ProgressionCharacterClass[] characterClasses = null;
 
     // Dictionary<CharacterClass, Dictionary<Stat, float[]>> lookupTable = null;
 
-    public int[] GetProgressionForSkill(SkillTypeEnum skill)
-    {
-      if (skill == SkillTypeEnum.Alchemy)
-      {
-        return alchemyLevelProgression;
-      }
-
-      return alchemyLevelProgression;
-    }
 
     // public float GetStat(Stat statType, CharacterClass characterClass, int level)
     // {

@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using Alchemy;
 using Player.Interaction;
+using UI;
 using UnityEngine;
 
-namespace UI
+namespace UI_Scripts
 {/// <summary>
  /// in charge of updating the recipe book on current learnt recipes
  /// sort of parallel to shopMenu

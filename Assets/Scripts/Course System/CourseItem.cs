@@ -16,13 +16,6 @@ namespace Course_System
     // [Tooltip("Auto-generated UUID for saving/loading. Clear this field if you want to generate a new one.")]
     // [SerializeField] string itemId = null;
 
-    // [Tooltip("The UI icon to represent this item in the inventory.")]
-    // [SerializeField] Sprite icon = null;
-    // [SerializeField] string courseText = null;
-
-
-    // [Tooltip("Course name to be displayed in UI.")]
-    // public string courseName;
 
     [Tooltip("Course description to be displayed in UI.")] [SerializeField] [TextArea]
     string description = null;

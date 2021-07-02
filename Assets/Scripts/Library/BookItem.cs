@@ -9,10 +9,10 @@ namespace Library
   [CreateAssetMenu(fileName = "FILENAME", menuName = "Items/Book Item", order = 0)]
   public class BookItem : InventoryItem
   {
-  public int level = 1;
+
 
   public int timeNeedToRead = 5;//seconds
-  //type: info (world building), potion, herb, etc
+  //subclass: info (world building), potion, herb, etc
 
   [Header("Rewards")]
   public StatReward statReward1;

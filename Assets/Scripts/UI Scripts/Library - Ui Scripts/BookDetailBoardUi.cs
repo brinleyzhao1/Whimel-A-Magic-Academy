@@ -19,7 +19,7 @@ namespace UI_Scripts
     [SerializeField] private Image iconImage;
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI descriptionText;
-    [SerializeField] private TextMeshProUGUI lvlText;
+    // [SerializeField] private TextMeshProUGUI lvlText;
     [SerializeField] private TextMeshProUGUI timeText;
 
     private bool inProcessOfReading;
@@ -29,7 +29,7 @@ namespace UI_Scripts
       iconImage.sprite = book.GetIcon();
       nameText.text = book.GetDisplayName();
       descriptionText.text = book.GetDescription();
-      lvlText.text = "lvl: " + book.level;
+      // lvlText.text = "lvl: " + book.level;
       timeText.text = book.timeNeedToRead + "s";
       //todo typeText
       thisBook = book;
