@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using GameDev.tv_Assets.Scripts.Saving;
 using Player.Interaction;
+using UI_Scripts.StatsScripts;
 using UI.StatsScripts;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 namespace Player
@@ -33,12 +35,11 @@ namespace Player
 
     #endregion
 
-
     private Dictionary<StatsType, int> statsToValueDictionary =
       new Dictionary<StatsType, int>();
 
     private StatsOranizer statsOrganizer;
-    private VisualTextFeedbackSpawner visualTextFeedbackSpawner;
+    [SerializeField]  private VisualTextFeedbackSpawner visualTextFeedbackSpawner;
 
     public Range[] classLevelToStatRewardRange;
 
@@ -53,7 +54,6 @@ namespace Player
     private void Start()
     {
       statsOrganizer = GameAssets.StatsOrganizer.GetComponent<StatsOranizer>();
-      visualTextFeedbackSpawner = FindObjectOfType<VisualTextFeedbackSpawner>();
       SetupStatDictionaryAllToZero();
       statsOrganizer.UpdateStatsUi(statsToValueDictionary);
     }
@@ -96,6 +96,10 @@ namespace Player
       UpdateOneStatByLevel(StatsType statType, int level, bool add)
       //sister method to UpdateStatDictionary; update only one entry of statDictionary
     {
+      //todo: a little dropdown animation
+      // visualFeedbackBoard.GetComponent<Image>().IsActive(true);
+
+
       int randomValue = Random.Range(classLevelToStatRewardRange[level].min,classLevelToStatRewardRange[level].max);
       if (!add)
         randomValue *= -1;
@@ -108,6 +112,7 @@ namespace Player
       statsToValueDictionary[statType] += valueToAdd;
       statsOrganizer.UpdateStatsUi(statsToValueDictionary);
 
+visualTextFeedbackSpawner.gameObject.SetActive(true);
       visualTextFeedbackSpawner.SpawnStatsChangeVisualItem(statType.ToString(), valueToAdd);
     }
 

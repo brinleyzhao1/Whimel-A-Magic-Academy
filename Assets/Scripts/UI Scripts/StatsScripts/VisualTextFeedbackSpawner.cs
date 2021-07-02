@@ -1,7 +1,8 @@
-﻿using TMPro;
+﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 
-namespace UI.StatsScripts
+namespace UI_Scripts.StatsScripts
 {
   public class VisualTextFeedbackSpawner : MonoBehaviour
   {
@@ -14,13 +15,20 @@ namespace UI.StatsScripts
 
       if (valueChange >= 0)
       {
-        newVisualItem.GetComponent<TextMeshProUGUI>().text = statName + " + " + valueChange;
+        newVisualItem.GetComponent<TextMeshProUGUI>().text = statName + " +" + valueChange;
       }
       else
       {
-        newVisualItem.GetComponent<TextMeshProUGUI>().text = statName + " - " + valueChange*-1;
+        newVisualItem.GetComponent<TextMeshProUGUI>().text = statName + " -" + valueChange*-1;
       }
 
+
+      StartCoroutine(CloseMySelf(3));
     }
+    IEnumerator CloseMySelf(int seconds)
+           {
+             yield return new WaitForSeconds(seconds);
+             gameObject.SetActive(false);
+           }
   }
 }

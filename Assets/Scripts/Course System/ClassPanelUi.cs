@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UI;
+using UI_Scripts;
 
 namespace Course_System
 {

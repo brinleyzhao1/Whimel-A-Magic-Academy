@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Roast Chicken
   m_EditorClassIdentifier: 
   displayName: Roast Chicken
-  itemID: d44fe002-27f1-4136-b842-7c2c9bcce64e
+  itemID: 0ac81b18-ecb5-43eb-ac63-5341089b253e
   buyingPrice: 30
   sellingPrice: 10
   description: 

@@ -1,9 +1,8 @@
-﻿using System;
-using Control;
-using Player.Interaction;
+﻿using Control;
+using UI;
 using UnityEngine;
 
-namespace UI
+namespace UI_Scripts
 {
   public class UiPanelGeneric : MonoBehaviour
   {
@@ -14,13 +13,9 @@ namespace UI
 
     public virtual void CloseThisPanel() //for button "Cancel"
     {
-      print("close panel");
-
       CursorChanger.Instance.OneLessUiOut();
       CursorChanger.Instance.OneLessUiOut();//not sure why there are 2 ui out, bug?
-      print(CursorChanger.Instance.numberUiOut);
-      // FindObjectOfType<CursorChanger>().
-      // FindObjectOfType<CursorChanger>().numberUiOut = 0;
+
 
       Time.timeScale = 1;
 

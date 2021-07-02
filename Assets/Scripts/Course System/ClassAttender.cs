@@ -84,7 +84,6 @@ namespace Course_System
         TimeManager.Hour += 4;
 
         CalculateAllResultsFromClassTaken(currentTwoClasses[currentClassNum]);
-        print("confirmed to take className " + currentClassNum);
       }
 
       else if (currentClassNum == 2)

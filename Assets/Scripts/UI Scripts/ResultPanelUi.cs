@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Control;
 using TMPro;
+using UI_Scripts;
 using UnityEngine;
 
 namespace UI
