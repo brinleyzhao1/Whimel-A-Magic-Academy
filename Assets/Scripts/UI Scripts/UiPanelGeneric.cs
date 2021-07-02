@@ -13,17 +13,13 @@ namespace UI_Scripts
 
     public virtual void CloseThisPanel() //for button "Cancel"
     {
-      CursorChanger.Instance.OneLessUiOut();
-      CursorChanger.Instance.OneLessUiOut();//not sure why there are 2 ui out, bug?
-
+      CursorChanger.Instance.numberUiOut = 0;
+      CursorChanger.Instance.OneLessUiOut(); //not sure why there are 2 ui out, bug?
 
       Time.timeScale = 1;
 
-      if (FindObjectOfType<SwitchTabs>())
-      {
-        CloseTabs();
-      }
-
+      CloseTabs();
+      
       gameObject.SetActive(false);
     }
 
