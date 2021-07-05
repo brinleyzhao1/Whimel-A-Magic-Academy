@@ -21,8 +21,6 @@ namespace Course_System
     [Tooltip("Course description to be displayed in UI.")] [SerializeField] [TextArea]
     string description = null;
 
-[Tooltip("1,2 or 3")]
-    public int classDifficultyLevel=1;
 
     public StatsType[] statsIncreased = new StatsType[1];
     public StatsType statDecreased ;

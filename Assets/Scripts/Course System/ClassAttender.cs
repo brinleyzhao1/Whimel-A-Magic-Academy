@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using GameDev.tv_Assets.Scripts.Saving;
 using Player;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -6,11 +8,11 @@ using Random = UnityEngine.Random;
 namespace Course_System
 {
   /// <summary>
-  /// this script acts as an intermediate between time system and className attending ui.
-  ///this script is triggered whenever it's className time, pulls the correct classes from courseSchedule,
+  /// this script acts as an intermediate between time system and thisClass attending ui.
+  ///this script is triggered whenever it's thisClass time, pulls the correct classes from courseSchedule,
   ///pull out ui to let player choose what classes they want to take and then execute its consequences
   /// </summary>
-  public class ClassAttender : MonoBehaviour
+  public class ClassAttender : MonoBehaviour, ISaveable
   {
     #region Singleton
 
@@ -38,11 +40,17 @@ namespace Course_System
 
     public ClassPanelUi classPanelUi;
 
-    private  CourseItem[] currentTwoClasses = new CourseItem[2];
+    private CourseItem[] currentTwoClasses = new CourseItem[2];
 
     //Progression
-   [SerializeField] private Range[] classDifficultyToStatRewardRange = new Range[3];
-   [SerializeField] private int[] classDifficultyToEnergyConsumption = new int[3];
+    [SerializeField] private Range[] classDifficultyToStatRewardRange = new Range[3];
+    [SerializeField] private int[] classDifficultyToEnergyConsumption = new int[3];
+
+    [Tooltip("number of additional attendances required to advance to next difficulty class")] [SerializeField]
+    private int[] numberAttendanceToNextDifficulty = new int[3];
+
+
+    private Dictionary<string, ClassStatus> classStatuses = new Dictionary<string, ClassStatus>(); //change to enum?
 
 
     [Serializable]
@@ -51,6 +59,14 @@ namespace Course_System
       //all inclusive
       public int min;
       public int max;
+    }
+
+    [Serializable]
+    public struct ClassStatus
+    {
+      //all inclusive
+      public int numberAttendance;
+      public int difficulty; //1,2,3
     }
 
     private void Start()
@@ -81,13 +97,14 @@ namespace Course_System
     {
       if (currentClassNum == 0 ^ currentClassNum == 1)
       {
-        //execute taking this className
+        //execute taking this thisClass
         //todo coroutine time passes
         TimeManager.Hour += 3;
 
         var thisClass = currentTwoClasses[currentClassNum];
         CalculateStatChange(thisClass);
         CalculateEnergyConsumption(thisClass);
+        RecordAttendance(thisClass);
       }
 
       else if (currentClassNum == 2)
@@ -96,35 +113,60 @@ namespace Course_System
       }
       else
       {
-        Debug.LogError("a className num that's not 1, 2 has been provided, " + currentClassNum);
+        Debug.LogError("a thisClass num that's not 1, 2 has been provided, " + currentClassNum);
       }
     }
-
-
 
 
     #region Private
 
-    private void CalculateStatChange(CourseItem className)
+    private void CalculateStatChange(CourseItem thisClass)
     {
-      int difficulty = className.classDifficultyLevel;
-      foreach (var stat in className.statsIncreased)
+      int difficulty =classStatuses[thisClass.name].difficulty;
+      foreach (var stat in thisClass.statsIncreased)
       {
-        int randomValue = Random.Range(classDifficultyToStatRewardRange[difficulty-1].min,classDifficultyToStatRewardRange[difficulty-1].max);
+        int randomValue = Random.Range(classDifficultyToStatRewardRange[difficulty - 1].min,
+          classDifficultyToStatRewardRange[difficulty - 1].max);
         PlayerStats.Instance.UpdateOneStatByValue(stat, randomValue);
       }
-      int randomMinus = Random.Range(classDifficultyToStatRewardRange[difficulty-1].min,classDifficultyToStatRewardRange[difficulty-1].max);
-      PlayerStats.Instance.UpdateOneStatByValue(className.statDecreased, randomMinus);
 
+      int randomMinus = Random.Range(classDifficultyToStatRewardRange[difficulty - 1].min,
+        classDifficultyToStatRewardRange[difficulty - 1].max);
+      PlayerStats.Instance.UpdateOneStatByValue(thisClass.statDecreased, randomMinus);
     }
 
 
-    private void CalculateEnergyConsumption(CourseItem className)
+    private void CalculateEnergyConsumption(CourseItem thisClass)
     {
-      int difficulty = className.classDifficultyLevel;
+      int difficulty = classStatuses[thisClass.name].difficulty;
       int energyConsumed = classDifficultyToEnergyConsumption[difficulty - 1];
       PlayerEnergy.Instance.UpdateEnergyByValue(-energyConsumed);
     }
+
+    private void RecordAttendance(CourseItem thisClass)
+    {
+      if (!classStatuses.ContainsKey(thisClass.name))
+      {
+        var initialStatus = new ClassStatus {difficulty = 1, numberAttendance = 0};
+        classStatuses[thisClass.name] = initialStatus;
+      }
+
+      var currentStatus = classStatuses[thisClass.name];
+
+      currentStatus.numberAttendance += 1;
+
+      //check if can advance
+      int currentDifficulty = currentStatus.difficulty;
+      int attendanceRequiredToAdvance = numberAttendanceToNextDifficulty[currentDifficulty - 1];
+      if (currentStatus.numberAttendance >= attendanceRequiredToAdvance)
+      {
+        currentStatus.difficulty += 1;
+        currentStatus.numberAttendance = 0;
+      }
+
+      classStatuses[thisClass.name] = currentStatus;
+    }
+
 
     private void Checker()
     {
@@ -142,7 +184,18 @@ namespace Course_System
     #endregion
 
 
+    #region Saving
 
+    public object CaptureState()
+    {
+      return classStatuses;
+    }
 
+    public void RestoreState(object state)
+    {
+      classStatuses = (Dictionary<string, ClassStatus>) state;
+    }
+
+    #endregion
   }
 }

@@ -24,6 +24,6 @@ namespace UI_Scripts
       gameObject.SetActive(false);
     }
 
-    
+
   }
 }
