@@ -13,7 +13,7 @@ namespace Crafting
     {
       FindObjectOfType<CursorChanger>().OneMoreUiOut();
       GameAssets.PotionPanel.gameObject.SetActive(true);
-      var knownList = KnownPotionRecipesStorage.Instance.knownPotionRecipes;
+      var knownList = Alchemy.Alchemy.Instance.knownPotionRecipes;
       GameAssets.RecipeBookPanel.GetComponent<PotionRecipeBookUi>().SetUpRecipeBook(knownList);
       // GameAssets.ShopPanel.GetComponent<ShopMenu>().SetUpBookShelf(itemsForSell);
       // FindObjectOfType<ShowHideUiWithKey>().OpenOrCloseTabs();

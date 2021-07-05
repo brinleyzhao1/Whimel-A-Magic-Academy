@@ -5,7 +5,6 @@ using Player;
 using Player.Interaction;
 using Skills;
 using TMPro;
-using UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -41,7 +40,6 @@ namespace UI_Scripts
     }
 
 
-
     /// <summary>
     /// when selected, update visual
     /// </summary>
@@ -59,8 +57,9 @@ namespace UI_Scripts
       ingredientSlot2.UpdateIcon(recipe.ingredient2, recipe.quantity2);
       ingredientSlot3.UpdateIcon(recipe.ingredient3, recipe.quantity3);
 
-      int playerAlchemyLevel = PlayerSkills.Instance.GetAlchemyLevel();
-      if (recipe.level > playerAlchemyLevel)
+      //check if level is within player's skill
+      var playerAlchemyLevel = PlayerSkills.Instance.GetAlchemyLevel();
+      if (recipe.level > playerAlchemyLevel + 1)
       {
         brewButton.gameObject.GetComponent<Image>().color = Color.gray;
         timeCountDownText.text = "This potion is too difficult for you to brew right now.";
@@ -98,19 +97,18 @@ namespace UI_Scripts
     }
 
 
-
     #region Helper Functions
 
     private void ClearOutBrewSectionUi()
-        {
-          titleText.text = "";
-          descriptionText.text = "";
-          ingredientSlot1.UpdateIcon(null, 0);
-          ingredientSlot2.UpdateIcon(null, 0);
-          ingredientSlot3.UpdateIcon(null, 0);
-          canBrew = false;
-          brewButton.gameObject.GetComponent<Image>().color = Color.white;
-        }
+    {
+      titleText.text = "";
+      descriptionText.text = "";
+      ingredientSlot1.UpdateIcon(null, 0);
+      ingredientSlot2.UpdateIcon(null, 0);
+      ingredientSlot3.UpdateIcon(null, 0);
+      canBrew = false;
+      brewButton.gameObject.GetComponent<Image>().color = Color.white;
+    }
 
     IEnumerator Brew()
     {
@@ -123,27 +121,35 @@ namespace UI_Scripts
       GameAssets.PlayerInventory.RemoveItemsFromInventory(thisRecipe.ingredient2, thisRecipe.quantity2);
       GameAssets.PlayerInventory.RemoveItemsFromInventory(thisRecipe.ingredient3, thisRecipe.quantity3);
 
-      //add final potion to inventory
-      GameAssets.PlayerInventory.AddToFirstEmptySlot(thisRecipe.finalPotion, 1);
+
+      bool succeeded = Alchemy.Alchemy.Instance.BrewSuccess(thisRecipe.level);
+      if (succeeded)
+      {
+        print("brew success");
+        //add final potion to inventory
+        GameAssets.PlayerInventory.AddToFirstEmptySlot(thisRecipe.finalPotion, 1);
+
+        if (playerInventoryUi.isActiveAndEnabled) //probably is not active
+        {
+          playerInventoryUi.Redraw();
+        }
+
+        //reward skill exp
+        SkillProgression progression = PlayerSkills.Instance.skillProgression;
+        int expGained = progression.expPerActivityAtLevel[thisRecipe.level];
+        PlayerSkills.Instance.AddExperienceToSkill(SkillTypeEnum.Alchemy, expGained);
+
+
+        //consume energy
+        int energyConsumed = progression.energyConsumedPerActivityByLevel[thisRecipe.level];
+        PlayerEnergy.Instance.UpdateEnergyByValue(-energyConsumed);
+      }
+
 
       TimeManager.Instance.FastForwardByRealLifeSeconds(thisRecipe.timeNeedToBrew);
 
       UpdateDisplayedInfo(thisRecipe);
 
-      if (playerInventoryUi.isActiveAndEnabled) //probably is not active
-      {
-         playerInventoryUi.Redraw();
-      }
-
-      //reward skill exp
-      SkillProgression progression = PlayerSkills.Instance.skillProgression;
-      int expGained = progression.expPerActivityAtLevel[thisRecipe.level];
-      PlayerSkills.Instance.AddExperienceToSkill(SkillTypeEnum.Alchemy, expGained);
-
-
-      //consume energy
-      int energyConsumed = progression.energyConsumedPerActivityByLevel[thisRecipe.level];
-      PlayerEnergy.Instance.UpdateEnergyByValue(-energyConsumed);
 
       inProcessOfBrewing = false;
     }
@@ -169,9 +175,6 @@ namespace UI_Scripts
       return false;
     }
 
-
-      #endregion
-
-
+    #endregion
   }
 }

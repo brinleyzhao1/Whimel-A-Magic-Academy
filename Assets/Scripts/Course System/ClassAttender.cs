@@ -97,9 +97,10 @@ namespace Course_System
         TimeManager.Hour += 3;
 
         var thisClass = currentTwoClasses[currentClassNum];
+        RecordAttendance(thisClass);
         CalculateStatChange(thisClass);
         CalculateEnergyConsumption(thisClass);
-        RecordAttendance(thisClass);
+
       }
 
       else if (currentClassNum == 2)
@@ -117,17 +118,18 @@ namespace Course_System
 
     private void CalculateStatChange(CourseItem thisClass)
     {
-      int difficulty =classStatuses[thisClass.name].difficulty;
+      int difficulty = classStatuses[thisClass.name].difficulty;
       foreach (var stat in thisClass.statsIncreased)
       {
         int randomValue = Random.Range(classDifficultyToStatRewardRange[difficulty - 1].min,
           classDifficultyToStatRewardRange[difficulty - 1].max);
         PlayerStats.Instance.UpdateOneStatByValue(stat, randomValue);
       }
-
+      
       int randomMinus = Random.Range(classDifficultyToStatRewardRange[difficulty - 1].min,
         classDifficultyToStatRewardRange[difficulty - 1].max);
       PlayerStats.Instance.UpdateOneStatByValue(thisClass.statDecreased, randomMinus);
+
     }
 
 

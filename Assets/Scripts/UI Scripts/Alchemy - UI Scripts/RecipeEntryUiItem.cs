@@ -28,7 +28,7 @@ namespace UI_Scripts
       thisRecipe = recipe;
 
       int playerAlchemyLevel = PlayerSkills.Instance.GetAlchemyLevel();
-      if (recipe.level > playerAlchemyLevel)
+      if (recipe.level > playerAlchemyLevel+1)
       {
         recipeNameText.color = Color.gray;
       }

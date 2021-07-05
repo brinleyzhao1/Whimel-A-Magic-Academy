@@ -133,9 +133,9 @@ namespace GameDev.tv_Assets.Scripts.Inventories
         if (thisItem.GetType() == typeof(PotionRecipeScriptableObject))
         {
           var thisIsAPotionRecipe = (PotionRecipeScriptableObject) thisItem;
-          if (!KnownPotionRecipesStorage.Instance.AlreadyKnownThisRecipe(thisIsAPotionRecipe))
+          if (!Alchemy.Alchemy.Instance.AlreadyKnownThisRecipe(thisIsAPotionRecipe))
           {
-            KnownPotionRecipesStorage.Instance.AddNewPotionRecipe(thisIsAPotionRecipe);
+            Alchemy.Alchemy.Instance.AddNewPotionRecipe(thisIsAPotionRecipe);
             RemoveItems(index, 1);
           }
           else
