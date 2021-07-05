@@ -83,6 +83,11 @@ namespace Skills
       UpdateSkillUi();
     }
 
+
+    public int  GetAlchemyLevel()
+    {
+      return alchemyStats.currentLevel;
+    }
     private void Update() //testing purpose
     {
       if (Input.GetKeyDown(KeyCode.U))

@@ -1,10 +1,11 @@
 ﻿using Alchemy;
 using Player.Interaction;
+using Skills;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI
+namespace UI_Scripts
 {
   /// <summary>
   /// parallel to ShopItemEntryUi
@@ -25,7 +26,12 @@ namespace UI
       iconImage.sprite = recipe.GetIcon();
       recipeNameText.text = recipe.name;
       thisRecipe = recipe;
-      // thisItem = item;
+
+      int playerAlchemyLevel = PlayerSkills.Instance.GetAlchemyLevel();
+      if (recipe.level > playerAlchemyLevel)
+      {
+        recipeNameText.color = Color.gray;
+      }
     }
 
     public void ButtonTellBrewToUpdateInfo()

@@ -29,7 +29,7 @@ namespace UI_Scripts
 
     private PotionRecipeScriptableObject thisRecipe = null;
 
-    private bool haveAllIngredientsCanBrew;
+    private bool canBrew;
     private bool inProcessOfBrewing;
 
 
@@ -59,22 +59,31 @@ namespace UI_Scripts
       ingredientSlot2.UpdateIcon(recipe.ingredient2, recipe.quantity2);
       ingredientSlot3.UpdateIcon(recipe.ingredient3, recipe.quantity3);
 
+      int playerAlchemyLevel = PlayerSkills.Instance.GetAlchemyLevel();
+      if (recipe.level > playerAlchemyLevel)
+      {
+        brewButton.gameObject.GetComponent<Image>().color = Color.gray;
+        timeCountDownText.text = "This potion is too difficult for you to brew right now.";
+        canBrew = false;
+      }
+
+
       if (!CheckIfHaveAllIngredients(recipe))
       {
         brewButton.gameObject.GetComponent<Image>().color = Color.gray;
-        haveAllIngredientsCanBrew = false;
+        canBrew = false;
       }
       else
       {
         brewButton.gameObject.GetComponent<Image>().color = Color.white;
-        haveAllIngredientsCanBrew = true;
+        canBrew = true;
       }
     }
 
 
     public void ButtonBrew()
     {
-      if (haveAllIngredientsCanBrew && !inProcessOfBrewing)
+      if (canBrew && !inProcessOfBrewing)
       {
         StartCoroutine(Brew());
       }
@@ -99,7 +108,7 @@ namespace UI_Scripts
           ingredientSlot1.UpdateIcon(null, 0);
           ingredientSlot2.UpdateIcon(null, 0);
           ingredientSlot3.UpdateIcon(null, 0);
-          haveAllIngredientsCanBrew = false;
+          canBrew = false;
           brewButton.gameObject.GetComponent<Image>().color = Color.white;
         }
 
