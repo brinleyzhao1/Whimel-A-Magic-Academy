@@ -4,7 +4,7 @@ using SceneManagement;
 using TMPro;
 using UnityEngine;
 
-namespace UI.Menus
+namespace UI_Scripts.Menus
 {
   public class MainMenuUi : MonoBehaviour
   {
@@ -16,7 +16,7 @@ namespace UI.Menus
     {
 
       savingWrapper = new LazyValue<SavingWrapper>(GetSavingWrapper);
-      CursorChanger.Instance.numberUiOut += 1;
+      CursorChanger.Instance.OneMoreUiOut();
     }
 
     private SavingWrapper GetSavingWrapper()

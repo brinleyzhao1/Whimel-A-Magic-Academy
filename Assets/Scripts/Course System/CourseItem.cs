@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using Player;
+using Stats;
 using UnityEngine;
 
 namespace Course_System
@@ -13,8 +14,8 @@ namespace Course_System
   public class CourseItem : ScriptableObject
   {
     // CONFIG DATA
-    // [Tooltip("Auto-generated UUID for saving/loading. Clear this field if you want to generate a new one.")]
-    // [SerializeField] string itemId = null;
+    [Tooltip("Auto-generated UUID for saving/loading. Clear this field if you want to generate a new one.")]
+    [SerializeField] string courseId = null;
 
 
     [Tooltip("Course description to be displayed in UI.")] [SerializeField] [TextArea]
@@ -29,7 +30,7 @@ namespace Course_System
     //   public int valueChange;
     // }
     // public StatChange[] statsChange = new StatChange[4];
-    public int classLevel=1;
+    public int classDifficultyLevel=1;
 
     public StatsType[] statsIncreased = new StatsType[1];
     public StatsType statDecreased ;
@@ -44,13 +45,13 @@ namespace Course_System
     /// <summary>
     /// Get the inventory item instance from its UUID.
     /// </summary>
-    /// <param name="itemId">
+    /// <param name="courseId">
     /// String UUID that persists between game instances.
     /// </param>
     /// <returns>
     /// Inventory item instance corresponding to the ID.
     /// </returns>
-    // public static CourseItem GetFromId(string itemId)
+    // public static CourseItem GetFromId(string courseId)
     // {
     //     if (itemLookupCache == null)
     //     {
@@ -58,19 +59,19 @@ namespace Course_System
     //         var itemList = Resources.LoadAll<CourseItem>("");
     //         foreach (var item in itemList)
     //         {
-    //             if (itemLookupCache.ContainsKey(item.itemId))
+    //             if (itemLookupCache.ContainsKey(item.courseId))
     //             {
     //                 Debug.LogError(
-    //                   $"Looks like there's a duplicate GameDevTV.UI.InventorySystem ID for objects: {itemLookupCache[item.itemId]} and {item}");
+    //                   $"Looks like there's a duplicate GameDevTV.UI.InventorySystem ID for objects: {itemLookupCache[item.courseId]} and {item}");
     //                 continue;
     //             }
     //
-    //             itemLookupCache[item.itemId] = item;
+    //             itemLookupCache[item.courseId] = item;
     //         }
     //     }
     //
-    //     if (itemId == null || !itemLookupCache.ContainsKey(itemId)) return null;
-    //     return itemLookupCache[itemId];
+    //     if (courseId == null || !itemLookupCache.ContainsKey(courseId)) return null;
+    //     return itemLookupCache[courseId];
     // }
 
     /*public Sprite GetIcon()
@@ -80,7 +81,7 @@ namespace Course_System
 
     // public string GetItemID()
     // {
-    //     return itemId;
+    //     return courseId;
     // }
     //
     //
@@ -99,9 +100,9 @@ namespace Course_System
     // void ISerializationCallbackReceiver.OnBeforeSerialize()
     // {
     //     // Generate and save a new UUID if this is blank.
-    //     if (string.IsNullOrWhiteSpace(itemId))
+    //     if (string.IsNullOrWhiteSpace(courseId))
     //     {
-    //         itemId = System.Guid.NewGuid().ToString();
+    //         courseId = System.Guid.NewGuid().ToString();
     //     }
     // }
 

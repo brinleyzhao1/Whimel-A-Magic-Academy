@@ -13,8 +13,8 @@ namespace UI_Scripts
 
     public virtual void CloseThisPanel() //for button "Cancel"
     {
-      CursorChanger.Instance.numberUiOut = 0;
-      CursorChanger.Instance.OneLessUiOut(); //not sure why there are 2 ui out, bug?
+      CursorChanger.Instance.NoUiOut();
+      // CursorChanger.Instance.OneLessUiOut(); //not sure why there are 2 ui out, bug?
 
       Time.timeScale = 1;
 

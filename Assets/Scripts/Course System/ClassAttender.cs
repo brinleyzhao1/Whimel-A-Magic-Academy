@@ -39,19 +39,9 @@ namespace Course_System
     public ClassPanelUi classPanelUi;
 
     private readonly CourseItem[] currentTwoClasses = new CourseItem[2];
-    // private CourseItem currentClass1;
-    // private CourseItem currentClass2;
 
 
-    // [Serializable]
-    // struct ClassLevelStatChangeRange
-    // {
-    //   int min
-    // }
-    //
-    private void Start()
-    {
-    }
+
 
 
     public void GetTheTwoClassesForThisTime(int year, int day, int morningOrAfternoon) //called by time manager
@@ -61,11 +51,9 @@ namespace Course_System
       CourseItem firstClass = CourseScheduleStorage.Instance.yearDayTimeToClass[classCode].class1;
       CourseItem secondClass = CourseScheduleStorage.Instance.yearDayTimeToClass[classCode].class2;
 
-      currentTwoClasses[0] = firstClass;
-      currentTwoClasses[1] = secondClass;
+      // currentTwoClasses[0] = firstClass;
+      // currentTwoClasses[1] = secondClass;
 
-      // currentClass1 = firstClass;
-      // currentClass2 = secondClass;
 
       // ClassPanelUi classPanelUi = FindObjectOfType<ClassPanelUi>();
       // print(classPanelUi.name);
@@ -81,9 +69,9 @@ namespace Course_System
       {
         //execute taking this className
         //todo coroutine time passes
-        TimeManager.Hour += 4;
+        TimeManager.Hour += 3;
 
-        CalculateAllResultsFromClassTaken(currentTwoClasses[currentClassNum]);
+        CalculateStatChangeFromClassTaken(currentTwoClasses[currentClassNum]);
       }
 
       else if (currentClassNum == 2)
@@ -97,14 +85,14 @@ namespace Course_System
     }
 
 
-    private void CalculateAllResultsFromClassTaken(CourseItem className)
+    private void CalculateStatChangeFromClassTaken(CourseItem className)
     {
       foreach (var oneStatIncreased in className.statsIncreased)
       {
-        PlayerStats.Instance.UpdateOneStatByLevel(oneStatIncreased, className.classLevel, true);
+        PlayerStats.Instance.UpdateOneStatByLevel(oneStatIncreased, className.classDifficultyLevel, true);
       }
 
-      PlayerStats.Instance.UpdateOneStatByLevel(className.statDecreased, className.classLevel, false);
+      PlayerStats.Instance.UpdateOneStatByLevel(className.statDecreased, className.classDifficultyLevel, false);
     }
 
 

@@ -2,6 +2,7 @@ using System;
 using GameDev.tv_Assets.Scripts.Inventories;
 using Player;
 using Skills;
+using Stats;
 using UnityEngine;
 
 namespace Library

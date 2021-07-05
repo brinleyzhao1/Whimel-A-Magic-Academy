@@ -1,6 +1,7 @@
 ﻿
 using System.Net.Mime;
 using Player;
+using Stats;
 using UnityEngine;
 
 namespace Endings

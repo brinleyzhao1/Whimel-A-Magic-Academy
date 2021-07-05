@@ -1,4 +1,5 @@
 ﻿using System;
+using Audio;
 using Player.Interaction;
 using Player.Movement;
 using UnityEngine;
@@ -51,6 +52,11 @@ namespace Control
       public Vector2 hotspot;
     }
 
+    private void Start()
+    {
+      CursorChangeToFreeMode();
+      // CursorChangeToLockedMode(); //because of the main menu UI
+    }
     private void Update()
     {
       if (Input.GetKeyDown(KeyCode.J))
@@ -80,8 +86,6 @@ namespace Control
     }
 
 
-
-
     public void OneMoreUiOut()
     {
       numberUiOut += 1;
@@ -106,26 +110,17 @@ namespace Control
       // print("-, " +  numberUiOut);
     }
 
-    // private void Update()
-    // {
-    //   if (numberUiOut == 0)
-    //   {
-    //     //todo also close tabs off if it's opened
-    //     CursorChangeToFreeMode();
-    //   }
-    //   else
-    //   {
-    //     CursorChangeToLockedMode();
-    //
-    //   }
-    // }
-
-    private void Start()
+    /// <summary>
+    /// forcefully clear out
+    /// </summary>
+    public void NoUiOut()
     {
+      numberUiOut = 0;
       CursorChangeToFreeMode();
-      // CursorChangeToLockedMode(); //because of the main menu UI
+      AudioAssets.UiPaperSound.Play();
     }
 
+    #region Private
 
     private CursorMapping GetCursorMapping(CursorType cursorType)
     {
@@ -136,6 +131,7 @@ namespace Control
           return mapping;
         }
       }
+
       return cursorMappings[0];
     }
 
@@ -155,5 +151,7 @@ namespace Control
       GetComponentInChildren<MouseLookY>().enabled = false;
       Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.ForceSoftware);
     }
+
+    #endregion
   }
 }

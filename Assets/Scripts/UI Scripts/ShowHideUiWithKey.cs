@@ -1,20 +1,22 @@
-﻿using Control;
-using Player.Movement;
+﻿using System;
+using Audio;
+using Control;
 using UnityEngine;
 
-namespace UI
+namespace UI_Scripts
 {
   public class ShowHideUiWithKey : MonoBehaviour
   {
     [SerializeField] KeyCode toggleKey = KeyCode.Escape;
-    [SerializeField] GameObject uiContainer = null;
+    [SerializeField] GameObject tabsContainer = null;
+    [SerializeField] GameObject customaryUiContainer = null;
     private CursorChanger _cursorChanger;
 
 
     void Start()
     {
-      uiContainer.SetActive(false);
-      _cursorChanger = FindObjectOfType<CursorChanger>();
+      tabsContainer.SetActive(false);
+      _cursorChanger = CursorChanger.Instance;
     }
 
     // Update is called once per frame
@@ -39,19 +41,41 @@ namespace UI
       {
         OpenOrCloseTabs();
       }
-    }
 
-    public void OpenOrCloseTabs()
+
+
+      //if any ui is open, press F to close all
+      if (_cursorChanger.numberUiOut > 0)
       {
-        uiContainer.SetActive(!uiContainer.activeSelf);
-        if (uiContainer.activeSelf)
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-          _cursorChanger.OneMoreUiOut();
-        }
-        else
-        {
-          _cursorChanger.OneLessUiOut();
+          CloseAllCustomaryUis();
+
         }
       }
     }
+
+    public void OpenOrCloseTabs()
+    {
+      tabsContainer.SetActive(!tabsContainer.activeSelf);
+      if (tabsContainer.activeSelf)
+      {
+        _cursorChanger.OneMoreUiOut();
+      }
+      else
+      {
+        _cursorChanger.OneLessUiOut();
+      }
+    }
+
+    private void CloseAllCustomaryUis()
+    {
+      foreach (Transform child in customaryUiContainer.transform)
+      {
+        child.gameObject.SetActive(false);
+        _cursorChanger.NoUiOut();
+      }
+
+    }
   }
+}

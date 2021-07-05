@@ -1,7 +1,7 @@
 ﻿using Player.Interaction;
 using UnityEngine;
 
-namespace UI
+namespace UI_Scripts
 {
   public class SwitchTabs : MonoBehaviour
   {

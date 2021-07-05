@@ -119,9 +119,8 @@ namespace Player.Interaction
     public static GameObject SellTray;
 
 
-    // [Header("Sound")]
-    // [SerializeField] public GameObject setUiPaperSound;
-    // public static GameObject UiPaperSound;
+
+
 
     private void Awake()
     {

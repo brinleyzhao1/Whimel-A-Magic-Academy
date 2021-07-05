@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Player;
+using Stats;
 using TMPro;
 using UnityEngine;
 

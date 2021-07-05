@@ -27,10 +27,11 @@ namespace UI_Scripts
       {
         //present [E]
         CursorChanger.Instance.SetCentralCursor(cursorType);
-
         GameAssets.InteractHint.gameObject.SetActive(true);
+
         if (Input.GetKeyDown(KeyCode.F))
         {
+          print("interact with key F");
           Interact();
         }
       }
