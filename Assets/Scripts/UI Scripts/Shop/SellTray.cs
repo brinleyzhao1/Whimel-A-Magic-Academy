@@ -1,14 +1,10 @@
-﻿using System;
-using GameDev.tv_Assets.Scripts.Inventories;
+﻿using GameDev.tv_Assets.Scripts.Inventories;
 using GameDev.tv_Assets.Scripts.UI.Inventories;
 using Player;
-using Player.Interaction;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-namespace UI.Shop
+namespace UI_Scripts.Shop
 {
   /// <summary>
   ///sit on sell tray (UI)
@@ -19,23 +15,18 @@ namespace UI.Shop
 
     #region Singleton
 
-    private static SellTray _instance;
-
-    public static SellTray Instance
-    {
-      get { return _instance; }
-    }
+    public static SellTray Instance { get; private set; }
 
 
     private void Awake()
     {
-      if (_instance != null && _instance != this)
+      if (Instance != null && Instance != this)
       {
         Destroy(this.gameObject);
       }
       else
       {
-        _instance = this;
+        Instance = this;
       }
     }
 
@@ -62,7 +53,7 @@ namespace UI.Shop
     {
       // print("index is "+index);
 
-      FindObjectOfType<Money>().AddOrMinusMoney(totalValueToBeExchanged);
+      Money.Instance.AddOrMinusMoney(totalValueToBeExchanged);
       Inventory.GetPlayerInventory().RemoveFromSlot(indexInInventorySelected, inventory.GetNumberInSlot(indexInInventorySelected));
 
       UpdateSellTray();

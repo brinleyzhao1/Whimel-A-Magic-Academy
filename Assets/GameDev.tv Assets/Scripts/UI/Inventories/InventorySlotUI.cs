@@ -1,12 +1,17 @@
-﻿using GameDev.tv_Assets.Scripts.Inventories;
+﻿
+using Control;
+using GameDev.tv_Assets.Scripts.Inventories;
 using GameDev.tv_Assets.Scripts.Utils.UI.Dragging;
-using UI.Shop;
+using Player;
+using Player.Interaction;
+using UI_Scripts.Shop;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace GameDev.tv_Assets.Scripts.UI.Inventories
 {
-  public class InventorySlotUi : MonoBehaviour, IItemHolder, IDragContainer<InventoryItem>, ISelectHandler
+  public class InventorySlotUi : MonoBehaviour, IItemHolder, IDragContainer<InventoryItem>, ISelectHandler,
+    IPointerEnterHandler, IPointerExitHandler
   {
     // CONFIG DATA
     [SerializeField] InventoryItemIconInChild iconInChild = null; // own child
@@ -17,8 +22,17 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
     InventoryItem item;
     Inventory inventory;
 
+    private bool canRightClickToSell;
 
     // PUBLIC
+
+
+    private void Update()
+    {
+      RightClickToSellAllInShopView();
+    }
+
+
 
     public void Setup(Inventory inventory, int index)
     {
@@ -84,7 +98,34 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
       {
         SellTray.Instance.ReceiveInfoAboutSelectedItemForSell(index);
       }
+    }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+      if (!GameAssets.ShopPanel.activeSelf) return;
+      if (!inventory.GetItemInSlot(index)) return;
+      CursorChanger.Instance.SetMovingCursor(CursorType.Sell);
+      canRightClickToSell = true;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+      if (!GameAssets.ShopPanel.activeSelf) return;
+      if (!inventory.GetItemInSlot(index)) return;
+      CursorChanger.Instance.SetMovingCursor(CursorType.None);
+      canRightClickToSell = false;
+    }
+
+    private void RightClickToSellAllInShopView()
+    {
+      if (canRightClickToSell && Input.GetMouseButtonDown(1))
+      {
+        //sell all
+        int amount = inventory.GetNumberInSlot(index);
+        int totalValueToBeExchanged = inventory.GetItemInSlot(index).sellingPrice * amount;
+        Money.Instance.AddOrMinusMoney(totalValueToBeExchanged);
+        Inventory.GetPlayerInventory().RemoveFromSlot(index, amount);
+      }
     }
   }
 }

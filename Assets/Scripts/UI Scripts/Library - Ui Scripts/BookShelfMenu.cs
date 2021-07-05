@@ -2,7 +2,6 @@
 using Library;
 using Player.Interaction;
 using UI_Scripts;
-using UI.Shop;
 using UnityEngine;
 
 namespace UI

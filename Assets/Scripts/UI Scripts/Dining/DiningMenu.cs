@@ -3,7 +3,6 @@ using GameDev.tv_Assets.Scripts.Inventories;
 using Player.Interaction;
 using UI;
 using UI_Scripts.Shop;
-using UI.Shop;
 using UnityEngine;
 
 namespace UI_Scripts.Dining

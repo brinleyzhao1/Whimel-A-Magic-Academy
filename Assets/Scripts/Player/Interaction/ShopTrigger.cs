@@ -4,7 +4,6 @@ using GameDev.tv_Assets.Scripts.Inventories;
 using UI;
 using UI_Scripts;
 using UI_Scripts.Shop;
-using UI.Shop;
 
 namespace Player.Interaction
 {

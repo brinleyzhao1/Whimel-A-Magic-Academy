@@ -1,12 +1,10 @@
 ﻿using GameDev.tv_Assets.Scripts.Inventories;
-using GameDev.tv_Assets.Scripts.UI.Inventories;
 using Player.Interaction;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-namespace UI
+namespace UI_Scripts
 {
   public class IngredientSlotUi : MonoBehaviour
   {

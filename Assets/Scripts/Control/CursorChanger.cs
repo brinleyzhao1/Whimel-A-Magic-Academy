@@ -48,8 +48,9 @@ namespace Control
     {
       public CursorType type;
       public Sprite sprite;
+
       public Texture2D texture;
-      public Vector2 hotspot;
+      // public Vector2 hotspot;
     }
 
     private void Start()
@@ -57,11 +58,12 @@ namespace Control
       CursorChangeToFreeMode();
       // CursorChangeToLockedMode(); //because of the main menu UI
     }
+
     private void Update()
     {
       if (Input.GetKeyDown(KeyCode.J))
       {
-        print("number ui out = "+numberUiOut);
+        print("number ui out = " + numberUiOut);
       }
     }
 
@@ -82,7 +84,7 @@ namespace Control
     public void SetMovingCursor(CursorType cursorType)
     {
       CursorMapping mapping = GetCursorMapping(cursorType);
-      Cursor.SetCursor(mapping.texture, mapping.hotspot, CursorMode.Auto);
+      Cursor.SetCursor(mapping.texture, new Vector2(0, 0), CursorMode.Auto);
     }
 
 

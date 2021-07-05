@@ -31,7 +31,6 @@ namespace UI_Scripts
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-          print("interact with key F");
           Interact();
         }
       }

@@ -16,23 +16,18 @@ namespace Course_System
   {
     #region Singleton
 
-    private static ClassAttender _instance;
-
-    public static ClassAttender Instance
-    {
-      get { return _instance; }
-    }
+    public static ClassAttender Instance { get; private set; }
 
 
     private void Awake()
     {
-      if (_instance != null && _instance != this)
+      if (Instance != null && Instance != this)
       {
         Destroy(this.gameObject);
       }
       else
       {
-        _instance = this;
+        Instance = this;
       }
     }
 

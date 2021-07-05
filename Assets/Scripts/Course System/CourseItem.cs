@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using Player;
-using Stats;
+﻿using Stats;
 using UnityEngine;
 
 namespace Course_System
@@ -15,7 +11,8 @@ namespace Course_System
   {
     // CONFIG DATA
     [Tooltip("Auto-generated UUID for saving/loading. Clear this field if you want to generate a new one.")]
-    [SerializeField] string courseId = null;
+    [SerializeField]
+    string courseId = null;
 
 
     [Tooltip("Course description to be displayed in UI.")] [SerializeField] [TextArea]
@@ -23,7 +20,7 @@ namespace Course_System
 
 
     public StatsType[] statsIncreased = new StatsType[1];
-    public StatsType statDecreased ;
+    public StatsType statDecreased;
 
     // STATE, id to courseItem
     // static Dictionary<string, CourseItem> _itemLookupCache;

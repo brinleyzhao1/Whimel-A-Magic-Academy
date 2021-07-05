@@ -1,7 +1,7 @@
 ﻿using System;
 using GameDev.tv_Assets.Scripts.Inventories;
 using GameDev.tv_Assets.Scripts.Utils.UI.Dragging;
-using UI.Shop;
+using UI_Scripts.Shop;
 using UnityEngine;
 
 namespace GameDev.tv_Assets.Scripts.UI.Inventories
