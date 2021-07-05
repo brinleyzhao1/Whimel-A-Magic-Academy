@@ -38,11 +38,25 @@ namespace Course_System
 
     public ClassPanelUi classPanelUi;
 
-    private readonly CourseItem[] currentTwoClasses = new CourseItem[2];
+    private  CourseItem[] currentTwoClasses = new CourseItem[2];
+
+    //Progression
+   [SerializeField] private Range[] classDifficultyToStatRewardRange = new Range[3];
+   [SerializeField] private int[] classDifficultyToEnergyConsumption = new int[3];
 
 
+    [Serializable]
+    public struct Range
+    {
+      //all inclusive
+      public int min;
+      public int max;
+    }
 
-
+    private void Start()
+    {
+      Checker();
+    }
 
     public void GetTheTwoClassesForThisTime(int year, int day, int morningOrAfternoon) //called by time manager
     {
@@ -51,8 +65,8 @@ namespace Course_System
       CourseItem firstClass = CourseScheduleStorage.Instance.yearDayTimeToClass[classCode].class1;
       CourseItem secondClass = CourseScheduleStorage.Instance.yearDayTimeToClass[classCode].class2;
 
-      // currentTwoClasses[0] = firstClass;
-      // currentTwoClasses[1] = secondClass;
+      currentTwoClasses[0] = firstClass;
+      currentTwoClasses[1] = secondClass;
 
 
       // ClassPanelUi classPanelUi = FindObjectOfType<ClassPanelUi>();
@@ -71,7 +85,9 @@ namespace Course_System
         //todo coroutine time passes
         TimeManager.Hour += 3;
 
-        CalculateStatChangeFromClassTaken(currentTwoClasses[currentClassNum]);
+        var thisClass = currentTwoClasses[currentClassNum];
+        CalculateStatChange(thisClass);
+        CalculateEnergyConsumption(thisClass);
       }
 
       else if (currentClassNum == 2)
@@ -85,15 +101,47 @@ namespace Course_System
     }
 
 
-    private void CalculateStatChangeFromClassTaken(CourseItem className)
+
+
+    #region Private
+
+    private void CalculateStatChange(CourseItem className)
     {
-      foreach (var oneStatIncreased in className.statsIncreased)
+      int difficulty = className.classDifficultyLevel;
+      foreach (var stat in className.statsIncreased)
       {
-        PlayerStats.Instance.UpdateOneStatByLevel(oneStatIncreased, className.classDifficultyLevel, true);
+        int randomValue = Random.Range(classDifficultyToStatRewardRange[difficulty-1].min,classDifficultyToStatRewardRange[difficulty-1].max);
+        PlayerStats.Instance.UpdateOneStatByValue(stat, randomValue);
+      }
+      int randomMinus = Random.Range(classDifficultyToStatRewardRange[difficulty-1].min,classDifficultyToStatRewardRange[difficulty-1].max);
+      PlayerStats.Instance.UpdateOneStatByValue(className.statDecreased, randomMinus);
+
+    }
+
+
+    private void CalculateEnergyConsumption(CourseItem className)
+    {
+      int difficulty = className.classDifficultyLevel;
+      int energyConsumed = classDifficultyToEnergyConsumption[difficulty - 1];
+      PlayerEnergy.Instance.UpdateEnergyByValue(-energyConsumed);
+    }
+
+    private void Checker()
+    {
+      if (classDifficultyToStatRewardRange.Length == 0)
+      {
+        Debug.LogError("classDifficultyToStatRewardRange is unset");
       }
 
-      PlayerStats.Instance.UpdateOneStatByLevel(className.statDecreased, className.classDifficultyLevel, false);
+      if (classDifficultyToEnergyConsumption.Length == 0)
+      {
+        Debug.LogError("classDifficultyToEnergyConsumption is unset");
+      }
     }
+
+    #endregion
+
+
 
 
   }

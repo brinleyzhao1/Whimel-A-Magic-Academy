@@ -1,4 +1,5 @@
 ﻿using Control;
+using Player.Interaction;
 using UI;
 using UnityEngine;
 
@@ -18,18 +19,11 @@ namespace UI_Scripts
 
       Time.timeScale = 1;
 
-      CloseTabs();
+      GameAssets.TabsContainer.SetActive(false);
 
       gameObject.SetActive(false);
     }
 
-    private static void CloseTabs()
-    {
-      var tabs = FindObjectOfType<SwitchTabs>().gameObject;
-      if (tabs)
-      {
-        tabs.SetActive(false);
-      }
-    }
+    
   }
 }

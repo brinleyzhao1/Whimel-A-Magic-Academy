@@ -53,7 +53,8 @@ namespace UI_Scripts
 
       //after countdown, reward player
       //todo: for now add each by hand, might want to consider using a list in the future
-      PlayerStats.Instance.UpdateOneStatByLevel(thisBook.statReward1.rewardStatsType, thisBook.statReward1.level,true);
+      //todo: read book reward stat
+      // PlayerStats.Instance.UpdateOneStatByLevel(thisBook.statReward1.rewardStatsType, thisBook.statReward1.level,true);
       PlayerSkills.Instance.AddExperienceToSkill(thisBook.expReward2.rewardSkill, thisBook.expReward2.expValue);
 
       TimeManager.Instance.FastForwardByRealLifeSeconds(thisBook.timeNeedToRead);

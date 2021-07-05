@@ -6,7 +6,6 @@ using Stats;
 using UI_Scripts.StatsScripts;
 using UI.StatsScripts;
 using UnityEngine;
-using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 namespace Player
@@ -42,15 +41,6 @@ namespace Player
     private StatsOranizer statsOrganizer;
     [SerializeField]  private VisualTextFeedbackSpawner visualTextFeedbackSpawner;
 
-    public Range[] classLevelToStatRewardRange;
-
-    [Serializable]
-    public struct Range
-    {
-      //all inclusive
-      public int min;
-      public int max;
-    }
 
     private void Start()
     {
@@ -92,23 +82,8 @@ namespace Player
     // }
 
 
-
-    public void
-      UpdateOneStatByLevel(StatsType statType, int level, bool add)
+    public void UpdateOneStatByValue(StatsType statType, int valueToAdd)
       //sister method to UpdateStatDictionary; update only one entry of statDictionary
-    {
-      //todo: a little dropdown animation
-      // visualFeedbackBoard.GetComponent<Image>().IsActive(true);
-
-
-      int randomValue = Random.Range(classLevelToStatRewardRange[level].min,classLevelToStatRewardRange[level].max);
-      if (!add)
-        randomValue *= -1;
-
-      UpdateOneStatByValue(statType, randomValue);
-    }
-
-    private void UpdateOneStatByValue(StatsType statType, int valueToAdd)
     {
       statsToValueDictionary[statType] += valueToAdd;
       statsOrganizer.UpdateStatsUi(statsToValueDictionary);

@@ -21,15 +21,7 @@ namespace Course_System
     [Tooltip("Course description to be displayed in UI.")] [SerializeField] [TextArea]
     string description = null;
 
-
-
-    // [Serializable]
-    // public struct StatChange
-    // {
-    //   public StatsType statType;
-    //   public int valueChange;
-    // }
-    // public StatChange[] statsChange = new StatChange[4];
+[Tooltip("1,2 or 3")]
     public int classDifficultyLevel=1;
 
     public StatsType[] statsIncreased = new StatsType[1];

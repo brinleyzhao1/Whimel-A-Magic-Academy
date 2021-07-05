@@ -19,7 +19,11 @@ namespace Player.Interaction
 
     #region Tabs
 
-    [Header("UI: Tabs")] [SerializeField] public GameObject setInventoryTab;
+    [Header("UI: Tabs")]
+    [SerializeField] public GameObject setTabsContainer;
+    public static GameObject TabsContainer;
+
+    [SerializeField] public GameObject setInventoryTab;
     public static GameObject InventoryTab;
 
     [SerializeField] public GameObject setStatsTab;
@@ -124,6 +128,7 @@ namespace Player.Interaction
 
     private void Awake()
     {
+      TabsContainer = setTabsContainer;
       CenterCross = setCenterCross;
       InteractHint = setInteractHint;
       Player = setPlayer;
