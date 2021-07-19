@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using Control;
 using SceneManagement;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-namespace UI
+namespace UI_Scripts
 {
   public class PauseMenuUi : MonoBehaviour
   {
@@ -20,6 +17,7 @@ namespace UI
     {
       //unpause time
       Time.timeScale = 1;
+      CursorChanger.Instance.OneLessUiOut();
     }
 
     public void ButtonReturnToMainMenu()
@@ -27,8 +25,7 @@ namespace UI
       //save
      var savingWrapper =  FindObjectOfType<SavingWrapper>();
      // savingWrapper.Save	();
-     savingWrapper.LoadMenu	();
-
+     savingWrapper.LoadMenu();
 
     }
 

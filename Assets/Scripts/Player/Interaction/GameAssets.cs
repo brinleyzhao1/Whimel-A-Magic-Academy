@@ -89,12 +89,11 @@ namespace Player.Interaction
     [SerializeField] public GameObject setChestPanel;
     public static GameObject ChestPanel;
 
-
-    [SerializeField] public GameObject setCraftingPanel;
-    public static GameObject CraftingPanel;
-
     // [SerializeField] public GameObject setHeartTab;
     // public static GameObject HeartTab;
+    [SerializeField] public GameObject setPausePanel;
+    public static GameObject PausePanel;
+
 
     [SerializeField] public GameObject setResultPanel;
     public static GameObject ResultPanel;
@@ -128,6 +127,7 @@ namespace Player.Interaction
 
     private void Awake()
     {
+      PausePanel = setPausePanel;
       TabsContainer = setTabsContainer;
       CenterCross = setCenterCross;
       InteractHint = setInteractHint;
@@ -147,7 +147,6 @@ namespace Player.Interaction
       StatsOrganizer = setStatsOrganizer;
       ScheduleTab = setScheduleTab;
       ChestPanel = setChestPanel;
-      CraftingPanel = setCraftingPanel;
       SkillsTab = setSkillsTab;
       ResultPanel = setResultPanel;
       DialogueUi = setDialogueUi;

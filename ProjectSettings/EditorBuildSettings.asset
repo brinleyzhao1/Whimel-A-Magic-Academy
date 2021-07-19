@@ -8,43 +8,43 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main Menu.unity
     guid: 209220b1fb61e402e901f3f9663d4fcb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Unused/Entrance.unity
     guid: 4458e2b1bf217433f882016dcc89c0b1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Dorm Rooms/LivingRoom.unity
     guid: 2dbf5d9eafec64d488f86742aa706c12
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Unused/Room 1.unity
     guid: c2d73990b50c74c3eaeadaf2aeff6af6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Unused/Room 3.unity
     guid: 75d0300d5bf8d4497bcdff1bf3350061
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Dorm Rooms/Room 4.unity
     guid: 790632b12c93a4d1fad642ff5c3df301
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Library.unity
     guid: 761bdcd79ad2447438f1557e7c5207c4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Hallway_01.unity
     guid: 85f33c4ded44641168e7d46a8daccdf6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tower 01.unity
     guid: e0fa1cc3ecd0f4863955f253b81c57a0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Cafeteria.unity
     guid: 9f827080bd0df47afa9d06e8ce140775
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Dorm Rooms/dorm room corridor.unity
     guid: 211575e57d26945a38c8d59c5f36f01c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Dorm Rooms/Room 5.unity
     guid: 8f5b93f36751547a5872e87c40eafac5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Castle.unity
     guid: 897cd8185b65d4bb5b28dfe3af46b369
   - enabled: 1

@@ -1,6 +1,7 @@
 ﻿using System;
 using Audio;
 using Control;
+using Player.Interaction;
 using UnityEngine;
 
 namespace UI_Scripts
@@ -44,15 +45,18 @@ namespace UI_Scripts
       }
 
 
-
-      //if any ui is open, press F to close all
-      if (_cursorChanger.numberUiOut > 0)
+      if (Input.GetKeyDown(KeyCode.Q))
       {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (_cursorChanger.numberUiOut > 0) //if any ui is open, press Q to close all
         {
           CloseAllCustomaryUis();
-
         }
+      }
+
+      if (Input.GetKeyDown(KeyCode.Escape))
+      {
+        GameAssets.PausePanel.SetActive(true);
+        _cursorChanger.OneMoreUiOut();
       }
     }
 
@@ -76,7 +80,6 @@ namespace UI_Scripts
         child.gameObject.SetActive(false);
         _cursorChanger.NoUiOut();
       }
-
     }
   }
 }
