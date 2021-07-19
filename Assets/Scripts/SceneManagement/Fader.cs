@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace SceneManagement
 {
-
   public class Fader : MonoBehaviour
   {
     private CanvasGroup _canvasGroup;
@@ -13,7 +12,6 @@ namespace SceneManagement
     private void Awake()
     {
       _canvasGroup = GetComponent<CanvasGroup>();
-
     }
 
     public void FadeOutImmediate()
@@ -21,25 +19,30 @@ namespace SceneManagement
       _canvasGroup.alpha = 1;
     }
 
-     IEnumerator FadeOutIn()
+    private void Update()
     {
-      yield return FadeOut(3f);
-      yield return FadeIn(1f);
+      if (Input.GetKeyDown(KeyCode.F))
+      {
+        FadeOutImmediate();
+      }
     }
+
 
     public IEnumerator FadeOut(float time)
     {
+
       while (_canvasGroup.alpha < 1)
       {
         _canvasGroup.alpha += Time.deltaTime / time;
-
         if (Math.Abs(Time.timeScale) < 0.2) //when pause menu wants to fade out but time is paused
         {
           _canvasGroup.alpha = 1;
         }
+
         yield return null;
       }
     }
+
     public IEnumerator FadeIn(float time)
     {
       while (_canvasGroup.alpha > 0)

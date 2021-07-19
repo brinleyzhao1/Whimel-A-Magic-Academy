@@ -16,7 +16,7 @@ namespace UI_Scripts.Menus
     {
 
       savingWrapper = new LazyValue<SavingWrapper>(GetSavingWrapper);
-      CursorChanger.Instance.OneMoreUiOut();
+      // CursorChanger.Instance.OneMoreUiOut();
     }
 
     private SavingWrapper GetSavingWrapper()

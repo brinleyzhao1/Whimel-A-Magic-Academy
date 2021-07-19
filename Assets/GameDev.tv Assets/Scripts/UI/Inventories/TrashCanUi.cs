@@ -13,11 +13,15 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
       return Int32.MaxValue;
     }
 
+    /// <summary>
+    /// equivalent to deleting item
+    /// </summary>
+    /// <param name="item"></param>
+    /// <param name="number"></param>
     public void AddItems(InventoryItem item, int number)
     {
-      //equivalent to deleting item
       //clear sell tray
-      SellTray.Instance.ClearSellTray();
+      print("trashed");
       //play audio clip "trash can"
 
     }
