@@ -16,10 +16,7 @@ namespace Control
 
     private static CursorChanger _instance;
 
-    public static CursorChanger Instance
-    {
-      get { return _instance; }
-    }
+    public static CursorChanger Instance => _instance;
 
 
     private void Awake()
@@ -55,8 +52,9 @@ namespace Control
 
     private void Start()
     {
-      CursorChangeToFreeMode();
-      // CursorChangeToLockedMode(); //because of the main menu UI
+      // CursorChangeToFreeMode();
+      CursorChangeToLockedMode();
+      numberUiOut += 1; //the tutorial panel is out in the beginning
     }
 
     private void Update()
