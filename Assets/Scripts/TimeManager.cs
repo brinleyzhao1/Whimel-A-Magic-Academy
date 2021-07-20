@@ -5,6 +5,7 @@ using Endings;
 using GameDev.tv_Assets.Scripts.Saving;
 using NPC.Schedule;
 using Player;
+using Player.Interaction;
 using TMPro;
 using UnityEngine;
 
@@ -82,6 +83,7 @@ public class TimeManager : MonoBehaviour, ISaveable
   {
     _second += Time.deltaTime * TimeScale / 2;
 
+
     if (_second >= 60)
     {
       Minute++;
@@ -117,6 +119,16 @@ public class TimeManager : MonoBehaviour, ISaveable
     {
       EndingDecider endingDecider = FindObjectOfType<EndingDecider>();
       endingDecider.GetEnding();
+    }
+
+    BringOutTutorialOnceInBeginning(); //todo: no need to call this frequently 
+  }
+
+  private static void BringOutTutorialOnceInBeginning()
+  {
+    if (Day == 1 && Year == 1 && Hour == 0 && Minute < 5)
+    {
+      GameAssets.TutorialPanel.SetActive(true);
     }
   }
 

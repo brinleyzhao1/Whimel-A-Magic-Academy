@@ -54,7 +54,8 @@ namespace Control
     {
       // CursorChangeToFreeMode();
       CursorChangeToLockedMode();
-      numberUiOut += 1; //the tutorial panel is out in the beginning
+
+      // numberUiOut += 1; //the tutorial panel is out in the beginning
     }
 
     private void Update()

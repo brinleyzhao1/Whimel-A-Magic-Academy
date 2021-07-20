@@ -94,6 +94,8 @@ namespace Player.Interaction
     [SerializeField] public GameObject setPausePanel;
     public static GameObject PausePanel;
 
+    [SerializeField] public GameObject setTutorialPanel;
+    public static GameObject TutorialPanel;
 
     [SerializeField] public GameObject setResultPanel;
     public static GameObject ResultPanel;
@@ -127,6 +129,7 @@ namespace Player.Interaction
 
     private void Awake()
     {
+      TutorialPanel = setTutorialPanel;
       PausePanel = setPausePanel;
       TabsContainer = setTabsContainer;
       CenterCross = setCenterCross;

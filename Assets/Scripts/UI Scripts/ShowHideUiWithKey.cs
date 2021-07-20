@@ -19,6 +19,7 @@ namespace UI_Scripts
       tabsContainer.SetActive(false);
       _cursorChanger = CursorChanger.Instance;
       CloseAllCustomaryUis();
+
     }
 
     // Update is called once per frame
