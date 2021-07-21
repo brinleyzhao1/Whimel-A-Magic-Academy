@@ -19,13 +19,13 @@ namespace SceneManagement
       _canvasGroup.alpha = 1;
     }
 
-    private void Update()
-    {
-      if (Input.GetKeyDown(KeyCode.F))
-      {
-        FadeOutImmediate();
-      }
-    }
+    // private void Update()
+    // {
+    //   if (Input.GetKeyDown(KeyCode.F))
+    //   {
+    //     FadeOutImmediate();
+    //   }
+    // }
 
 
     public IEnumerator FadeOut(float time)

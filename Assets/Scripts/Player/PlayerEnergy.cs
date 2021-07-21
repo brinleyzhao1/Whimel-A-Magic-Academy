@@ -1,7 +1,11 @@
-﻿using GameDev.tv_Assets.Scripts.Saving;
+﻿using System.Collections;
+using System.Collections.Generic;
+using GameDev.tv_Assets.Scripts.Saving;
 using Player.Interaction;
 using Player.Movement;
+using SceneManagement;
 using UI;
+using UI_Scripts;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -58,9 +62,9 @@ namespace Player
     {
       if (Input.GetKeyDown(KeyCode.T))
       {
-        // ForcedToSleepHours(1);
+        StartCoroutine(ForcedToSleepHours(1));
         // UpdateEnergyByValue(-30);
-        PermanentlyIncreaseEnergyUpperBound(20);
+        // PermanentlyIncreaseEnergyUpperBound(-20);
       }
     }
 
@@ -95,7 +99,7 @@ namespace Player
       if (currentEnergy < 0)
       {
         currentEnergy = 0;
-        ForcedToSleepHours(10); //todo change to fast forward sleep to next morning
+        StartCoroutine(ForcedToSleepHours(10)); //todo change to fast forward sleep to next morning
       }
 
       UpdateEnergyUi();
@@ -119,9 +123,12 @@ namespace Player
      UpdateEnergyUi();
     }
 
-    private void ForcedToSleepHours(int sleepHour)
+    private IEnumerator ForcedToSleepHours(int sleepHour)
     {
-      //todo add fade in
+      Fader fader = FindObjectOfType<Fader>(); //todo abstract out fader to optimize
+      yield return fader.FadeOut(0.2f);
+
+      FindObjectOfType<ShowHideUiWithKey>().CloseAllCustomaryUis();
 
       //bring out force sleep panel
       GameAssets.MessagePanel.gameObject.SetActive(true);
@@ -137,6 +144,8 @@ namespace Player
       //fast-forward time and increase energy
       TimeManager.Hour += sleepHour;
       FindObjectOfType<PlayerEnergy>().UpdateEnergyByValue(maxEnergy);
+
+      yield return fader.FadeIn(0.2f);
     }
 
     #region Saving

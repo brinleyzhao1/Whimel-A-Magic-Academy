@@ -3,9 +3,9 @@ using Player;
 using TMPro;
 using UnityEngine;
 
-namespace UI
+namespace UI_Scripts
 {
-  public class SleepUi : MonoBehaviour
+  public class SleepUi : UiPanelGeneric
   {
     private int sleepHour = 1;
 
@@ -23,20 +23,16 @@ namespace UI
       AddOrSubtractSleepHour(-1);
     }
 
-    public void HideSleepPanel()
+
+    public void ButtonSleepAndFastForwardTime() //for buttons
     {
+      TimeManager.Hour += sleepHour;
+      FindObjectOfType<PlayerEnergy>().UpdateEnergyByValue(sleepHour * energyRefillPerHourSleep);
+
       sleepHour = 1;
       UpdateSleepHourText();
 
-      FindObjectOfType<CursorChanger>().OneLessUiOut();
-      gameObject.SetActive(false);
-    }
-
-    public void SleepAndFastForwardTime() //for buttons
-    {
-      TimeManager.Hour  += sleepHour;
-      FindObjectOfType<PlayerEnergy>().UpdateEnergyByValue(sleepHour * energyRefillPerHourSleep);
-      HideSleepPanel();
+      CloseThisPanel();
     }
 
 
@@ -54,7 +50,5 @@ namespace UI
     {
       sleepHourText.text = sleepHour.ToString();
     }
-
-
   }
 }

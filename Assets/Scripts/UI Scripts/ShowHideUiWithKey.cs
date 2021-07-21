@@ -74,7 +74,7 @@ namespace UI_Scripts
       }
     }
 
-    private void CloseAllCustomaryUis()
+    public void CloseAllCustomaryUis()
     {
       foreach (Transform child in customaryUiContainer.transform)
       {
