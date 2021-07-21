@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using GameDev.tv_Assets.Scripts.Saving;
 using Player.Interaction;
-using Stats;
 using UI_Scripts.StatsScripts;
 using UI.StatsScripts;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Player
+namespace Stats
 {
   public class PlayerStats : MonoBehaviour, ISaveable
 
@@ -49,14 +48,18 @@ namespace Player
       statsOrganizer.UpdateStatsUi(statsToValueDictionary);
     }
 
+    public int GetStamina()
+    {
+      return statsToValueDictionary[StatsType.Stamina];
+    }
 
-    // private void Update() //testing purpose
-    // {
-    //   if (Input.GetKeyDown(KeyCode.C))
-    //   {
-    //     UpdateOneStatByLevel(StatsType.Charisma, 20);
-    //   }
-    // }
+    private void Update() //testing purpose
+    {
+      if (Input.GetKeyDown(KeyCode.C))
+      {
+        UpdateOneStatByValue(StatsType.Stamina, 10);
+      }
+    }
 
     private void SetupStatDictionaryAllToZero()
     {

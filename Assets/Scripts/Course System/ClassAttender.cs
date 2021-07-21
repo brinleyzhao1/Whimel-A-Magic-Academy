@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using GameDev.tv_Assets.Scripts.Saving;
 using Player;
+using Stats;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

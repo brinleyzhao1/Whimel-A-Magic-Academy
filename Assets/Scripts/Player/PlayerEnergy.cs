@@ -4,22 +4,22 @@ using GameDev.tv_Assets.Scripts.Saving;
 using Player.Interaction;
 using Player.Movement;
 using SceneManagement;
+using Stats;
 using UI;
 using UI_Scripts;
 using UnityEngine;
+using UnityEngine.ProBuilder;
 using UnityEngine.UI;
 
 namespace Player
 {
   public class PlayerEnergy : MonoBehaviour, ISaveable
   {
-
-
     #region Singleton
 
-    private static  PlayerEnergy _instance;
+    private static PlayerEnergy _instance;
 
-    public static  PlayerEnergy Instance => _instance;
+    public static PlayerEnergy Instance => _instance;
 
 
     private void Awake()
@@ -32,17 +32,21 @@ namespace Player
       {
         _instance = this;
       }
-
     }
 
     #endregion
 
-
-    public int maxEnergy = 100;
+    [Header("Energy")] [SerializeField] public int maxEnergy = 100;
     public int currentEnergy = 100;
     [SerializeField] private int maxOfMaxEnergy = 400;
     [SerializeField] [Range(0, 100)] private int criticalEnergyPoint = 10;
-    [SerializeField] private int energyCostPerHour = 2;
+    [SerializeField] private int baseEnergyCostPerHour = 2;
+
+    [SerializeField]
+    [Tooltip(
+      "the higher stamina, the exponential decrease in energy cost in both static metabolism as well as actibities")]
+    [Range(0, 1)]
+    private float staminaExponentialFactor = 0.9f;
 
     [Header("UI")] [SerializeField] [TextArea]
     private string forcedSleepText;
@@ -50,7 +54,6 @@ namespace Player
     [SerializeField] [TextArea] private string criticalEnergyText;
     [SerializeField] private Image energyBar;
     [SerializeField] private Image energyBarFill;
-
 
 
     private void Start()
@@ -77,7 +80,17 @@ namespace Player
 
     public void UpdateEnergyByValue(int amount)
     {
-      currentEnergy += amount;
+      //only if consuming energy does stamina play a role
+      if (amount < 0)
+      {
+        float staminaFactor = Mathf.Pow(staminaExponentialFactor, PlayerStats.Instance.GetStamina());
+        currentEnergy = (int) (currentEnergy + amount * staminaFactor);
+      }
+      else
+      {
+        currentEnergy += amount;
+      }
+
 
       //cap at max energy
       if (currentEnergy > maxEnergy)
@@ -107,7 +120,7 @@ namespace Player
 
     public void MinusEnergyPerHour()
     {
-      UpdateEnergyByValue(-energyCostPerHour);
+      UpdateEnergyByValue(-baseEnergyCostPerHour);
       if (currentEnergy < 0)
       {
         currentEnergy = 0;
@@ -120,7 +133,7 @@ namespace Player
       maxEnergy = Mathf.Clamp(maxEnergy, 0, maxOfMaxEnergy);
       energyBar.GetComponent<RectTransform>().sizeDelta = new Vector2(maxEnergy, 100);
       energyBarFill.GetComponent<RectTransform>().sizeDelta = new Vector2(maxEnergy, 100);
-     UpdateEnergyUi();
+      UpdateEnergyUi();
     }
 
     private IEnumerator ForcedToSleepHours(int sleepHour)
