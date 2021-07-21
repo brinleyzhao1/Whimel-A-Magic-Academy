@@ -27,7 +27,7 @@ namespace Skills
     public int[] expPerActivityAtLevel = new int[8]; //ignore element 0
 
 
-    public readonly string[] rankNameByLevel = new string[]
+    public readonly string[] RankNameByLevel = new string[]
     {
       "Ignore Me",
       "Introductory",

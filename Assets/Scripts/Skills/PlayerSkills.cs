@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using GameDev.tv_Assets.Scripts.Saving;
+using Stats;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -42,6 +43,8 @@ namespace Skills
 
     public SkillProgression skillProgression = null;
 
+    [SerializeField][Range(1, 2)] private float intelligenceExperienceFactor = 1.1f;
+
     [Header("UI")] [SerializeField] private TextMeshProUGUI alchemyLevelText;
 
     [SerializeField] private Image alchemyFillBar;
@@ -73,11 +76,16 @@ namespace Skills
     }
 
 
-    public void AddExperienceToSkill(SkillTypeEnum skill, int valueToAdd)
+    public void AddExperienceToSkill(SkillTypeEnum skill, int experienceToAdd)
       //sister method to UpdateStatDictionary; update only one entry of statDictionary
     {
+
       SkillStats thisSkillStat = skillsToValueDictionary[skill];
-      thisSkillStat.currentExperience = thisSkillStat.currentExperience + valueToAdd;
+
+      //factor in intelligence and add experience
+      float intelligenceFactor = Mathf.Pow(intelligenceExperienceFactor, PlayerStats.Instance.GetIntelligence());
+      thisSkillStat.currentExperience = (int) (thisSkillStat.currentExperience + experienceToAdd*intelligenceFactor);
+
       skillsToValueDictionary[skill] = CheckIfLevelUpAndUpdate(skill, thisSkillStat);
 
       UpdateSkillUi();
@@ -146,7 +154,7 @@ namespace Skills
           //alchemy ui
           var currentAlchemyStats = skillsToValueDictionary[SkillTypeEnum.Alchemy];
           // alchemyLevelText.text = "Lvl. " + currentAlchemyStats.currentLevel;
-          alchemyLevelText.text = skillProgression.rankNameByLevel[currentAlchemyStats.currentLevel];
+          alchemyLevelText.text = skillProgression.RankNameByLevel[currentAlchemyStats.currentLevel];
           int[] alchemyExperienceEachLevel = skillProgression.skillExperienceNeededToLevelUpTo;
           int alchemyMaxExperienceThisLevel = alchemyExperienceEachLevel[currentAlchemyStats.currentLevel];
           alchemyFillBar.fillAmount = currentAlchemyStats.currentExperience / (float) alchemyMaxExperienceThisLevel;
@@ -154,7 +162,7 @@ namespace Skills
 
           //herbology ui
           var currentHerbologyStats = skillsToValueDictionary[SkillTypeEnum.Herbology];
-          herbologyLevelText.text = skillProgression.rankNameByLevel[currentHerbologyStats.currentLevel];
+          herbologyLevelText.text = skillProgression.RankNameByLevel[currentHerbologyStats.currentLevel];
           int[] herbologyExperienceEachLevel = skillProgression.skillExperienceNeededToLevelUpTo;
           int herbologyMaxExperienceThisLevel = herbologyExperienceEachLevel[currentHerbologyStats.currentLevel];
           herbologyFillBar.fillAmount = currentHerbologyStats.currentExperience / (float) herbologyMaxExperienceThisLevel;

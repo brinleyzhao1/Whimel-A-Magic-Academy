@@ -53,6 +53,11 @@ namespace Stats
       return statsToValueDictionary[StatsType.Stamina];
     }
 
+    public int GetIntelligence()
+    {
+      return statsToValueDictionary[StatsType.Intelligence];
+    }
+
     private void Update() //testing purpose
     {
       if (Input.GetKeyDown(KeyCode.C))
