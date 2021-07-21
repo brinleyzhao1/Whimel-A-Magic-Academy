@@ -121,7 +121,7 @@ public class TimeManager : MonoBehaviour, ISaveable
       endingDecider.GetEnding();
     }
 
-    BringOutTutorialOnceInBeginning(); //todo: no need to call this frequently 
+    BringOutTutorialOnceInBeginning(); //todo: no need to call this frequently
   }
 
   private static void BringOutTutorialOnceInBeginning()

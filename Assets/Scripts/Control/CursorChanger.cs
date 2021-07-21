@@ -34,7 +34,7 @@ namespace Control
     #endregion
 
 
-    [SerializeField] private Texture2D defaultCursor;
+    // [SerializeField] private Texture2D defaultCursor;
     public int numberUiOut = 0;
 
 
@@ -150,7 +150,8 @@ namespace Control
       Cursor.visible = true;
       GetComponent<MouseLookX>().enabled = false;
       GetComponentInChildren<MouseLookY>().enabled = false;
-      Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.ForceSoftware);
+
+      Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
     }
 
     #endregion
