@@ -29,8 +29,9 @@ namespace UI_Scripts
         CursorChanger.Instance.SetCentralCursor(cursorType);
         GameAssets.InteractHint.gameObject.SetActive(true);
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && !GameAssets.TabsContainer.activeSelf)
         {
+
           Interact();
         }
       }
@@ -39,13 +40,14 @@ namespace UI_Scripts
         GameAssets.InteractHint.gameObject.SetActive(false);
       }
 
-      if (Input.GetMouseButtonDown(1))
+      if (Input.GetMouseButtonDown(1) && !GameAssets.TabsContainer.activeSelf)
       {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, interactableRadius))
         {
+
           Interact();
         }
       }

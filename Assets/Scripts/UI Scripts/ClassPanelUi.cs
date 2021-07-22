@@ -1,8 +1,7 @@
-﻿using TMPro;
-using UI;
-using UI_Scripts;
+﻿using Course_System;
+using TMPro;
 
-namespace Course_System
+namespace UI_Scripts
 {
   public class ClassPanelUi : UiPanelGeneric
   {
@@ -11,6 +10,7 @@ namespace Course_System
     public TextMeshProUGUI class1Text;
     public TextMeshProUGUI class2Text;
 
+    
     public void SetUpClassAttendingPanel(CourseItem class1, CourseItem class2)
     {
       class1Text.text = class1.name;
