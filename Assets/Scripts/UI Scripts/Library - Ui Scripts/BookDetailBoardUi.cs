@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Library;
 using Player;
 using Skills;
+using Stats;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,8 +41,10 @@ namespace UI_Scripts
       if (!inProcessOfReading)
       {
         StartCoroutine(Read());
-
       }
+
+      // int bookLevel = thisBook.bookLevel;
+      // int playerKnowledge = PlayerStats.Instance.GetKnowledge();
 
     }
 

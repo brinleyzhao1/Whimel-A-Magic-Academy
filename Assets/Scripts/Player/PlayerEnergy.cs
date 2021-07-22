@@ -1,14 +1,11 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using GameDev.tv_Assets.Scripts.Saving;
 using Player.Interaction;
 using Player.Movement;
 using SceneManagement;
 using Stats;
-using UI;
 using UI_Scripts;
 using UnityEngine;
-using UnityEngine.ProBuilder;
 using UnityEngine.UI;
 
 namespace Player

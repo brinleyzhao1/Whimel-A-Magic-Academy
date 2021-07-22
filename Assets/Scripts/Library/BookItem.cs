@@ -11,6 +11,7 @@ namespace Library
   public class BookItem : InventoryItem
   {
 
+  [Range(1,7)]  public int bookLevel = 1;
 
   public int timeNeedToRead = 5;//seconds
   //subclass: info (world building), potion, herb, etc

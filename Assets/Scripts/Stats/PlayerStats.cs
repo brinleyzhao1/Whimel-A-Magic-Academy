@@ -38,7 +38,13 @@ namespace Stats
       new Dictionary<StatsType, int>();
 
     private StatsOranizer statsOrganizer;
-    [SerializeField]  private VisualTextFeedbackSpawner visualTextFeedbackSpawner;
+    [SerializeField] private VisualTextFeedbackSpawner visualTextFeedbackSpawner;
+
+    [SerializeField]
+    [Tooltip(
+      "the higher knowledge, the exponential increase in stat rewards")]
+    [Range(1, 2)]
+    private float knowledgeExponentialFactor = 1.05f;
 
 
     private void Start()
@@ -58,11 +64,16 @@ namespace Stats
       return statsToValueDictionary[StatsType.Intelligence];
     }
 
+    public int GetKnowledge()
+    {
+      return statsToValueDictionary[StatsType.Knowledge];
+    }
+
     private void Update() //testing purpose
     {
       if (Input.GetKeyDown(KeyCode.C))
       {
-        UpdateOneStatByValue(StatsType.Stamina, 10);
+        UpdateOneStatByValue(StatsType.Knowledge, 10);
       }
     }
 
@@ -93,10 +104,15 @@ namespace Stats
     public void UpdateOneStatByValue(StatsType statType, int valueToAdd)
       //sister method to UpdateStatDictionary; update only one entry of statDictionary
     {
+      //Knowledge influences all stats reward, would be changed later
+      float knowledgeFactor = Mathf.Pow(knowledgeExponentialFactor, PlayerStats.Instance.GetIntelligence());
+      valueToAdd = (int) ( valueToAdd * knowledgeFactor);
+
+
       statsToValueDictionary[statType] += valueToAdd;
       statsOrganizer.UpdateStatsUi(statsToValueDictionary);
 
-visualTextFeedbackSpawner.gameObject.SetActive(true);
+      visualTextFeedbackSpawner.gameObject.SetActive(true);
       visualTextFeedbackSpawner.SpawnStatsChangeVisualItem(statType.ToString(), valueToAdd);
     }
 
