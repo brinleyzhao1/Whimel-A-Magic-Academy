@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Control;
 using Course_System;
 using Endings;
 using GameDev.tv_Assets.Scripts.Saving;
@@ -129,6 +130,7 @@ public class TimeManager : MonoBehaviour, ISaveable
     if (Day == 1 && Year == 1 && Hour == 0 && Minute < 5)
     {
       GameAssets.TutorialPanel.SetActive(true);
+      CursorChanger.Instance.OneMoreUiOut();
     }
   }
 

@@ -69,11 +69,17 @@ namespace Stats
       return statsToValueDictionary[StatsType.Knowledge];
     }
 
+    public int GetDexterity()
+    {
+      return statsToValueDictionary[StatsType.Dexterity];
+    }
+
+
     private void Update() //testing purpose
     {
       if (Input.GetKeyDown(KeyCode.C))
       {
-        UpdateOneStatByValue(StatsType.Knowledge, 10);
+        UpdateOneStatByValue(StatsType.Dexterity, 10);
       }
     }
 
@@ -105,7 +111,7 @@ namespace Stats
       //sister method to UpdateStatDictionary; update only one entry of statDictionary
     {
       //Knowledge influences all stats reward, would be changed later
-      float knowledgeFactor = Mathf.Pow(knowledgeExponentialFactor, PlayerStats.Instance.GetIntelligence());
+      float knowledgeFactor = Mathf.Pow(knowledgeExponentialFactor, GetKnowledge());
       valueToAdd = (int) ( valueToAdd * knowledgeFactor);
 
 

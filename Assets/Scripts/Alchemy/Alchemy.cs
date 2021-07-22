@@ -4,6 +4,7 @@ using System.Net;
 using GameDev.tv_Assets.Scripts.Inventories;
 using GameDev.tv_Assets.Scripts.Saving;
 using Skills;
+using Stats;
 using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -41,9 +42,19 @@ namespace Alchemy
 
     [Header("Chance of Success")] [SerializeField]
     private float oneLevelAboveSuccessRate = .40f;
+
     [SerializeField] private float sameLevelSuccessRate = .70f;
     [SerializeField] private float oneLevelBelowSuccessRate = .80f;
-    [SerializeField] private float twoLevelBelowSuccessRate = .90f;//a lower-leveled recipe
+    [SerializeField] private float twoLevelBelowSuccessRate = .90f; //a lower-leveled recipe
+
+    [Header("Dexterity")]
+    [SerializeField]
+    [Range(1, 1.05f)]
+    [Tooltip("the higher dexterity, the exponential increase in success rate")]
+    private float dexterityExponentialFactor = 1.05f;
+
+    [SerializeField] [Range(20, 100f)] [Tooltip("divide from dexterity exponential")]
+    private float dexterityDivisionFactor = 50f;
 
     public bool AlreadyKnownThisRecipe(PotionRecipeScriptableObject recipe)
     {
@@ -70,29 +81,35 @@ namespace Alchemy
     {
       int playerSkill = PlayerSkills.Instance.GetAlchemyLevel();
 
-      float threshold = 1f;
-      if (playerSkill == recipeLevel-1)
+      float successRate = 1f;
+
+
+      if (playerSkill == recipeLevel - 1)
       {
-         threshold = oneLevelAboveSuccessRate;
+        successRate = oneLevelAboveSuccessRate;
       }
 
       if (playerSkill == recipeLevel)
       {
-         threshold = sameLevelSuccessRate;
+        successRate = sameLevelSuccessRate;
       }
 
-      if (playerSkill == recipeLevel+1)
+      if (playerSkill == recipeLevel + 1)
       {
-         threshold = oneLevelBelowSuccessRate;
+        successRate = oneLevelBelowSuccessRate;
       }
 
-      if (playerSkill == recipeLevel+2)
+      if (playerSkill == recipeLevel + 2)
       {
-        threshold = twoLevelBelowSuccessRate;
+        successRate = twoLevelBelowSuccessRate;
       }
 
-      print("success rate: " + threshold);
-      return Random.value <= threshold;
+      //dexterity
+      float dexterityFactor = Mathf.Pow(dexterityExponentialFactor, PlayerStats.Instance.GetDexterity());
+      successRate += dexterityFactor / dexterityDivisionFactor;
+
+      print("success rate: " + successRate);
+      return Random.value <= successRate;
     }
 
     #region Saving
