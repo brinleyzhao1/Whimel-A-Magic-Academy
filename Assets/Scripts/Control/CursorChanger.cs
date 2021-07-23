@@ -118,7 +118,7 @@ namespace Control
     {
       numberUiOut = 0;
       CursorChangeToFreeMode();
-      AudioAssets.UiPaperSound.Play();
+      AudioAssets.AudioSource.Play();
     }
 
     #region Private

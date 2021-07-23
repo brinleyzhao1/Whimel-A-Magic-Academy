@@ -10,7 +10,7 @@ namespace UI_Scripts
     public TextMeshProUGUI class1Text;
     public TextMeshProUGUI class2Text;
 
-    
+
     public void SetUpClassAttendingPanel(CourseItem class1, CourseItem class2)
     {
       class1Text.text = class1.name;

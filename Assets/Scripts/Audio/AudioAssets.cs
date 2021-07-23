@@ -8,14 +8,17 @@ namespace Audio
     [SerializeField] public AudioClip setScribble;
     public static AudioClip Scribble;
 
+    [SerializeField] public AudioClip setRemove;
+    public static AudioClip Remove;
+
     [Header("Audio Source")]
     [SerializeField] public AudioSource setUiPaperSound;
-    public static AudioSource UiPaperSound;
+    public static AudioSource AudioSource;
 
     private void Awake()
     {
-
-      UiPaperSound = setUiPaperSound;
+      Remove = setRemove;
+      AudioSource = setUiPaperSound;
       Scribble = setScribble;
 
     }

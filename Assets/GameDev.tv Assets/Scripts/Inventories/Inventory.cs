@@ -1,4 +1,5 @@
 ﻿using System;
+using Audio;
 using GameDev.tv_Assets.Scripts.Saving;
 using UnityEngine;
 
@@ -130,6 +131,7 @@ namespace GameDev.tv_Assets.Scripts.Inventories
     /// </summary>
     /// <param name="item"></param>
     /// <param name="amount"></param>
+    /// todo: there's a bug here
     public void RemoveItemsFromInventory(InventoryItem item, int amount)
     {
       if (TotalAmountHave(item) < amount)
@@ -196,6 +198,8 @@ namespace GameDev.tv_Assets.Scripts.Inventories
       {
         InventoryUpdated();
       }
+
+      AudioAssets.AudioSource.PlayOneShot(AudioAssets.Remove);
     }
 
     /// <summary>

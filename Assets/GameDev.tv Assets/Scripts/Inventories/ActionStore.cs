@@ -118,11 +118,12 @@ namespace GameDev.tv_Assets.Scripts.Inventories
     /// </summary>
     /// <param name="user">The character that wants to use this action.</param>
     /// <returns>False if the action could not be executed.</returns>
-    public bool ActionStoreUse(int index, GameObject user)
+    private bool ActionStoreUse(int index, GameObject user)
     {
       if (dockedItems.ContainsKey(index))
       {
         var thisItem = dockedItems[index].ActionScriptableBarItem;
+
         thisItem.Use(user);
         if (thisItem.IsConsumable())
         {

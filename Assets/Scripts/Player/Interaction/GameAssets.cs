@@ -158,7 +158,7 @@ namespace Player.Interaction
       ShopItem = setShopItem;
       SellTray = setSellTray;
       PotionPanel = setPotionPanel;
-      // UiPaperSound = setUiPaperSound;
+      // AudioSource = setUiPaperSound;
     }
 
     // private static GameAssets _i;

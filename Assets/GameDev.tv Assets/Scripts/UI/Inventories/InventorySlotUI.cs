@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+using Alchemy;
 using Control;
 using GameDev.tv_Assets.Scripts.Inventories;
 using GameDev.tv_Assets.Scripts.Utils.UI.Dragging;
@@ -6,12 +7,14 @@ using Player;
 using Player.Interaction;
 using UI_Scripts.Shop;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 namespace GameDev.tv_Assets.Scripts.UI.Inventories
 {
   public class InventorySlotUi : MonoBehaviour, IItemHolder, IDragContainer<InventoryItem>, ISelectHandler,
-    IPointerEnterHandler, IPointerExitHandler
+    IPointerClickHandler
+
   {
     // CONFIG DATA
     [SerializeField] InventoryItemIconInChild iconInChild = null; // own child
@@ -19,13 +22,13 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
 
     // STATE
     public int index;
-    InventoryItem item;
+    InventoryItem thisItem; //todo: assumed all items are actionable in order to use them
     Inventory inventory;
 
     private bool canRightClickToSell;
 
     // PUBLIC
-
+    public UnityEvent onRightClick;
 
     private void Update()
     {
@@ -33,11 +36,11 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
     }
 
 
-
     public void Setup(Inventory inventory, int index)
     {
       this.inventory = inventory;
       this.index = index;
+      thisItem = inventory.GetItemInSlot(index);
 
 
       if (index == -1) //this is an attempt to clear this slot
@@ -93,7 +96,7 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
     /// <param name="eventData"></param>
     public void OnSelect(BaseEventData eventData)
     {
-      //tell sell tray what item and how many
+      //tell sell tray what thisItem and how many
       if (SellTray.Instance.gameObject.activeSelf)
       {
         SellTray.Instance.ReceiveInfoAboutSelectedItemForSell(index);
@@ -127,5 +130,45 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
         Inventory.GetPlayerInventory().RemoveFromSlot(index, amount);
       }
     }
+
+    /// <summary>
+    /// parallel to ActionStore's ActionStoreUse
+    /// </summary>
+    /// <param name="eventData"></param>
+    public void OnPointerClick(PointerEventData eventData)
+    {
+      if (eventData.button == PointerEventData.InputButton.Right)
+      {
+
+        //use that item
+        var thisIsAnActionRecipe = (ActionScriptableItem) thisItem;
+
+        thisIsAnActionRecipe.Use(GameObject.FindWithTag("Player"));
+
+        if (thisIsAnActionRecipe.IsConsumable())
+        {
+          inventory.RemoveFromSlot(this.index, 1);
+        }
+
+        //can only consume recipe once
+        if (thisItem.GetType() == typeof(PotionRecipeScriptableObject))
+        {
+          var thisIsAPotionRecipe = (PotionRecipeScriptableObject) thisItem;
+          if (!Alchemy.Alchemy.Instance.AlreadyKnownThisRecipe(thisIsAPotionRecipe))
+          {
+            Alchemy.Alchemy.Instance.AddNewPotionRecipe(thisIsAPotionRecipe);
+            inventory.RemoveFromSlot(this.index, 1);
+          }
+
+          StoreUpdated?.Invoke();
+        }
+
+      }
+    }
+
+    /// <summary>
+    /// Broadcasts when the items in the slots are added/removed.
+    /// </summary>
+    public event Action StoreUpdated;
   }
 }
