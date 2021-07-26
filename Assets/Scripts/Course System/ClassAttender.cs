@@ -102,6 +102,8 @@ namespace Course_System
         RecordAttendance(thisClass);
         CalculateStatChange(thisClass);
         CalculateEnergyConsumption(thisClass);
+        StopAllOtherActivities();
+        FindObjectOfType<ShowHideUiWithKey>().CloseAllCustomaryUis();
 
       }
 
@@ -118,6 +120,26 @@ namespace Course_System
 
     #region Private
 
+    private void StopAllOtherActivities()
+    {
+      var readingUi = FindObjectOfType<ReadingUi>();
+      if (readingUi)
+      {
+        readingUi.CancelReading();
+      }
+
+      var brewingUi = FindObjectOfType<BrewingUi>();
+      if (brewingUi)
+      {
+        // print("yes brewing ui");
+        brewingUi.CancelBrewing();
+
+      }
+
+      // print("stopped all other activities");
+    }
+
+
     private void CalculateStatChange(CourseItem thisClass)
     {
       int difficulty = classStatuses[thisClass.name].difficulty;
@@ -127,7 +149,7 @@ namespace Course_System
           classDifficultyToStatRewardRange[difficulty - 1].max);
         PlayerStats.Instance.UpdateOneStatByValue(stat, randomValue);
       }
-      
+
       int randomMinus = Random.Range(classDifficultyToStatRewardRange[difficulty - 1].min,
         classDifficultyToStatRewardRange[difficulty - 1].max);
       PlayerStats.Instance.UpdateOneStatByValue(thisClass.statDecreased, randomMinus);

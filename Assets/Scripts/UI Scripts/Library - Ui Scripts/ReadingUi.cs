@@ -1,9 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using Library;
-using Player;
 using Skills;
-using Stats;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,7 +10,7 @@ namespace UI_Scripts
   /// <summary>
   /// responsible for updating bookDetailBoard with the book selected and read button
   /// </summary>
-  public class BookDetailBoardUi : MonoBehaviour
+  public class ReadingUi : MonoBehaviour
   {
     private BookItem thisBook;
 
@@ -48,7 +45,7 @@ namespace UI_Scripts
 
     }
 
-    IEnumerator Read()
+    private IEnumerator Read()
     {
       inProcessOfReading = true;
       //wait some seconds / animation
@@ -65,6 +62,11 @@ namespace UI_Scripts
       SetUpBookDetail(thisBook); //refresh the visual, especially the timer
 
       inProcessOfReading = false;
+    }
+
+    public void CancelReading()
+    {
+      StopCoroutine(Read());
     }
   }
 }

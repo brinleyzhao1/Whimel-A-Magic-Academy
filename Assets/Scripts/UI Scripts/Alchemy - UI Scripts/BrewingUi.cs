@@ -96,6 +96,11 @@ namespace UI_Scripts
       }
     }
 
+    public void CancelBrewing()
+    {
+      StopCoroutine(Brew());
+    }
+
 
     #region Helper Functions
 
@@ -110,7 +115,7 @@ namespace UI_Scripts
       brewButton.gameObject.GetComponent<Image>().color = Color.white;
     }
 
-    IEnumerator Brew()
+    private IEnumerator Brew()
     {
       //wait some seconds / animation
       inProcessOfBrewing = true;

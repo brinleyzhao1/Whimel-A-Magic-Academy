@@ -29,7 +29,7 @@ namespace UI_Scripts
     public void ButtonSelectToRead()
     {
      GameAssets.BookDetailPanel.SetActive(true);
-     GameAssets.BookDetailPanel.GetComponent<BookDetailBoardUi>().SetUpBookDetail(thisBook);
+     GameAssets.BookDetailPanel.GetComponent<ReadingUi>().SetUpBookDetail(thisBook);
 
     }
   }

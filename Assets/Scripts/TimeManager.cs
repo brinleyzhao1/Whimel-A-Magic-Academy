@@ -136,6 +136,7 @@ public class TimeManager : MonoBehaviour, ISaveable
 
   private void CheckIfIsClassTime()
   {
+
     if (Hour == 8)
     {
       ClassAttender.Instance.GetTheTwoClassesForThisTime(Year, Day, 0);
