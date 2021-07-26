@@ -14,7 +14,7 @@ public class TestLoadTime : MonoBehaviour
 
 #if UNITY_EDITOR
 
-  private void OnPlayModeChanged(PlayModeStateChange stateChange)
+  public void OnPlayModeChanged(PlayModeStateChange stateChange)
   {
     switch (stateChange)
     {

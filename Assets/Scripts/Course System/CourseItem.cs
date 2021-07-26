@@ -10,13 +10,13 @@ namespace Course_System
   public class CourseItem : ScriptableObject
   {
     // CONFIG DATA
-    [Tooltip("Auto-generated UUID for saving/loading. Clear this field if you want to generate a new one.")]
-    [SerializeField]
-    string courseId = null;
+    // [Tooltip("Auto-generated UUID for saving/loading. Clear this field if you want to generate a new one.")]
+    // [SerializeField]
+    // string courseId = null;
 
 
-    [Tooltip("Course description to be displayed in UI.")] [SerializeField] [TextArea]
-    string description = null;
+    // [Tooltip("Course description to be displayed in UI.")] [SerializeField] [TextArea]
+    // string description = null;
 
 
     public StatsType[] statsIncreased = new StatsType[1];
