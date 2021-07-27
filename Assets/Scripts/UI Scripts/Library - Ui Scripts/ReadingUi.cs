@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using Audio;
+using Control;
 using Library;
 using Skills;
 using TMPro;
@@ -10,7 +12,7 @@ namespace UI_Scripts
   /// <summary>
   /// responsible for updating bookDetailBoard with the book selected and read button
   /// </summary>
-  public class ReadingUi : MonoBehaviour
+  public class ReadingUi : UiPanelGeneric
   {
     private BookItem thisBook;
 
@@ -20,7 +22,7 @@ namespace UI_Scripts
     // [SerializeField] private TextMeshProUGUI lvlText;
     [SerializeField] private TextMeshProUGUI timeText;
 
-    private bool inProcessOfReading;
+    public bool inProcessOfReading;
 
     public void SetUpBookDetail(BookItem book)
     {
@@ -31,6 +33,19 @@ namespace UI_Scripts
       timeText.text = book.timeNeedToRead + "s";
       //todo typeText
       thisBook = book;
+    }
+
+
+    public override void CloseThisPanel()
+    {
+      if (inProcessOfReading)
+      {
+        AudioAssets.AudioSource.PlayOneShot(AudioAssets.Error);
+        return;
+      }
+
+      base.CloseThisPanel();
+
     }
 
     public void ButtonReadThisBook() //activity

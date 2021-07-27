@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using Library;
 using Player.Interaction;
-using UI_Scripts;
 using UnityEngine;
 
-namespace UI
+namespace UI_Scripts
 {
   /// <summary>
   /// to be put on ui Book Shelf Menu, reflects a list of books contained
@@ -39,8 +38,9 @@ namespace UI
 
     public override void CloseThisPanel()
     {
+
       base.CloseThisPanel();
-      GameAssets.SellTray.gameObject.SetActive(false);
+      // GameAssets.SellTray.gameObject.SetActive(false);
     }
   }
 }

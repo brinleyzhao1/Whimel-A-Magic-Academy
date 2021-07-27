@@ -1,3 +1,4 @@
+using Control;
 using Library;
 using Player.Interaction;
 using TMPro;
@@ -30,6 +31,7 @@ namespace UI_Scripts
     {
      GameAssets.BookDetailPanel.SetActive(true);
      GameAssets.BookDetailPanel.GetComponent<ReadingUi>().SetUpBookDetail(thisBook);
+
 
     }
   }

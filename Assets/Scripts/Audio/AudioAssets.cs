@@ -5,8 +5,15 @@ namespace Audio
   public class AudioAssets : MonoBehaviour
   {
     [Header("Audio Clip")]
+
+    [SerializeField] public AudioClip setPaper;
+    public static AudioClip Paper;
+
     [SerializeField] public AudioClip setScribble;
     public static AudioClip Scribble;
+
+    [SerializeField] public AudioClip setError;
+    public static AudioClip Error;
 
     [SerializeField] public AudioClip setRemove;
     public static AudioClip Remove;
@@ -17,6 +24,8 @@ namespace Audio
 
     private void Awake()
     {
+      Paper = setPaper;
+      Error = setError;
       Remove = setRemove;
       AudioSource = setUiPaperSound;
       Scribble = setScribble;

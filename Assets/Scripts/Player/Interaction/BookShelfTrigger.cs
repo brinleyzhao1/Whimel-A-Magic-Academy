@@ -15,7 +15,6 @@ namespace Player.Interaction
 
     protected override void Interact()
     {
-      FindObjectOfType<CursorChanger>().OneMoreUiOut();
 
       int currentSchoolYear = TimeManager.Year;
 
