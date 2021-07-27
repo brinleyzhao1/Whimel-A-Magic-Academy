@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3357738}
   - component: {fileID: 2389020}
   - component: {fileID: 7007490760559314362}
+  - component: {fileID: 5499730074593553597}
   m_Layer: 0
   m_Name: SM_Env_BookShelf_Wall_01
   m_TagString: Untagged
@@ -95,3 +96,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.9999943, y: 5, z: 0.78796405}
   m_Center: {x: -2.499998, y: 2.5, z: 0.39398202}
+--- !u!114 &5499730074593553597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2dc3452f9e404de486136af48f89b7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableRadius: 5
+  cursorType: 1
