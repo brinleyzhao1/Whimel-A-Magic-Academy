@@ -12,15 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03180e7eb53a44fab3aceefdca3c3582, type: 3}
   m_Name: Book02
   m_EditorClassIdentifier: 
-  displayName: 'Potion: A Comprehensive Collection'
+  displayName: A brief history of Whimel Academy
   itemID: d14cf138-ad7c-4f38-a4e5-1209e8d5f9e2
   buyingPrice: 10
   sellingPrice: 10
-  description: 'A introductary text to the discipline of potions.
-
-'
-  icon: {fileID: 21300000, guid: 889c1334a2fd443ee9be55330c714308, type: 3}
+  description: A brief history of Whimel Academy
+  icon: {fileID: 21300000, guid: 8d5e24eea36164730869570de874f7bc, type: 3}
   inGame3DPickup: {fileID: 0}
   stackable: 0
-  level: 1
+  bookLevel: 1
   timeNeedToRead: 4
+  statReward1:
+    rewardStatsType: 3
+    level: 3
+  expReward2:
+    rewardSkill: 0
+    expValue: 0

@@ -10,34 +10,32 @@ namespace Library
   [CreateAssetMenu(fileName = "FILENAME", menuName = "Items/Book Item", order = 0)]
   public class BookItem : InventoryItem
   {
+    [Range(1, 7)] public int bookLevel = 1;
 
-  [Range(1,7)]  public int bookLevel = 1;
+    public int timeNeedToRead = 5; //seconds
+    //subclass: info (world building), potion, herb, etc
 
-  public int timeNeedToRead = 5;//seconds
-  //subclass: info (world building), potion, herb, etc
+    [Header("Rewards")] public StatReward statReward1;
+    public SkillExpReward expReward2;
 
-  [Header("Rewards")]
-  public StatReward statReward1;
-  public SkillExpReward expReward2;
+    #region reward structs
 
-  #region reward structs
-
-   [Serializable]
+    [Serializable]
     public class StatReward
     {
       [SerializeField] public StatsType rewardStatsType;
-      public int level;
+      [Range(0, 10)] public int level;
     }
 
     [Serializable]
     public class SkillExpReward
     {
       [SerializeField] public SkillTypeEnum rewardSkill;
-      public int expValue;
+      [Range(0, 10)] public int expValue;
     }
 
-  #endregion
+    #endregion
 
-  //reward
+    //reward
   }
 }

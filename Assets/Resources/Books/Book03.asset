@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03180e7eb53a44fab3aceefdca3c3582, type: 3}
+  m_Name: Book03
+  m_EditorClassIdentifier: 
+  displayName: Introduction to Alchemy
+  itemID: 907cd1a4-c861-4b01-990b-47ac2c7089c9
+  buyingPrice: 10
+  sellingPrice: 10
+  description: Introduction to Alchemy
+  icon: {fileID: 21300000, guid: 889c1334a2fd443ee9be55330c714308, type: 3}
+  inGame3DPickup: {fileID: 0}
+  stackable: 0
+  bookLevel: 1
+  timeNeedToRead: 4
+  statReward1:
+    rewardStatsType: 1
+    level: 3
+  expReward2:
+    rewardSkill: 0
+    expValue: 10
