@@ -14,7 +14,6 @@ namespace Player.Interaction
 
     protected override void Interact()
     {
-      FindObjectOfType<CursorChanger>().OneMoreUiOut();
       GameAssets.ShopPanel.gameObject.SetActive(true);
       GameAssets.ShopPanel.GetComponent<ShopMenu>().SetUpShopList(itemsForSell);
       FindObjectOfType<ShowHideUiWithKey>().OpenOrCloseTabs();

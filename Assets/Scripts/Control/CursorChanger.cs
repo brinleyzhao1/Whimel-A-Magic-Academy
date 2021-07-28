@@ -87,7 +87,7 @@ namespace Control
     }
 
 
-    public void OneMoreUiOut()
+    public void OneMoreUiOut() //should only be called by ui's OnEnable
     {
       numberUiOut += 1;
       CursorChangeToLockedMode();
