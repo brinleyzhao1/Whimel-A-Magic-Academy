@@ -1,4 +1,5 @@
 using Player;
+using Player.Interaction;
 using UnityEngine;
 
 namespace GameDev.tv_Assets.Scripts.Inventories
@@ -20,18 +21,20 @@ namespace GameDev.tv_Assets.Scripts.Inventories
         [SerializeField] bool directlyConsumable = false;
 
         [Tooltip("Does an instance of this item get consumed every time it's used.")]
-        [SerializeField] int energyChange = 0;
+        [SerializeField] public int energyChange = 0;
         // PUBLIC
 
         /// <summary>
         /// Trigger the use of this item. Override to provide functionality.
         /// </summary>
         /// <param name="user">The character that is using this action.</param>
-        public virtual void Use(GameObject user)
+        public virtual void Use(int index, int inventoryOrActionBar)
         {
             // Debug.Log("Using action: " + this);
-            PlayerEnergy player = FindObjectOfType<PlayerEnergy>();
-            player.UpdateEnergyByValue(energyChange);
+            GameAssets.UseConfirmationPanel.gameObject.SetActive(true);
+            GameAssets.UseConfirmationPanel.Setup(this,  inventoryOrActionBar, index);
+            // PlayerEnergy player = FindObjectOfType<PlayerEnergy>();
+            // player.UpdateEnergyByValue(energyChange);
         }
 
         public bool IsConsumable()

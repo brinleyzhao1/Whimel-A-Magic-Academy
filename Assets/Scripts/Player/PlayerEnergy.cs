@@ -54,9 +54,10 @@ namespace Player
     [SerializeField] private Image energyBar;
     [SerializeField] private Image energyBarFill;
 
-    [Header("UI in tabs")]
-    [SerializeField]  private TextMeshProUGUI energyTextInTab;
-    [SerializeField]  private TextMeshProUGUI energyRateTextInTab;
+    [Header("UI in tabs")] [SerializeField]
+    private TextMeshProUGUI energyTextInTab;
+
+    [SerializeField] private TextMeshProUGUI energyRateTextInTab;
     [SerializeField] private Image energyBarInTabs;
     [SerializeField] private Image energyBarFillInTabs;
 
@@ -71,25 +72,17 @@ namespace Player
       if (Input.GetKeyDown(KeyCode.T))
       {
         // StartCoroutine(ForcedToSleepHours(1));
-        // UpdateEnergyByValue(-30);
-        PermanentlyIncreaseEnergyUpperBound(20);
+        UpdateEnergyByValue(-30);
+        // PermanentlyIncreaseEnergyUpperBound(20);
         // print("upper energy: "+maxEnergy);
       }
     }
 
-    private void UpdateEnergyUi()
-    {
-      energyBarFill.fillAmount = currentEnergy / (float) maxEnergy;
-
-      energyBarFillInTabs.fillAmount = currentEnergy / (float) maxEnergy;
-      energyTextInTab.text = "Energy: " + currentEnergy + "/" + maxEnergy;
-      energyRateTextInTab.text = baseEnergyCostPerHour.ToString();
-      energyRateTextInTab.text = "-" + currentEnergyCostPerHour + "/hr";
-      // print("energy ui Updated");
-    }
 
     public void UpdateEnergyByValue(int amount)
     {
+      currentEnergy += amount;
+
       //cap at max energy
       if (currentEnergy > maxEnergy)
       {
@@ -120,7 +113,7 @@ namespace Player
     {
       UpdateCurrentMetabolismRate();
 
-      UpdateEnergyByValue(-(int)currentEnergyCostPerHour);
+      UpdateEnergyByValue(-(int) currentEnergyCostPerHour);
 
       if (currentEnergy < 0)
       {
@@ -140,6 +133,17 @@ namespace Player
       energyBarFillInTabs.GetComponent<RectTransform>().sizeDelta = new Vector2(maxEnergy, 80);
 
       UpdateEnergyUi();
+    }
+
+    private void UpdateEnergyUi()
+    {
+      energyBarFill.fillAmount = currentEnergy / (float) maxEnergy;
+
+      energyBarFillInTabs.fillAmount = currentEnergy / (float) maxEnergy;
+      energyTextInTab.text = "Energy: " + currentEnergy + "/" + maxEnergy;
+      energyRateTextInTab.text = baseEnergyCostPerHour.ToString();
+      energyRateTextInTab.text = "-" + currentEnergyCostPerHour + "/hr";
+      print("energy ui Updated");
     }
 
     private IEnumerator ForcedToSleepHours(int sleepHour)
@@ -170,7 +174,7 @@ namespace Player
     private void UpdateCurrentMetabolismRate()
     {
       float staminaFactor = Mathf.Pow(staminaExponentialFactor, PlayerStats.Instance.GetStamina());
-      currentEnergyCostPerHour= baseEnergyCostPerHour * staminaFactor;
+      currentEnergyCostPerHour = baseEnergyCostPerHour * staminaFactor;
     }
 
     #region Saving

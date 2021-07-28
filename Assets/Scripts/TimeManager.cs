@@ -130,7 +130,7 @@ public class TimeManager : MonoBehaviour, ISaveable
     if (Day == 1 && Year == 1 && Hour == 0 && Minute < 5)
     {
       GameAssets.TutorialPanel.SetActive(true);
-      
+
     }
   }
 

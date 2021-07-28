@@ -14,8 +14,10 @@ namespace Player.Interaction
     // public static GameObject Player;
 
     [SerializeField] private Inventory setPlayerInventory;
-
     public static Inventory PlayerInventory;
+
+    [SerializeField] private UseConfirmationUi setUseConfirmationPanel;
+    public static UseConfirmationUi UseConfirmationPanel;
 
     #region Tabs
 
@@ -129,6 +131,7 @@ namespace Player.Interaction
 
     private void Awake()
     {
+      UseConfirmationPanel = setUseConfirmationPanel;
       TutorialPanel = setTutorialPanel;
       PausePanel = setPausePanel;
       TabsContainer = setTabsContainer;

@@ -20,7 +20,7 @@ namespace UI_Scripts
 
       Time.timeScale = 1;
 
-      GameAssets.TabsContainer.SetActive(false);
+      // GameAssets.TabsContainer.SetActive(false);
 
       AudioAssets.AudioSource.PlayOneShot(AudioAssets.Paper);
 

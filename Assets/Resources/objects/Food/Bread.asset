@@ -22,4 +22,4 @@ MonoBehaviour:
     type: 3}
   stackable: 1
   directlyConsumable: 1
-  energyChange: 5
+  energyChange: 50

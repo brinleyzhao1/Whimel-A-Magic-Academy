@@ -34,7 +34,7 @@ namespace UI_Scripts.Dining
     {
       var player = GameObject.FindGameObjectWithTag("Player");
       // var inventory = player.GetComponent<Inventory>();
-      thisFood.Use(player);
+      thisFood.Use(0, 2);
       //todo: limit to only energy change
       // inventory.AddToFirstEmptySlot(thisFood, 1);
       // player.GetComponent<Money>().AddOrMinusMoney(-thisFood.buyingPrice);

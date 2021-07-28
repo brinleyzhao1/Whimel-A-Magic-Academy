@@ -124,11 +124,11 @@ namespace GameDev.tv_Assets.Scripts.Inventories
       {
         var thisItem = dockedItems[index].ActionScriptableBarItem;
 
-        thisItem.Use(user);
-        if (thisItem.IsConsumable())
-        {
-          RemoveItems(index, 1);
-        }
+        thisItem.Use(index, 1);
+        // if (thisItem.IsConsumable())
+        // {
+        //   RemoveItems(index, 1);
+        // }
 
 
         if (thisItem.GetType() == typeof(PotionRecipeScriptableObject))

@@ -143,12 +143,12 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
         //use that item
         var thisIsAnActionRecipe = (ActionScriptableItem) thisItem;
 
-        thisIsAnActionRecipe.Use(GameObject.FindWithTag("Player"));
+        thisIsAnActionRecipe.Use(index, 0);
 
-        if (thisIsAnActionRecipe.IsConsumable())
-        {
-          inventory.RemoveFromSlot(this.index, 1);
-        }
+        // if (thisIsAnActionRecipe.IsConsumable())
+        // {
+        //   inventory.RemoveFromSlot(this.index, 1);
+        // }
 
         //can only consume recipe once
         if (thisItem.GetType() == typeof(PotionRecipeScriptableObject))

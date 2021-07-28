@@ -13,7 +13,7 @@ namespace Alchemy
     public int level; //should always be the same level as the finalPotion?
     public int timeNeedToBrew;
 
-    
+
 
     [Header("Ingredients")] public ActionScriptableItem ingredient1;
     public int quantity1;
@@ -26,7 +26,7 @@ namespace Alchemy
     /// <summary>
     /// Trigger the use of this item. Override to provide functionality.
     /// </summary>
-    public override void Use(GameObject user)
+    public  void Use(GameObject user)
     {
       Debug.Log("using potion recipe: " + this);
     }
