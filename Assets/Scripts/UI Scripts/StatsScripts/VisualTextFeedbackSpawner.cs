@@ -35,6 +35,11 @@ namespace UI_Scripts.StatsScripts
     IEnumerator CloseMySelf(int seconds)
     {
       yield return new WaitForSeconds(seconds);
+
+      foreach (Transform child in transform) {
+        Destroy(child.gameObject);
+      }
+
       gameObject.SetActive(false);
     }
   }

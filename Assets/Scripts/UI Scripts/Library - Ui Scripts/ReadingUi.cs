@@ -3,6 +3,7 @@ using Audio;
 using Control;
 using Library;
 using Skills;
+using Stats;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -69,7 +70,7 @@ namespace UI_Scripts
       //after countdown, reward player
       //todo: for now add each by hand, might want to consider using a list in the future
       //todo: read book reward stat
-      // PlayerStats.Instance.UpdateOneStatByLevel(thisBook.statReward1.rewardStatsType, thisBook.statReward1.level,true);
+      PlayerStats.Instance.UpdateOneStatByValue(thisBook.statReward1.rewardStatsType, thisBook.statReward1.level);
       PlayerSkills.Instance.AddExperienceToSkill(thisBook.expReward2.rewardSkill, thisBook.expReward2.expValue);
 
       TimeManager.Instance.FastForwardByRealLifeSeconds(thisBook.timeNeedToRead);

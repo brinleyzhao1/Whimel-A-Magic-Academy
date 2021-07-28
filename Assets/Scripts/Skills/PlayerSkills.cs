@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using GameDev.tv_Assets.Scripts.Saving;
 using Stats;
 using TMPro;
+using UI_Scripts.StatsScripts;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -51,6 +52,8 @@ namespace Skills
     [SerializeField] private TextMeshProUGUI herbologyLevelText;
     [SerializeField] private Image herbologyFillBar;
 
+    [SerializeField] private VisualTextFeedbackSpawner visualTextFeedbackSpawner;
+
     [System.Serializable]
     struct SkillStats
     {
@@ -89,6 +92,9 @@ namespace Skills
       skillsToValueDictionary[skill] = CheckIfLevelUpAndUpdate(skill, thisSkillStat);
 
       UpdateSkillUi();
+
+      visualTextFeedbackSpawner.gameObject.SetActive(true);
+      visualTextFeedbackSpawner.SpawnStatsChangeVisualItem(thisSkillStat.ToString(), experienceToAdd);
     }
 
 
