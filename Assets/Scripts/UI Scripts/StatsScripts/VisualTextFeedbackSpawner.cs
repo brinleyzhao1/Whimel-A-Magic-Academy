@@ -7,14 +7,32 @@ namespace UI_Scripts.StatsScripts
 {
   public class VisualTextFeedbackSpawner : MonoBehaviour
   {
-    [SerializeField] private GameObject visualTextItem;
+    [SerializeField] private TextMeshProUGUI visualTextItem;
+    [SerializeField] private Color statRewardTextColor;
+    [SerializeField] private Color skillRewardTextColor;
 
 
-    public void SpawnStatsChangeVisualItem(string statName, int valueChange)
+    public void SpawnStatsChangeVisualItem(string statName, int valueChange, int statOrSkill)
     {
       GetComponent<AudioSource>().PlayOneShot(AudioAssets.Scribble);
 
-      GameObject newVisualItem = Instantiate(visualTextItem, transform);
+      TextMeshProUGUI newVisualItem = Instantiate(visualTextItem, transform);
+      SetUpText(statName, valueChange, statOrSkill, newVisualItem);
+
+      StartCoroutine(CloseMySelf(3));
+    }
+
+    private void SetUpText(string statName, int valueChange, int statOrSkill, TextMeshProUGUI newVisualItem)
+    {
+      if (statOrSkill == 0) //stat
+      {
+        newVisualItem.color = statRewardTextColor;
+      }
+      else if (statOrSkill == 1) //skill
+      {
+        newVisualItem.color = skillRewardTextColor;
+      }
+
       newVisualItem.transform.position =
         newVisualItem.transform.position + Vector3.up * 170; //magic number ;(, used to position visual
 
@@ -26,10 +44,7 @@ namespace UI_Scripts.StatsScripts
       {
         newVisualItem.GetComponent<TextMeshProUGUI>().text = statName + " -" + valueChange * -1;
       }
-
-      StartCoroutine(CloseMySelf(3));
     }
-
 
 
     IEnumerator CloseMySelf(int seconds)

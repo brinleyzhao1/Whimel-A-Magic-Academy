@@ -119,7 +119,7 @@ namespace Stats
       statsOrganizer.UpdateStatsUi(statsToValueDictionary);
 
       visualTextFeedbackSpawner.gameObject.SetActive(true);
-      visualTextFeedbackSpawner.SpawnStatsChangeVisualItem(statType.ToString(), valueToAdd);
+      visualTextFeedbackSpawner.SpawnStatsChangeVisualItem(statType.ToString(), valueToAdd,0);
     }
 
     /// <summary>

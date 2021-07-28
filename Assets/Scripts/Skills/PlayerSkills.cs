@@ -94,7 +94,7 @@ namespace Skills
       UpdateSkillUi();
 
       visualTextFeedbackSpawner.gameObject.SetActive(true);
-      visualTextFeedbackSpawner.SpawnStatsChangeVisualItem(thisSkillStat.ToString(), experienceToAdd);
+      visualTextFeedbackSpawner.SpawnStatsChangeVisualItem(skill.ToString(), experienceToAdd,1);
     }
 
 
