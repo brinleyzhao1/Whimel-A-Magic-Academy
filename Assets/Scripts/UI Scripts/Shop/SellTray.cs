@@ -1,6 +1,8 @@
-﻿using GameDev.tv_Assets.Scripts.Inventories;
+﻿using Audio;
+using GameDev.tv_Assets.Scripts.Inventories;
 using GameDev.tv_Assets.Scripts.UI.Inventories;
 using Player;
+using Player.Interaction;
 using TMPro;
 using UnityEngine;
 
@@ -38,6 +40,7 @@ namespace UI_Scripts.Shop
     [SerializeField] private TextMeshProUGUI priceText;
 
     private int indexInInventorySelected;
+    private int amountInTransaction;
     private int totalValueToBeExchanged;
 
     Inventory inventory;
@@ -54,9 +57,11 @@ namespace UI_Scripts.Shop
       // print("index is "+index);
 
       Money.Instance.AddOrMinusMoney(totalValueToBeExchanged);
-      Inventory.GetPlayerInventory().RemoveFromSlot(indexInInventorySelected, inventory.GetNumberInSlot(indexInInventorySelected));
+      Inventory.GetPlayerInventory().RemoveFromSlot(indexInInventorySelected, amountInTransaction);
 
       UpdateSellTray();
+
+      AudioAssets.AudioSource.PlayOneShot(AudioAssets.Money);
 
       // if (Inventory.GetPlayerInventory().GetNumberInSlot(indexInInventorySelected) == 0)
       // {
@@ -68,10 +73,11 @@ namespace UI_Scripts.Shop
       // }
     }
 
-    public void ReceiveInfoAboutSelectedItemForSell(int index)
+    public void ReceiveInfoAboutSelectedItemForSell(int index, int amount)
     {
       indexInInventorySelected = index;
       totalValueToBeExchanged = inventory.GetItemInSlot(index).sellingPrice * inventory.GetNumberInSlot(index);
+      amountInTransaction = amount;
       UpdateSellTray();
     }
 

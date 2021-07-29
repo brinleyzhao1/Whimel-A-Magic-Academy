@@ -18,12 +18,16 @@ namespace Audio
     [SerializeField] public AudioClip setRemove;
     public static AudioClip Remove;
 
+    [SerializeField] public AudioClip setBuyAndSell;
+    public static AudioClip Money;
+
     [Header("Audio Source")]
     [SerializeField] public AudioSource setUiPaperSound;
     public static AudioSource AudioSource;
 
     private void Awake()
     {
+      Money = setBuyAndSell;
       Paper = setPaper;
       Error = setError;
       Remove = setRemove;

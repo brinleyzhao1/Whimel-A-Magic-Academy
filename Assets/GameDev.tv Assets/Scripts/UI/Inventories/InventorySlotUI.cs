@@ -25,7 +25,7 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
     InventoryItem thisItem; //todo: assumed all items are actionable in order to use them
     Inventory inventory;
 
-    private bool canRightClickToSell;
+    private bool canSell;
 
     // PUBLIC
     public UnityEvent onRightClick;
@@ -99,7 +99,7 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
       //tell sell tray what thisItem and how many
       if (SellTray.Instance.gameObject.activeSelf)
       {
-        SellTray.Instance.ReceiveInfoAboutSelectedItemForSell(index);
+        SellTray.Instance.ReceiveInfoAboutSelectedItemForSell(index,inventory.GetNumberInSlot(index));
       }
     }
 
@@ -108,7 +108,7 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
       if (!GameAssets.ShopPanel.activeSelf) return;
       if (!inventory.GetItemInSlot(index)) return;
       CursorChanger.Instance.SetMovingCursor(CursorType.Sell);
-      canRightClickToSell = true;
+      canSell = true;
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -116,12 +116,12 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
       if (!GameAssets.ShopPanel.activeSelf) return;
       if (!inventory.GetItemInSlot(index)) return;
       CursorChanger.Instance.SetMovingCursor(CursorType.None);
-      canRightClickToSell = false;
+      canSell = false;
     }
 
     private void RightClickToSellAllInShopView()
     {
-      if (canRightClickToSell && Input.GetMouseButtonDown(1))
+      if (canSell && Input.GetMouseButtonDown(1))
       {
         //sell all
         int amount = inventory.GetNumberInSlot(index);

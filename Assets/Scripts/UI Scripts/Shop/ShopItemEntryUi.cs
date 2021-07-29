@@ -40,7 +40,7 @@ namespace UI_Scripts.Shop
       {
         inventory.AddToFirstEmptySlot(thisItem, 1);
         money.AddOrMinusMoney(-thisItem.buyingPrice);
-        AudioAssets.AudioSource.PlayOneShot(AudioAssets.Remove);
+        AudioAssets.AudioSource.PlayOneShot(AudioAssets.Money);
       }
       else
       {
