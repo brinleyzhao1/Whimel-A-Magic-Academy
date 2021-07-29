@@ -143,7 +143,7 @@ namespace Player
       energyTextInTab.text = "Energy: " + currentEnergy + "/" + maxEnergy;
       energyRateTextInTab.text = baseEnergyCostPerHour.ToString();
       energyRateTextInTab.text = "-" + currentEnergyCostPerHour + "/hr";
-      print("energy ui Updated");
+      // print("energy ui Updated");
     }
 
     private IEnumerator ForcedToSleepHours(int sleepHour)

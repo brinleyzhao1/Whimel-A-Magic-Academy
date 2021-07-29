@@ -1,4 +1,5 @@
-﻿using GameDev.tv_Assets.Scripts.Inventories;
+﻿using Audio;
+using GameDev.tv_Assets.Scripts.Inventories;
 using Player;
 using TMPro;
 using UnityEngine;
@@ -11,8 +12,9 @@ namespace UI_Scripts.Shop
     // private string itemId;
     private InventoryItem thisItem;
 
-    [Header("from children")]
-    [SerializeField] private Image entryImage;
+    [Header("from children")] [SerializeField]
+    private Image entryImage;
+
     [SerializeField] private TMP_Text entryNameText;
     [SerializeField] private TMP_Text entryPriceText;
 
@@ -30,8 +32,20 @@ namespace UI_Scripts.Shop
     {
       var player = GameObject.FindGameObjectWithTag("Player");
       var inventory = player.GetComponent<Inventory>();
-      inventory.AddToFirstEmptySlot(thisItem, 1);
-      player.GetComponent<Money>().AddOrMinusMoney(-thisItem.buyingPrice);
+
+      var money = player.GetComponent<Money>();
+      int moneyHave = money.money;
+
+      if (moneyHave >= thisItem.buyingPrice)
+      {
+        inventory.AddToFirstEmptySlot(thisItem, 1);
+        money.AddOrMinusMoney(-thisItem.buyingPrice);
+        AudioAssets.AudioSource.PlayOneShot(AudioAssets.Remove);
+      }
+      else
+      {
+        AudioAssets.AudioSource.PlayOneShot(AudioAssets.Error);
+      }
     }
   }
 }
