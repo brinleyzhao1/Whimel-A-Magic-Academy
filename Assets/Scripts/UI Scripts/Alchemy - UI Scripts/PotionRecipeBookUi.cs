@@ -13,7 +13,7 @@ namespace UI_Scripts
   {[SerializeField] private Transform recipeUiItemsContainer = null;
 
 
-    public void SetUpRecipeBook(List<PotionRecipeScriptableObject> knownRecipes)
+    public void SetUpRecipeBook(List<PotionRecipeObject> knownRecipes)
     {
 
       if (recipeUiItemsContainer == null)

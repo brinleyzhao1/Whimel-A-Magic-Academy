@@ -97,7 +97,7 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
     public void OnSelect(BaseEventData eventData)
     {
       //tell sell tray what thisItem and how many
-      if (SellTray.Instance.gameObject.activeSelf)
+      if (SellTray.Instance.isActiveAndEnabled)
       {
         SellTray.Instance.ReceiveInfoAboutSelectedItemForSell(index,inventory.GetNumberInSlot(index));
       }
@@ -151,17 +151,18 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
         // }
 
         //can only consume recipe once
-        if (thisItem.GetType() == typeof(PotionRecipeScriptableObject))
-        {
-          var thisIsAPotionRecipe = (PotionRecipeScriptableObject) thisItem;
-          if (!Alchemy.Alchemy.Instance.AlreadyKnownThisRecipe(thisIsAPotionRecipe))
-          {
-            Alchemy.Alchemy.Instance.AddNewPotionRecipe(thisIsAPotionRecipe);
-            inventory.RemoveFromSlot(this.index, 1);
-          }
-
-          StoreUpdated?.Invoke();
-        }
+        // if (thisItem.GetType() == typeof(PotionRecipeObject))
+        // {
+        //   var thisIsAPotionRecipe = (PotionRecipeObject) thisItem;
+        //   if (!Alchemy.Alchemy.Instance.AlreadyKnownThisRecipe(thisIsAPotionRecipe))
+        //   {
+        //     Alchemy.Alchemy.Instance.AddNewPotionRecipe(thisIsAPotionRecipe);
+        //     inventory.RemoveFromSlot(this.index, 1);
+        //   }
+        //
+        //   StoreUpdated?.Invoke();
+        // }
+        StoreUpdated?.Invoke();
 
       }
     }

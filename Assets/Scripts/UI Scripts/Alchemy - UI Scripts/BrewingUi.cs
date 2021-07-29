@@ -26,7 +26,7 @@ namespace UI_Scripts
 
     [SerializeField] private Button brewButton;
 
-    private PotionRecipeScriptableObject thisRecipe = null;
+    private PotionRecipeObject thisRecipe = null;
 
     private bool canBrew;
     private bool inProcessOfBrewing;
@@ -44,7 +44,7 @@ namespace UI_Scripts
     /// when selected, update visual
     /// </summary>
     /// <param name="recipe"></param>
-    public void UpdateDisplayedInfo(PotionRecipeScriptableObject recipe)
+    public void UpdateDisplayedInfo(PotionRecipeObject recipe)
     {
       thisRecipe = recipe;
 
@@ -130,7 +130,7 @@ namespace UI_Scripts
       bool succeeded = Alchemy.Alchemy.Instance.BrewSuccess(thisRecipe.level);
       if (succeeded)
       {
-        print("brew success");
+        // print("brew success");
         //add final potion to inventory
         GameAssets.PlayerInventory.AddToFirstEmptySlot(thisRecipe.finalPotion, 1);
 
@@ -160,7 +160,7 @@ namespace UI_Scripts
     }
 
 
-    private bool CheckIfHaveAllIngredients(PotionRecipeScriptableObject recipe)
+    private bool CheckIfHaveAllIngredients(PotionRecipeObject recipe)
     {
       int quantityRequired1 = recipe.quantity1;
       int quantityHave1 = GameAssets.PlayerInventory.TotalAmountHave(recipe.ingredient1);

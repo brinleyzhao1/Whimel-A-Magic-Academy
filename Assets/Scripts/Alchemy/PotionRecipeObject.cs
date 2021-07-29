@@ -7,7 +7,7 @@ namespace Alchemy
 {
   // [Serializable]
   [CreateAssetMenu(fileName = "Potion Recipe", menuName = "Scriptables/Potion Recipe")]
-  public class PotionRecipeScriptableObject : ActionScriptableItem
+  public class PotionRecipeObject : ActionScriptableItem
   {
     public ActionScriptableItem finalPotion;
     public int level; //should always be the same level as the finalPotion?

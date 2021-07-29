@@ -130,20 +130,20 @@ namespace GameDev.tv_Assets.Scripts.Inventories
         //   RemoveItems(index, 1);
         // }
 
-
-        if (thisItem.GetType() == typeof(PotionRecipeScriptableObject))
-        {
-          var thisIsAPotionRecipe = (PotionRecipeScriptableObject) thisItem;
-          if (!Alchemy.Alchemy.Instance.AlreadyKnownThisRecipe(thisIsAPotionRecipe))
-          {
-            Alchemy.Alchemy.Instance.AddNewPotionRecipe(thisIsAPotionRecipe);
-            RemoveItems(index, 1);
-          }
-          else
-          {
-            //not consume this recipe
-          }
-        }
+        //
+        // if (thisItem.GetType() == typeof(PotionRecipeObject))
+        // {
+        //   var thisIsAPotionRecipe = (PotionRecipeObject) thisItem;
+        //   if (!Alchemy.Alchemy.Instance.AlreadyKnownThisRecipe(thisIsAPotionRecipe))
+        //   {
+        //     Alchemy.Alchemy.Instance.AddNewPotionRecipe(thisIsAPotionRecipe);
+        //     RemoveItems(index, 1);
+        //   }
+        //   else
+        //   {
+        //     //not consume this recipe
+        //   }
+        // }
 
         return true;
       }

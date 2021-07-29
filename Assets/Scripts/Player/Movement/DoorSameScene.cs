@@ -10,7 +10,7 @@ namespace Player.Movement
     [SerializeField]
     float interactiveDistance = 2f;
 
-    [SerializeField] private CursorType cursorType = CursorType.Door;
+    // [SerializeField] private CursorType cursorType = CursorType.Door;
 
     protected override void Interact()
     {

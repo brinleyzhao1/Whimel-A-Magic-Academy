@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using Audio;
 using Control;
+using GameDev.tv_Assets.Scripts.Inventories;
 using Library;
+using Player.Interaction;
 using Skills;
 using Stats;
 using TMPro;
@@ -17,9 +19,13 @@ namespace UI_Scripts
   {
     private BookItem thisBook;
 
+    [Range(0, 1)][SerializeField] private float chanceToFindRecipe = .5f;
+
     [SerializeField] private Image iconImage;
     [SerializeField] private TextMeshProUGUI nameText;
+
     [SerializeField] private TextMeshProUGUI descriptionText;
+
     // [SerializeField] private TextMeshProUGUI lvlText;
     [SerializeField] private TextMeshProUGUI timeText;
 
@@ -46,7 +52,6 @@ namespace UI_Scripts
       }
 
       base.CloseThisPanel();
-
     }
 
     public void ButtonReadThisBook() //activity
@@ -58,8 +63,8 @@ namespace UI_Scripts
 
       // int bookLevel = thisBook.bookLevel;
       // int playerKnowledge = PlayerStats.Instance.GetKnowledge();
-
     }
+
 
     private IEnumerator Read()
     {
@@ -77,7 +82,27 @@ namespace UI_Scripts
 
       SetUpBookDetail(thisBook); //refresh the visual, especially the timer
 
+      ChanceToFindRecipe();
+
       inProcessOfReading = false;
+    }
+
+    private void ChanceToFindRecipe()
+    {
+      if (Random.value <= chanceToFindRecipe)
+      {
+        var recipeFound = Alchemy.Alchemy.Instance.GetNextRecipe();
+        GameAssets.PlayerInventory.AddToFirstEmptySlot(recipeFound,1);
+
+        GameAssets.MessagePanel.gameObject.SetActive(true);
+        GameAssets.MessagePanel.SetMessageText("Congratulations! you found a new recipe!");
+        print(recipeFound);
+
+      }
+      else
+      {
+        print("failed to find");
+      }
     }
 
     public void CancelReading()

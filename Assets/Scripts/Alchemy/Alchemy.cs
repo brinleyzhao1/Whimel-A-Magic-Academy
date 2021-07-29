@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using GameDev.tv_Assets.Scripts.Inventories;
 using GameDev.tv_Assets.Scripts.Saving;
@@ -12,7 +13,7 @@ using Random = UnityEngine.Random;
 namespace Alchemy
 {
   /// <summary>
-  /// the overall script overseeing Alchemy, also serve as Alchemy
+  /// the overall script overseeing Alchemy,sit on
   /// </summary>
   public class Alchemy : MonoBehaviour, ISaveable
   {
@@ -38,7 +39,9 @@ namespace Alchemy
     #endregion
 
 
-    public List<PotionRecipeScriptableObject> knownPotionRecipes = new List<PotionRecipeScriptableObject>(20);
+    public List<PotionRecipeObject> knownPotionRecipes = new List<PotionRecipeObject>(20);
+    public List<PotionRecipeObject> allPotionRecipes;
+
 
     [Header("Chance of Success")] [SerializeField]
     private float oneLevelAboveSuccessRate = .40f;
@@ -56,7 +59,15 @@ namespace Alchemy
     [SerializeField] [Range(20, 100f)] [Tooltip("divide from dexterity exponential")]
     private float dexterityDivisionFactor = 50f;
 
-    public bool AlreadyKnownThisRecipe(PotionRecipeScriptableObject recipe)
+
+    private void Start()
+    {
+      // var a = Resources.LoadAsync("Assets/Resources/Recipes/PotionRecipes Objects") as List<PotionRecipeObject>;
+      allPotionRecipes = Resources.LoadAll<PotionRecipeObject>("Recipes/PotionRecipes Objects").ToList();
+    }
+
+
+    public bool AlreadyKnownThisRecipe(PotionRecipeObject recipe)
     {
       print(recipe);
       print(knownPotionRecipes); //todo this is null
@@ -72,7 +83,7 @@ namespace Alchemy
     /// append new recipe, doesn't check if it's already contained
     /// </summary>
     /// <param name="newRecipe"></param>
-    public void AddNewPotionRecipe(PotionRecipeScriptableObject newRecipe)
+    public void AddNewPotionRecipe(PotionRecipeObject newRecipe)
     {
       knownPotionRecipes.Add(newRecipe);
     }
@@ -112,6 +123,19 @@ namespace Alchemy
       return Random.value <= successRate;
     }
 
+    public PotionRecipeObject GetNextRecipe()
+    {
+      foreach (var recipe in allPotionRecipes)
+      {
+        if (!knownPotionRecipes.Contains(recipe))
+        {
+          return recipe;
+        }
+      }
+
+      return allPotionRecipes[0];
+    }
+
     #region Saving
 
 //todo cannot seriliaze a list
@@ -130,10 +154,10 @@ namespace Alchemy
 
     public void RestoreState(object state)
     {
-      var restoreList = new List<PotionRecipeScriptableObject>();
+      var restoreList = new List<PotionRecipeObject>();
       foreach (string id in (Array) state)
       {
-        PotionRecipeScriptableObject item = InventoryItem.GetFromID(id) as PotionRecipeScriptableObject;
+        PotionRecipeObject item = InventoryItem.GetFromID(id) as PotionRecipeObject;
         restoreList.Add(item);
       }
 

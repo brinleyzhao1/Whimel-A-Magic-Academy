@@ -13,7 +13,7 @@ namespace UI_Scripts
   public class RecipeEntryUiItem : MonoBehaviour
   {
     // private string itemId;
-    private PotionRecipeScriptableObject thisRecipe;
+    private PotionRecipeObject thisRecipe;
 
     [Header("from children")]
     [SerializeField] private Image iconImage;
@@ -21,7 +21,7 @@ namespace UI_Scripts
     // [SerializeField] private TextMeshProUGUI entryPriceText;
 
 
-    public void SetUp(PotionRecipeScriptableObject recipe)
+    public void SetUp(PotionRecipeObject recipe)
     {
       iconImage.sprite = recipe.GetIcon();
       recipeNameText.text = recipe.name;

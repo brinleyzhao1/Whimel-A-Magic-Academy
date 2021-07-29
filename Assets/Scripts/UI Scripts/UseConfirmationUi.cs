@@ -1,4 +1,5 @@
 using System;
+using Alchemy;
 using Control;
 using GameDev.tv_Assets.Scripts.Inventories;
 using Player;
@@ -26,9 +27,8 @@ namespace UI_Scripts
     {
       thisItem = item;
       thisIndex = index;
-      text.text = "Use " + item.GetDisplayName()+"?";
+      text.text = "Use " + item.GetDisplayName() + "?";
       mode = inventoryOrActionBar;
-
     }
 
     public void ButtonConfirmUse()
@@ -36,24 +36,44 @@ namespace UI_Scripts
       //remove 1
       if (thisItem.IsConsumable())
       {
-        if (mode == 0) // inventory
-        {
-          GameAssets.PlayerInventory.RemoveFromSlot(thisIndex, 1);
-        }
-        else if (mode == 1)//action bar
-        {
-          actionStore.RemoveItems(thisIndex, 1);
-        }
+        RemoveItemFromPlace();
       }
 
 
-      PlayerEnergy.Instance.UpdateEnergyByValue(thisItem.energyChange);
+      if (thisItem.GetType() == typeof(PotionRecipeObject))
+      {
+        var thisIsAPotionRecipe = (PotionRecipeObject) thisItem;
+        if (!Alchemy.Alchemy.Instance.AlreadyKnownThisRecipe(thisIsAPotionRecipe))
+        {
+          Alchemy.Alchemy.Instance.AddNewPotionRecipe(thisIsAPotionRecipe);
+          RemoveItemFromPlace();
+        }
+        // StoreUpdated?.Invoke();
+        else
+        {
+          //not consume this recipe
+        }
 
-      CursorChanger.Instance.OneLessUiOut();
+
+        PlayerEnergy.Instance.UpdateEnergyByValue(thisItem.energyChange);
+
+        CursorChanger.Instance.OneLessUiOut();
 
 
-      gameObject.SetActive(false);
+        gameObject.SetActive(false);
+      }
+    }
 
+    private void RemoveItemFromPlace()
+    {
+      if (mode == 0) // inventory
+      {
+        GameAssets.PlayerInventory.RemoveFromSlot(thisIndex, 1);
+      }
+      else if (mode == 1) //action bar
+      {
+        actionStore.RemoveItems(thisIndex, 1);
+      }
     }
   }
 }

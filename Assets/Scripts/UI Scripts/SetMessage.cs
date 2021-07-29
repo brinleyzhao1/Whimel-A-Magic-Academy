@@ -1,9 +1,9 @@
 ﻿using TMPro;
 using UnityEngine;
 
-namespace UI
+namespace UI_Scripts
 {
-  public class SetMessage : MonoBehaviour
+  public class SetMessage : ClassPanelUi
   {
     [SerializeField] private TextMeshProUGUI messageText;
 
