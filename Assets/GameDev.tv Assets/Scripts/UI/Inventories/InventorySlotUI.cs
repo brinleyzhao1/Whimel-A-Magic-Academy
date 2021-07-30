@@ -99,7 +99,7 @@ namespace GameDev.tv_Assets.Scripts.UI.Inventories
       //tell sell tray what thisItem and how many
       if (SellTray.Instance.isActiveAndEnabled)
       {
-        SellTray.Instance.ReceiveInfoAboutSelectedItemForSell(index,inventory.GetNumberInSlot(index));
+        SellTray.Instance.ReceiveInfoAboutSelectedItemForSell(index);
       }
     }
 

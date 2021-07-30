@@ -40,7 +40,6 @@ namespace UI_Scripts.Shop
     [SerializeField] private TextMeshProUGUI priceText;
 
     private int indexInInventorySelected;
-    private int amountInTransaction;
     private int totalValueToBeExchanged;
 
     Inventory inventory;
@@ -57,11 +56,11 @@ namespace UI_Scripts.Shop
       // print("index is "+index);
 
       Money.Instance.AddOrMinusMoney(totalValueToBeExchanged);
-      Inventory.GetPlayerInventory().RemoveFromSlot(indexInInventorySelected, amountInTransaction);
+      Inventory.GetPlayerInventory().RemoveFromSlot(indexInInventorySelected, 1);
 
       UpdateSellTray();
 
-      AudioAssets.AudioSource.PlayOneShot(AudioAssets.Money);
+      // AudioAssets.AudioSource.PlayOneShot(AudioAssets.Money);
 
       // if (Inventory.GetPlayerInventory().GetNumberInSlot(indexInInventorySelected) == 0)
       // {
@@ -73,11 +72,11 @@ namespace UI_Scripts.Shop
       // }
     }
 
-    public void ReceiveInfoAboutSelectedItemForSell(int index, int amount)
+    public void ReceiveInfoAboutSelectedItemForSell(int index)
     {
       indexInInventorySelected = index;
-      totalValueToBeExchanged = inventory.GetItemInSlot(index).sellingPrice * inventory.GetNumberInSlot(index);
-      amountInTransaction = amount;
+      totalValueToBeExchanged = inventory.GetItemInSlot(index).sellingPrice;
+
       UpdateSellTray();
     }
 
