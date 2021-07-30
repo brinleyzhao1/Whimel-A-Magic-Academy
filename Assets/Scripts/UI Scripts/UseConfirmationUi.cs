@@ -51,7 +51,8 @@ namespace UI_Scripts
         // StoreUpdated?.Invoke();
         else
         {
-          //not consume this recipe
+         GameAssets.MessagePanel.gameObject.SetActive(true);
+         GameAssets.MessagePanel.SetMessageText("Oops, seems like you already know this recipe.");
         }
 
 

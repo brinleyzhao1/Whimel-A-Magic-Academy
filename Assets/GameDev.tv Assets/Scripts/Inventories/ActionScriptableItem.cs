@@ -27,7 +27,6 @@ namespace GameDev.tv_Assets.Scripts.Inventories
         /// <summary>
         /// Trigger the use of this item. Override to provide functionality.
         /// </summary>
-        /// <param name="user">The character that is using this action.</param>
         public virtual void Use(int index, int inventoryOrActionBar)
         {
             // Debug.Log("Using action: " + this);
