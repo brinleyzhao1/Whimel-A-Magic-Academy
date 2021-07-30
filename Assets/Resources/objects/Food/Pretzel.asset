@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Pretzel
   itemID: aaa5d585-c4c6-42b3-ad04-27c65e08913e
-  buyingPrice: 10
+  buyingPrice: 50
   sellingPrice: 5
   description: 
   icon: {fileID: 21300000, guid: 1bfd15b8869794fe88c793e9231d6ae4, type: 3}

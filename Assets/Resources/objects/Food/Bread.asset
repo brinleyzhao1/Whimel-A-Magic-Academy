@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Bread
   itemID: dbbd4747-3ada-455f-9b32-6bcd5521a728
-  buyingPrice: 10
+  buyingPrice: 20
   sellingPrice: 5
   description: 
   icon: {fileID: 21300000, guid: 37f3f705b2cc8432cbb69cec43b85655, type: 3}
@@ -22,4 +22,4 @@ MonoBehaviour:
     type: 3}
   stackable: 1
   directlyConsumable: 1
-  energyChange: 50
+  energyChange: 10

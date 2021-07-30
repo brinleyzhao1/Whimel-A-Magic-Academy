@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7970efe4ec7b3420195bd065085214e9, type: 3}
+  m_Name: Blue Potion
+  m_EditorClassIdentifier: 
+  displayName: Muse's Potion
+  itemID: 01bfac95-b725-4592-90e7-a8c4d345b20c
+  buyingPrice: 0
+  sellingPrice: 10
+  description: '
+
+'
+  icon: {fileID: 21300000, guid: 5a00eee52309a4957995578a71e6b471, type: 3}
+  inGame3DPickup: {fileID: 0}
+  stackable: 0
+  directlyConsumable: 1
+  energyChange: 0

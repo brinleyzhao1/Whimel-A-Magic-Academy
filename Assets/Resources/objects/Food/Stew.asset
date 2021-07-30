@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Stew
   itemID: d44fe002-27f1-4136-b842-7c2c9bcce64e
-  buyingPrice: 30
-  sellingPrice: 10
+  buyingPrice: 40
+  sellingPrice: 4
   description: 
   icon: {fileID: 21300000, guid: b62188b9797c74e5d9da6f3319b7287a, type: 3}
   inGame3DPickup: {fileID: -4064001279403087980, guid: 1214ee8e5ef5ca44aa77515466a7c1c0,

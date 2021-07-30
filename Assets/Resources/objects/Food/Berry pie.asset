@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: berry pie
   itemID: 98d17071-6c3b-4409-b514-11518f82ac60
-  buyingPrice: 10
-  sellingPrice: 5
+  buyingPrice: 70
+  sellingPrice: 7
   description: 
   icon: {fileID: 21300000, guid: bd14aacbeb1de4170b6df96f51252ceb, type: 3}
   inGame3DPickup: {fileID: -8791278466660215238, guid: 7cc4832def3b5a2469b0b020b797d26a,

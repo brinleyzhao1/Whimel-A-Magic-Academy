@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Pie
   itemID: 86063cf5-f341-42bd-8b79-58f6844825b1
-  buyingPrice: 20
+  buyingPrice: 60
   sellingPrice: 5
   description: '
 
@@ -24,4 +24,4 @@ MonoBehaviour:
     type: 3}
   stackable: 1
   directlyConsumable: 1
-  energyChange: 15
+  energyChange: 30
